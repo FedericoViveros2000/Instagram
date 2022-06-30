@@ -1,4 +1,3 @@
-const colors = require("tailwindcss/colors");
 module.exports = {
   content: [
     "./public/index.html",
@@ -6,11 +5,16 @@ module.exports = {
     "./src/views/*.vue",
   ],
   theme: {
+    // fontFamily: {
+
+    // },
     extend: {
-      ...colors,
     },
     colors: {
-      skyblue: "#47B5FF",
+      'skyblue': "#fb5a2a",
+      'slate-200': "#e2e8f0",
+      'slate-400': "#94a3b8",
+      'white': "#ffffff"
     },
   },
   plugins: [],

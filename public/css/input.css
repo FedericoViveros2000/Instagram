@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    html {
+        font-family: 'Roboto', sans-serif;
+    }
+    .btn {
+       @apply w-full bg-skyblue rounded-md py-3 text-white
+    }
+}
