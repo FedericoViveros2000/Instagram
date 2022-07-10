@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-40">
+  <div class="mt-36">
     <loading-component v-if="products.length === 0"></loading-component>
     <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:gap-10 gap-5 p-5" v-else>
       <article
@@ -39,8 +39,7 @@
 
     <Teleport to="body">
       <Transition duration="550" name="nested">
-
-      <product-detail-component v-if="productSelected != ''" :productData="productSelected"></product-detail-component>
+        <product-detail-component v-if="productSelected != ''" :productData="productSelected"></product-detail-component>
       </Transition>
     </Teleport>
 
@@ -69,6 +68,7 @@ productSelected = computed(() => store.getters.gettersArticleSelected)
 
 onMounted(() => {
   store.dispatch("getArticles");
+  console.log(products.value);
 });
 </script>
 

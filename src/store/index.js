@@ -15,7 +15,6 @@ export default createStore({
       } else {
         article = state.articles;
       }
-
       return article;
     },
     gettersCountCard: (state) => state.countCard,
@@ -46,6 +45,7 @@ export default createStore({
           "https://api.escuelajs.co/api/v1/products"
         );
         let data = await response.data;
+        console.log(data);
         context.commit("setArticles", data);
       } catch (err) {
         console.warn(err);

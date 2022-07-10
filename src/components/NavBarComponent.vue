@@ -12,9 +12,9 @@
       </ul>
     <p class="md:ml-5">Menu</p>
     </nav>
-    <ul class="flex w-full py-3 md:py-5 px-5 bg-white overflow-auto">
+    <ul class="flex items-center w-full py-1 md:py-5 px-5 bg-white overflow-auto">
       <li class="bg-skyblue mr-5 rounded-3xl" v-for="category in categories" :key="category.id">
-        <button class="py-2 px-8 text-white">{{category.name}}</button>
+        <button class="py-2 px-8 text-white w-max">{{category.name}}</button>
       </li>
     </ul>
   </div>
@@ -35,7 +35,6 @@ let getCategories = async () => {
     let response = await axios.get("https://api.escuelajs.co/api/v1/categories");
     let data = await response.data;
     categories.value = data;
-    console.log(categories.value);
   } catch (err) {
     console.log(err);
   }
