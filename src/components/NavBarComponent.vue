@@ -12,7 +12,10 @@
       </ul>
     <p class="md:ml-5">Menu</p>
     </nav>
-    <ul class="flex items-center w-full py-1 md:py-5 px-5 bg-white overflow-auto">
+    <ul class="flex items-center md:justify-around w-full mt-5 md:mt-0 md:py-5 px-3 bg-white overflow-auto hide">
+       <li class="bg-skyblue mr-5 rounded-3xl">
+        <button class="py-2 px-8 text-white w-max">All</button>
+      </li>
       <li class="bg-skyblue mr-5 rounded-3xl" v-for="category in categories" :key="category.id">
         <button class="py-2 px-8 text-white w-max">{{category.name}}</button>
       </li>
@@ -45,3 +48,12 @@ onMounted(()=> {
 })
 
 </script>
+
+<style scoped>
+  .hide {
+  scrollbar-width: none;
+}
+.hide::-webkit-scrollbar {
+  width: 0;
+}
+</style>
