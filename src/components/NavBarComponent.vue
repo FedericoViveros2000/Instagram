@@ -1,8 +1,7 @@
 <template>
   <div class="w-full fixed top-0 z-10 ">
-    <nav class="w-full p-5 bg-skyblue flex items-center justify-between md:justify-center">
+    <nav class="w-full py-3 px-4 md:px-0 bg-skyblue flex items-center justify-between md:justify-center">
       <ul class="md:w-1/2 w-4/5">
-        <li>{{ countCard }}</li>
         <input
           type="search"
           v-model="searchArticle"
@@ -10,9 +9,9 @@
           class="py-2 px-5 w-full rounded-md outline-none"
         />
       </ul>
-    <p class="md:ml-5">Menu</p>
+    <button class="md:ml-5" @click="articleSearch">Buscar</button>
     </nav>
-    <ul class="flex items-center md:justify-around w-full mt-5 md:mt-0 md:py-5 px-3 bg-white overflow-auto hide">
+    <ul class="flex items-center md:justify-around w-full py-3 pl-4 md:pl-4 md:px-0 md:mt-0 bg-white overflow-auto hide">
        <li class="bg-skyblue mr-5 rounded-3xl">
         <button class="py-2 px-8 text-white w-max">All</button>
       </li>
@@ -24,36 +23,36 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from "@vue/runtime-core";
-import { useStore } from "vuex";
+const { 
+  VITE_API_CATEGORIES: urlCategories,
+} = import.meta.env;
+import { onBeforeMount, ref, watch } from "vue";
+import {useStore} from 'vuex';
 import axios from "axios"
 let searchArticle = ref("");
 let categories = ref([]);
-let store = useStore();
+const { dispatch, commit} = useStore();
 
-watch(searchArticle, () => store.commit("searchArticle", searchArticle.value));
+const articleSearch = () => {
+  dispatch("getArticles");
+  commit("searchArticle", searchArticle.value);
+}
 
-let getCategories = async () => {
+onBeforeMount(async () => {
   try {
-    let response = await axios.get("https://api.escuelajs.co/api/v1/categories");
-    let data = await response.data;
-    categories.value = data;
+    let { data } = await axios.get(urlCategories);
+    categories.value = await data;
   } catch (err) {
     console.log(err);
   }
-}
-
-onMounted(()=> {
-  getCategories();
 })
-
 </script>
 
 <style scoped>
   .hide {
-  scrollbar-width: none;
-}
-.hide::-webkit-scrollbar {
-  width: 0;
-}
+    scrollbar-width: none;
+  }
+  .hide::-webkit-scrollbar {
+    width: 0;
+  }
 </style>

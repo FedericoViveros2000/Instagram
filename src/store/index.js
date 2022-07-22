@@ -1,4 +1,7 @@
 import { createStore } from "vuex";
+const {
+  VITE_API_PRODUCTS: urlProducts
+} = import.meta.env;
 import axios from "axios";
 export default createStore({
   state: {
@@ -10,11 +13,9 @@ export default createStore({
   getters: {
     gettersArticles: (state) => {
       let article = [];
-      if (state.articlesSearch.length > 0) {
-        article = state.articlesSearch;
-      } else {
-        article = state.articles;
-      }
+      state.articleSelected.length > 0 
+      ? article = state.articlesSearch 
+      : article = state.articles;
       return article;
     },
     gettersCountCard: (state) => state.countCard,
@@ -26,11 +27,11 @@ export default createStore({
     },
 
     setArticles(state, data) {
-      state.articles = data;
+      state.articles.push(...data);
     },
 
     searchArticle(state, data) {
-      state.articlesSearch = state.articles.filter(article => article.category.name.toLowerCase().includes(data.toLowerCase()));
+      state.articlesSearch = state.articles.filter(({category}) => category.name.toLowerCase().includes(data.toLowerCase()));
     },
 
     setArticleSelected(state, data) {
@@ -38,13 +39,10 @@ export default createStore({
     }
   },
   actions: {
-   
-    async getArticles(context) {
+    
+    async getArticles(context, endpoint = `${urlProducts}?offset=${0}&limit=${10}`) {
       try {
-        let response = await axios.get(
-          "https://api.escuelajs.co/api/v1/products"
-        );
-        let data = await response.data;
+        let { data } = await axios.get(endpoint);
         console.log(data);
         context.commit("setArticles", data);
       } catch (err) {
@@ -53,24 +51,14 @@ export default createStore({
     },
 
     async getArticleSelected(context, idArticle){
-
-      if (idArticle != "") {
-        try{
-          let response = await axios.get(
-            `https://api.escuelajs.co/api/v1/products/${idArticle}`
-          )
-          let data = await response.data;
-          console.log(idArticle);
-          context.commit("setArticleSelected", data);
-        }catch(context){
-          console.warn(err);
+      try{
+        let { data } = await axios.get(`${urlProducts}/${idArticle}`);
+        if (data) {
+            context.commit("setArticleSelected", data);
         }
-      }else{
-        context.commit("setArticleSelected", "");
+      }catch(context){
+          console.warn(err);
       }
-
     }
-
   },
-  modules: {},
 });

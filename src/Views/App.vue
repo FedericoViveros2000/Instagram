@@ -4,6 +4,8 @@
 </template>
 
 <script setup>
+
 import NavBarComponent from "../components/NavBarComponent.vue";
 import ProductsComponent from "../components/ProductsComponent.vue";
+
 </script>
