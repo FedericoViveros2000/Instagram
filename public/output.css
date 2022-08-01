@@ -628,6 +628,10 @@ html {
   margin-top: 0.5rem;
 }
 
+.mt-28 {
+  margin-top: 7rem;
+}
+
 .flex {
   display: flex;
 }
@@ -676,10 +680,6 @@ html {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-}
-
-.w-1\/2 {
-  width: 50%;
 }
 
 .transform {

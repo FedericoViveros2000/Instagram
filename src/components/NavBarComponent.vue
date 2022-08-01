@@ -15,7 +15,7 @@
        <li class="bg-skyblue mr-5 rounded-3xl">
         <button class="py-2 px-8 text-white w-max">All</button>
       </li>
-      <li class="bg-skyblue mr-5 rounded-3xl" v-for="category in categories" :key="category.id">
+      <li class="bg-skyblue mr-5 rounded-3xl" v-for="category in categories" :key="category.id" >
         <button class="py-2 px-8 text-white w-max">{{category.name}}</button>
       </li>
     </ul>
@@ -34,14 +34,14 @@ let categories = ref([]);
 const { dispatch, commit} = useStore();
 
 const articleSearch = () => {
-  dispatch("getArticles");
-  commit("searchArticle", searchArticle.value);
+  commit("searchArticle", urlCategories);
 }
 
 onBeforeMount(async () => {
   try {
     let { data } = await axios.get(urlCategories);
     categories.value = await data;
+    console.log(categories.value);
   } catch (err) {
     console.log(err);
   }

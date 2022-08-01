@@ -13,7 +13,7 @@ export default createStore({
   getters: {
     gettersArticles: (state) => {
       let article = [];
-      state.articleSelected.length > 0 
+      state.articlesSearch.length > 0 
       ? article = state.articlesSearch 
       : article = state.articles;
       return article;
@@ -31,7 +31,8 @@ export default createStore({
     },
 
     searchArticle(state, data) {
-      state.articlesSearch = state.articles.filter(({category}) => category.name.toLowerCase().includes(data.toLowerCase()));
+      state.articlesSearch = state.articles.filter(({category}) => category.name.split(" ").join("").toLowerCase().includes(data.split(" ").join("").toLowerCase()));
+      console.log(state.articlesSearch);
     },
 
     setArticleSelected(state, data) {
@@ -40,6 +41,7 @@ export default createStore({
   },
   actions: {
     
+    //Obteniendo todos los articulos seleccionados, por paginacion
     async getArticles(context, endpoint = `${urlProducts}?offset=${0}&limit=${10}`) {
       try {
         let { data } = await axios.get(endpoint);
@@ -50,14 +52,15 @@ export default createStore({
       }
     },
 
+    //Obteniendo el unico articulo seleccionado
     async getArticleSelected(context, idArticle){
       try{
         let { data } = await axios.get(`${urlProducts}/${idArticle}`);
         if (data) {
-            context.commit("setArticleSelected", data);
+          context.commit("setArticleSelected", data);
         }
       }catch(context){
-          console.warn(err);
+        console.warn(err);
       }
     }
   },

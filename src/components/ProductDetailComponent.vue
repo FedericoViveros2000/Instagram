@@ -2,9 +2,9 @@
   <article class="h-screen w-full bg-white fixed top-0 z-20">
     <div class="h-full">
         <figure class="w-full h-3/6">
-            <div>
+            <!-- <div>
                 <button @click="closeArticle">X</button>
-            </div>
+            </div> -->
             <img :src="productData.category.image" :alt="productData.category.name" class="object-cover w-full rounded-xl h-full">
         </figure>
         <section class="p-5 h-3/6 flex flex-col justify-around">
@@ -26,8 +26,8 @@
         productData: Object
     })
 
-    const {productData} = toRefs(props);
-    console.log(productData.value);
+    const { productData } = toRefs(props);
+    
     const closeArticle = () => {
         store.dispatch("getArticleSelected", "");
     }

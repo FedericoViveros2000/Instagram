@@ -9,7 +9,6 @@
         @click="getArticleDetails(id)"
         :ref="(last)=> (lastArticle[index] = last)"
       >
-        <p>{{index}}</p>
         <figure class="h-1/2">
           <img
             :src="category.image"
@@ -19,7 +18,9 @@
         </figure>
         <div class="md:m-5 my-3 mx-3 text-center">
           <figcaption class="text-xl font-bold mt-2">
-            {{ category.name }}
+            <router-link :to="`/detail/${id}`">
+              {{ category.name }}
+            </router-link>
           </figcaption>
           <figcaption class="mt-2">
             $
@@ -38,11 +39,11 @@
         </div>
       </article>
     </div>
-    <Teleport to="body">
+    <!-- <Teleport to="body">
       <Transition duration="550" name="nested">
         <product-detail-component v-if="productSelected != ''" :productData="productSelected"></product-detail-component>
       </Transition>
-    </Teleport>
+    </Teleport> -->
   </div>
 </template>
 
