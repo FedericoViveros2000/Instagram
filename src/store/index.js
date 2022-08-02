@@ -22,30 +22,21 @@ export default createStore({
     gettersArticleSelected: (state) => state.articleSelected
   },
   mutations: {
-    addToCard(state) {
-      state.countCard++;
-    },
+    addToCard: (state) => state.countCard++,
 
-    setArticles(state, data) {
-      state.articles.push(...data);
-    },
+    setArticles:(state, data) => state.articles.push(...data),
 
-    searchArticle(state, data) {
-      state.articlesSearch = state.articles.filter(({category}) => category.name.split(" ").join("").toLowerCase().includes(data.split(" ").join("").toLowerCase()));
-      console.log(state.articlesSearch);
-    },
+    searchArticle:(state, data) => state.articlesSearch = state.articles.filter(({category}) => category.name.split(" ").join("").toLowerCase().includes(data.split(" ").join("").toLowerCase())),
 
-    setArticleSelected(state, data) {
-      state.articleSelected = data;
-    }
+    searchArticleCategory: (state, idCategory) => state.articlesSearch = state.articles.filter(({category}) => category.id === idCategory),
+
+    setArticleSelected:(state, data) =>state.articleSelected = data
   },
   actions: {
-    
     //Obteniendo todos los articulos seleccionados, por paginacion
     async getArticles(context, endpoint = `${urlProducts}?offset=${0}&limit=${10}`) {
       try {
         let { data } = await axios.get(endpoint);
-        console.log(data);
         context.commit("setArticles", data);
       } catch (err) {
         console.warn(err);

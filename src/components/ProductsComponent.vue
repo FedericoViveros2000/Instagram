@@ -1,7 +1,7 @@
 <template>
-  <div class="md:mt-28 mt-32" ref="containerArticles">
+  <div  ref="containerArticles">
     <loading-component v-if="products.length === 0"></loading-component>
-    <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:gap-10 gap-5 p-5 h-36" v-else>
+    <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:gap-10 gap-5 p-5" v-else>
       <article
         class="rounded-md shadow-lg"
         v-for="({id, category, price}, index) in products"
@@ -9,14 +9,14 @@
         @click="getArticleDetails(id)"
         :ref="(last)=> (lastArticle[index] = last)"
       >
-        <figure class="h-1/2">
+        <figure class="h-1/2 overflow-hidden">
           <img
             :src="category.image"
             :alt="category.description"
             class="rounded-md object-cover w-full h-full brightness-75"
           />
         </figure>
-        <div class="md:m-5 my-3 mx-3 text-center">
+        <div class="mt-5 text-center">
           <figcaption class="text-xl font-bold mt-2">
             <router-link :to="`/detail/${id}`">
               {{ category.name }}
