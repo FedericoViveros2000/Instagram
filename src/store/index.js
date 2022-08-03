@@ -10,6 +10,7 @@ export default createStore({
     articlesSearch: [],
     articleSelected: []
   },
+  
   getters: {
     gettersArticles: (state) => {
       let article = [];
@@ -21,34 +22,47 @@ export default createStore({
     gettersCountCard: (state) => state.countCard,
     gettersArticleSelected: (state) => state.articleSelected
   },
+
   mutations: {
-    addToCard: (state) => state.countCard++,
+    addToCard (state) {
+      state.countCard++
+    },
 
-    setArticles:(state, data) => state.articles.push(...data),
+    setArticles(state, data) {
+      state.articles.push(...data)
+    },
 
-    searchArticle:(state, data) => state.articlesSearch = state.articles.filter(({category}) => category.name.split(" ").join("").toLowerCase().includes(data.split(" ").join("").toLowerCase())),
+    searchArticle(state, data){
+      state.articlesSearch = state.articles.filter(({category}) => category.name.split(" ").join("").toLowerCase().includes(data.split(" ").join("").toLowerCase()))
+    },
 
-    searchArticleCategory: (state, idCategory) => state.articlesSearch = state.articles.filter(({category}) => category.id === idCategory),
+    searchArticleCategory(state, idCategory) {
+      state.articlesSearch = state.articles.filter(({category}) => category.id === idCategory)
+    },
 
-    setArticleSelected:(state, data) =>state.articleSelected = data
+    setArticleSelected(state, data) {
+      state.articleSelected = data
+    }
+
   },
+
   actions: {
     //Obteniendo todos los articulos seleccionados, por paginacion
-    async getArticles(context, endpoint = `${urlProducts}?offset=${0}&limit=${10}`) {
+    async getArticles({commit}, endpoint = `${urlProducts}?offset=${0}&limit=${10}`) {
       try {
         let { data } = await axios.get(endpoint);
-        context.commit("setArticles", data);
+        commit("setArticles", data);
       } catch (err) {
         console.warn(err);
       }
     },
 
     //Obteniendo el unico articulo seleccionado
-    async getArticleSelected(context, idArticle){
+    async getArticleSelected({commit}, idArticle){
       try{
         let { data } = await axios.get(`${urlProducts}/${idArticle}`);
         if (data) {
-          context.commit("setArticleSelected", data);
+          commit("setArticleSelected", data);
         }
       }catch(context){
         console.warn(err);

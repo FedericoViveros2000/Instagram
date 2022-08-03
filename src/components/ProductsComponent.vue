@@ -1,44 +1,48 @@
 <template>
   <div  ref="containerArticles">
-    <loading-component v-if="products.length === 0"></loading-component>
-    <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:gap-10 gap-5 p-5" v-else>
-      <article
-        class="rounded-md shadow-lg"
-        v-for="({id, category, price}, index) in products"
-        :key="id"
-        @click="getArticleDetails(id)"
-        :ref="(last)=> (lastArticle[index] = last)"
-      >
-        <figure class="h-1/2 overflow-hidden">
-          <img
-            :src="category.image"
-            :alt="category.description"
-            class="rounded-md object-cover w-full h-full brightness-75"
-          />
-        </figure>
-        <div class="mt-5 text-center">
-          <figcaption class="text-xl font-bold mt-2">
-            <router-link :to="`/detail/${id}`">
-              {{ category.name }}
-            </router-link>
-          </figcaption>
-          <figcaption class="mt-2">
-            $
-            {{
-              new Intl.NumberFormat("en-IN", {
-                maximumSignificantDigits: 2,
-              }).format(price)
-            }}
-          </figcaption>
-          <button
-            class="btn mt-2 py-2 md:block hidden"
-            @click="addToCard(id)"
-          >
-            Agregar al carrito
-          </button>
-        </div>
-      </article>
-    </div>
+    <loading-articles v-if="products.length === 0"></loading-articles>
+    <section class="w-full" v-else>
+      <h3 class="my-5 pl-5 text-2xl font-bold">Productos Destacados</h3>
+      <!-- <popular-products></popular-products> -->
+      <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:gap-10 gap-5 px-5" >
+        <article
+          class="rounded-md shadow-lg"
+          v-for="({id, category, price}, index) in products"
+          :key="id"
+          @click="getArticleDetails(id)"
+          :ref="(last)=> (lastArticle[index] = last)"
+        >
+          <figure class="h-1/2 overflow-hidden">
+            <img
+              :src="category.image"
+              :alt="category.description"
+              class="rounded-md object-cover w-full h-full brightness-75"
+            />
+          </figure>
+          <div class="mt-5 text-center">
+            <figcaption class="text-xl font-bold mt-2">
+              <router-link :to="`/detail/${id}`">
+                {{ category.name }}
+              </router-link>
+            </figcaption>
+            <figcaption class="mt-2">
+              $
+              {{
+                new Intl.NumberFormat("en-IN", {
+                  maximumSignificantDigits: 2,
+                }).format(price)
+              }}
+            </figcaption>
+            <button
+              class="btn mt-2 py-2 md:block hidden"
+              @click="addToCard(id)"
+            >
+              Agregar al carrito
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
     <!-- <Teleport to="body">
       <Transition duration="550" name="nested">
         <product-detail-component v-if="productSelected != ''" :productData="productSelected"></product-detail-component>
@@ -48,8 +52,9 @@
 </template>
 
 <script setup>
-import LoadingComponent from "./LoadingComponent.vue";
+import LoadingArticles from "./skeletons/LoadingArticles.vue";
 import ProductDetailComponent from "./ProductDetailComponent.vue"
+import PopularProducts from "./PopularProducts.vue"
 const {
   VITE_API_PRODUCTS: urlProducts
 } = import.meta.env;

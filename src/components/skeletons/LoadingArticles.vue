@@ -7,7 +7,6 @@
       <p class="p-2 w-full mt-4 bg-slate-400 rounded-md"></p>
       <p class="py-7 w-full mt-6 bg-slate-400 rounded-md"></p>
     </div>
-   
   </div>
 </template>
 <script setup>

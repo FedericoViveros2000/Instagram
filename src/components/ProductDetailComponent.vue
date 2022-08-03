@@ -35,7 +35,6 @@
     const addToCard = () => {
         commit("addToCard");
     }
-
 </script>
 
 <style>
