@@ -5,7 +5,7 @@ const {
 import axios from "axios";
 export default createStore({
   state: {
-    countCard: 0,
+    articlesCart: [],
     articles: [],
     articlesSearch: [],
     articleSelected: []
@@ -19,13 +19,13 @@ export default createStore({
       : article = state.articles;
       return article;
     },
-    gettersCountCard: (state) => state.countCard,
+    gettersArticlesCard: (state) => state.articlesCart,
     gettersArticleSelected: (state) => state.articleSelected
   },
 
   mutations: {
-    addToCard (state) {
-      state.countCard++
+    addToCard ({articlesCart}, article) {
+      articlesCart.unshift(article);
     },
 
     setArticles(state, data) {
@@ -42,6 +42,10 @@ export default createStore({
 
     setArticleSelected(state, data) {
       state.articleSelected = data
+    },
+
+    removeItem(state, id){
+      id === 0 ? state.articlesCart.shift() : state.articlesCart.splice(0, id)
     }
 
   },

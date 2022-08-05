@@ -1,7 +1,7 @@
 <template>
   <div class="w-full mt-20">
-      <categories-component></categories-component>
-     <products-component></products-component>
+    <categories-component></categories-component>
+    <products-component></products-component>
   </div>
 </template>
 

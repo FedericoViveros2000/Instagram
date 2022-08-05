@@ -2,7 +2,7 @@
   <div  ref="containerArticles">
     <loading-articles v-if="products.length === 0"></loading-articles>
     <section class="w-full" v-else>
-      <h3 class="my-5 pl-5 text-2xl font-bold">Productos Destacados</h3>
+      <h3 class="mb-5 pl-5 text-2xl font-bold">Productos Destacados</h3>
       <!-- <popular-products></popular-products> -->
       <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:gap-10 gap-5 px-5" >
         <article
@@ -12,7 +12,8 @@
           @click="getArticleDetails(id)"
           :ref="(last)=> (lastArticle[index] = last)"
         >
-          <figure class="h-1/2 overflow-hidden">
+          <figure class="h-1/2 overflow-hidden relative">
+            <p class="absolute z-20 top-1 right-1 text-xl bg-skyblue rounded-full p-1">🤍</p>
             <img
               :src="category.image"
               :alt="category.description"

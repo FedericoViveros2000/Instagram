@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <!-- <loading-categories></loading-categories> -->
-   <ul class="flex items-center md:justify-around w-full overflow-auto hide pl-4">
+    <ul class="flex md:items-center md:justify-around w-full overflow-auto hide pl-4">
         <li class="rounded-xl flex flex-col items-center justify-items-center pr-6" v-for="category in categories" :key="category.id" >
           <figure class="image-container overflow-hidden mb-3">
             <img :src="category.image" :alt="category.name" class="max-w-full h-full object-cover">
@@ -11,7 +11,7 @@
     </ul>
 
     <!-- Carousel de categorias -->
-    <div class="w-11/12 mx-auto my-3 rounded-lg overflow-hidden">
+    <!-- <div class="w-11/12 mx-auto my-3 rounded-lg overflow-hidden">
         <div class="slider">
             <div v-for="category in categories" :key="category.id" :ref="(last)=> lastArticle.push(last)" class="w-full relative" @click="articleSearchCategory(category.id)">
                 <figure >
@@ -22,7 +22,7 @@
                 <p class="absolute top-1/2 left-5 z-20 rounded-full" @click="moveLeft()"><i class="fa-solid fa-angle-left rounded-full"></i></p>
             </div>
         </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
