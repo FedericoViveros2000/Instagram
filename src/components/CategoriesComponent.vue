@@ -9,7 +9,8 @@
           <button class="w-max" @click="articleSearchCategory(category.id)">{{category.name}}</button>
         </li>       
     </ul>
-
+    <!-- <p>{{categories}}</p>
+    <stories-component :stories="categories"></stories-component> -->
     <!-- Carousel de categorias -->
     <!-- <div class="w-11/12 mx-auto my-3 rounded-lg overflow-hidden">
         <div class="slider">
@@ -28,6 +29,7 @@
 
 <script setup>
 import LoadingCategories from "./skeletons/LoadingCategories.vue"
+import storiesComponent from "./StoriesComponent.vue"
 const { 
   VITE_API_CATEGORIES: urlCategories,
 } = import.meta.env;

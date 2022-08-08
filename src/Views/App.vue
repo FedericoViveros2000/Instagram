@@ -1,12 +1,12 @@
 <template>
   <div>
-    <nav-bar-component></nav-bar-component>  
+    <search-bar-component></search-bar-component>  
     <router-view/>
+    <nav-bar-component></nav-bar-component>
   </div>
 </template>
 
 <script setup>
-
-import NavBarComponent from "../components/NavBarComponent.vue";
-
+import navBarComponent from "../components/NavBarComponent.vue";
+import searchBarComponent from "../components/SearchBarComponent.vue";
 </script>

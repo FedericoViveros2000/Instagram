@@ -53,6 +53,7 @@ export default createStore({
   actions: {
     //Obteniendo todos los articulos seleccionados, por paginacion
     async getArticles({commit}, endpoint = `${urlProducts}?offset=${0}&limit=${10}`) {
+      console.log("ejecutado");
       try {
         let { data } = await axios.get(endpoint);
         commit("setArticles", data);
