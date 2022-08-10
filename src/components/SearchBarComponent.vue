@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full fixed top-0 z-50 rounded-md">
-    <nav class="w-full py-3 px-4 md:px-0 bg-skyblue">
-      <!-- <h1 class="text-xl text-white">FakeInstagram</h1> -->
+  <div class="w-full absolute top-0 z-50 rounded-md">
+    <h1 class="text-xl bg-white p-3 font-bold font-ig-font">FakeInstagram</h1>
+    <!-- <nav class="w-full py-3 px-4 md:px-0 bg-skyblue">
       <div class="flex items-baseline md:justify-center rounded-md overflow-hidden bg-grey px-5">
         <span><i class="fa-solid fa-magnifying-glass"></i></span>
         <ul class="md:w-1/2 w-11/12">
@@ -18,7 +18,7 @@
           <span class="absolute -top-1 left-3 bg-skyblue rounded-full text-xs px-1 text-white">{{getters.gettersArticlesCard.length}}</span>
         </div>
       </div>
-    </nav>
+    </nav> -->
 
     <Transition
       enter-from-class="opacity-0"

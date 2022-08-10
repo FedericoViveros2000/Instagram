@@ -1,6 +1,6 @@
 <template>
-  <div class="w-screen flex overflow-auto pl-5 storie" >
-    <p>Ver: {{stories}}</p>
+  <div class="w-screen flex overflow-auto pl-3 storie" >
+    <!-- <p>Ver: {{stories}}</p> -->
     <div v-for="{id, category, images} in stories" :key="id" class="mr-3 text-center">
         <figure class="storie-round mb-3" @click="watchStorie(images, category.name)">
             <img :src="category.image" :alt="category.name" class="w-full h-full object-cover rounded-full">
@@ -10,10 +10,10 @@
   </div>
   <Transition
     enter-from-class="scale-0"
-    enter-active-class="transition-transform duration-250 ease-in"
+    enter-active-class="transition-transform duration-300 linear"
     enter-to-class="scale-1"
     leave-from-class="scale-1"
-    leave-active-class="transition-transform duration-250 ease-in"
+    leave-active-class="transition-transform duration-300 linear"
     leave-to-class="scale-0"
   >
     <div class="w-full h-screen fixed z-50 top-0 bg-skyblue" v-if="userSelected.imageStorie.length > 0">

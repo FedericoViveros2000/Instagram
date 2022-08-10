@@ -1,12 +1,12 @@
 <template>
   <div class="w-full">
     <!-- <loading-categories></loading-categories> -->
-    <ul class="flex md:items-center md:justify-around w-full overflow-auto hide pl-4">
-        <li class="rounded-xl flex flex-col items-center justify-items-center pr-6" v-for="category in categories" :key="category.id" >
+    <ul class="flex md:items-center  md:justify-around w-full overflow-auto hide pl-4">
+        <li class="rounded-xl flex flex-col items-center justify-items-center pr-5" v-for="category in categories" :key="category.id" >
           <figure class="image-container overflow-hidden mb-3">
             <img :src="category.image" :alt="category.name" class="max-w-full h-full object-cover">
           </figure>
-          <button class="w-max" @click="articleSearchCategory(category.id)">{{category.name}}</button>
+          <button class="w-20" @click="articleSearchCategory(category.id)">{{category.name.split(" ")[0]}}</button>
         </li>       
     </ul>
     <!-- <p>{{categories}}</p>
@@ -33,7 +33,7 @@ import storiesComponent from "./StoriesComponent.vue"
 const { 
   VITE_API_CATEGORIES: urlCategories,
 } = import.meta.env;
-import { onBeforeMount, onUpdated, ref } from "vue";
+import { onBeforeMount, onMounted, onUpdated, ref } from "vue";
 import {useStore} from 'vuex';
 import axios from "axios"
 let categories = ref([]);
@@ -76,32 +76,6 @@ const moveLeft = () => {
     lastArticle.value.at(1).style = `transition: transform 1.5s linear; transform:translateX(0%)`
   }
 }
-
-onUpdated(() => {
-
-  sliderMove.value = setInterval(() => {
-    if (lastArticle.value.length >= index.value) {
-      if (index.value > 0) {
-        translate.value += 100;
-      }
-
-      if (translate.value > 400) {
-        index.value = 0;
-        translate.value = 0;
-        lastArticle.value.at(1).insertAdjacentElement('beforebegin', lastArticle.value.at(0));
-      }
-
-      let articleSelect = lastArticle.value.at(index.value);
-      lastArticle.value.at(0).style = `transition: transform 1.5s linear; transform:translateX(-100%)`;
-      articleSelect.style = `transition: transform 1.5s linear; transform:translateX(-${translate.value}%)`;
-    }else{
-      index.value = 0;
-    }
-
-    index.value++;
-  }, 3000)
-
-})
 
 </script>
 

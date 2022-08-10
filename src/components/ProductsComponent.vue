@@ -7,10 +7,10 @@
       <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:gap-10 gap-5 px-5" >
         <article
           class="rounded-md shadow-lg"
-          v-for="({id, category, price}, index) in products"
+          v-for="({id, category, price}) in products"
           :key="id"
           @click="getArticleDetails(id)"
-          :ref="(last)=> (lastArticle[index] = last)"
+          :ref="(last)=> (lastArticle = last)"
         >
           <figure class="h-1/2 overflow-hidden relative">
             <p class="absolute z-20 top-1 right-1 text-xl bg-skyblue rounded-full p-1">🤍</p>
@@ -56,10 +56,11 @@
 import LoadingArticles from "./skeletons/LoadingArticles.vue";
 import ProductDetailComponent from "./ProductDetailComponent.vue"
 import PopularProducts from "./PopularProducts.vue"
-const {
-  VITE_API_PRODUCTS: urlProducts
-} = import.meta.env;
-import { ref, computed, onMounted, reactive, onBeforeMount, onUpdated } from "vue";
+import scrollInfinity from "../api/infinityScroll.js"
+// const {
+//   VITE_API_PRODUCTS: urlProducts
+// } = import.meta.env;
+import { ref, computed, reactive, onBeforeMount, onUpdated } from "vue";
 import { useStore } from "vuex";
 let products = ref([]);
 let productSelected = ref([]);
@@ -84,31 +85,11 @@ const getArticleDetails = (id) => {
 
 productSelected = computed(() => getters.gettersArticleSelected)
 
-let callbackPrueba = (entries, observer) => {
-  entries.forEach(entry => {
-    let { isIntersecting } = entry;
-    if (isIntersecting) {
-      page.offset += 1;
-      let urlProductsPaginated = `${urlProducts}?offset=${page.offset}&limit=${page.limit}`    
-      dispatch("getArticles", urlProductsPaginated);
-    }
-  });
-}
-
 onBeforeMount(() => {
   dispatch("getArticles");
 });
 
-onMounted(() => {
-  let options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 1.0
-  }
-  observer.value = new IntersectionObserver(callbackPrueba, options);
-})
-
-onUpdated(() => observer.value.observe(lastArticle.value.at(-1)));
+onUpdated(() => scrollInfinity(dispatch, lastArticle.value));
 
 </script>
 

@@ -1,13 +1,16 @@
+
 module.exports = {
   content: [
     "./public/index.html",
+    "./src/components/skeletons/*.vue",
+    "./src/components/posts/*.vue",
     "./src/components/*.vue",
     "./src/views/*.vue",
   ],
   theme: {
-    // fontFamily: {
-
-    // },
+    fontFamily: {
+      'ig-font': ['Oleo Script Swash Caps, cursive']
+    },
     extend: {
     },
     colors: {
