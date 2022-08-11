@@ -6,7 +6,7 @@
     import { useStore } from "vuex";
     import {computed, defineAsyncComponent, onMounted, ref} from 'vue';
     import {useRoute} from "vue-router";
-    const ProductDetailAsync = defineAsyncComponent(() => import("../components/ProductDetailComponent.vue"))
+    const ProductDetailAsync = defineAsyncComponent(() => import("../components/shop/ProductDetailComponent.vue"))
     
     let data = ref([]);
     const route = useRoute();

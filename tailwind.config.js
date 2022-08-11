@@ -4,6 +4,7 @@ module.exports = {
     "./public/index.html",
     "./src/components/skeletons/*.vue",
     "./src/components/posts/*.vue",
+    "./src/components/shop/*.vue",
     "./src/components/*.vue",
     "./src/views/*.vue",
   ],

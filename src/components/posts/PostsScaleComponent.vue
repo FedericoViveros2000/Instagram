@@ -10,7 +10,7 @@
           <p><i class="fa-regular fa-heart"></i></p> 
         </div>
       </div>
-    </div>
+  </div>
 </template>
 
 <script setup>
@@ -19,5 +19,4 @@
         selectedPost: Object
     })
     let {selectedPost} = toRefs(props);
-    console.log(selectedPost);
 </script>

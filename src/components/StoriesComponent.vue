@@ -16,7 +16,7 @@
     leave-active-class="transition-transform duration-300 linear"
     leave-to-class="scale-0"
   >
-    <div class="w-full h-screen fixed z-50 top-0 bg-skyblue" v-if="userSelected.imageStorie.length > 0">
+    <div class="w-full h-screen fixed z-50 top-0 bg-white" v-if="userSelected.imageStorie.length > 0">
         <p class="absolute top-5 left-5" @click="userSelected.imageStorie = []">{{userSelected.name}}</p>
         <figure class="h-full w-full">
             <img :src="userSelected.imageStorie[indexStorie]" :alt="indexStorie" class="w-full h-full object-cover">
@@ -26,34 +26,39 @@
 </template>
 
 <script setup>
-    import {defineProps, toRefs, ref, reactive} from "vue";
+    import {defineProps, toRefs, ref, reactive, watch} from "vue";
 
     let props = defineProps({
         stories: []
     })
-
+    let storieInterval = ref([]);
     let userSelected = reactive({
         imageStorie: [],
         name: ''
     })
-
     let indexStorie = ref(0);
     let { stories } = toRefs(props);
 
-    console.log(stories.value);
-
     const watchStorie = (image, name) => {
         userSelected.imageStorie = image;
-        userSelected.name = name;
-        let interval = setInterval(() => {
-            if (indexStorie.value > userSelected.imageStorie.length) {
-                userSelected.imageStorie = [];
-                indexStorie.value = 0;
-                clearInterval(interval);
+        userSelected.name = name;             
+        storieInterval.value = setInterval(() => {
+            if (userSelected.imageStorie.length - 1 >= indexStorie.value) {
+                indexStorie.value++;
             }
-            indexStorie.value++;
-        }, 3000);
+        }, 3000);     
     }
+
+    watch(indexStorie, (indexNew, indexOld) => {
+        if (userSelected.imageStorie.length - 1 === indexNew) {
+            setTimeout(() => {
+                clearInterval(storieInterval.value);
+                userSelected.name = '';
+                indexStorie.value = 0;
+                userSelected.imageStorie = [];
+            }, 3000);
+        }
+    })
 
 </script>
 

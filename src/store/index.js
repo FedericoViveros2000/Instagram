@@ -22,7 +22,7 @@ export default createStore({
     gettersArticlesCard: (state) => state.articlesCart,
     gettersArticleSelected: (state) => state.articleSelected
   },
-
+  
   mutations: {
     addToCard ({articlesCart}, article) {
       articlesCart.unshift(article);
@@ -33,6 +33,7 @@ export default createStore({
     },
 
     searchArticle(state, data){
+      console.log(data);
       state.articlesSearch = state.articles.filter(({category}) => category.name.split(" ").join("").toLowerCase().includes(data.split(" ").join("").toLowerCase()))
     },
 
