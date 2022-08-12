@@ -1,7 +1,6 @@
 <template>
   <div>
-    <loading-articles v-if="products.length === 0"></loading-articles>
-    <section class="w-full" ref="containerArticles" v-else>
+    <section class="w-full pb-10" ref="containerArticles">
       <div class="w-full px-3 my-5">
         <p class="font-bold text-xl">Tienda</p>
         <div class="w-full mt-3 flex items-center rounded-lg overflow-hidden border border-1 border-slate-400 my-5">
@@ -10,7 +9,8 @@
         </div>
         <categories-component></categories-component>
       </div>
-      <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-0.5" >
+      <loading-articles v-if="products.length === 0"></loading-articles>
+      <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-0.5" v-else>
         <article
           class="rounded-md shadow-lg h-44"
           v-for="({id, category}) in products"
@@ -18,7 +18,7 @@
           @click="getArticleDetails(id)"
           :ref="(last)=> (lastArticle = last)"
         >
-          <figure class="h-full overflow-hidden relative">
+          <figure class="h-full bg-slate-200 overflow-hidden relative">
             <img
               :src="category.image" 
               :alt="category.description"
@@ -26,6 +26,8 @@
             />
           </figure>
         </article>
+        <!-- Spinner para la carga de mas articulos -->
+        <p class="loader col-span-2 my-8 justify-self-center" v-show="state.articles.loadMoreArticles"></p>
       </div>
     </section>
     <Transition
@@ -46,22 +48,15 @@
 <script setup>
 import LoadingArticles from "../skeletons/LoadingArticles.vue";
 import ProductDetailComponent from "./ProductDetailComponent.vue";
-import PopularProducts from "../PopularProducts.vue";
 import CategoriesComponent from "../CategoriesComponent.vue"
 import scrollInfinity from "../../api/infinityScroll.js"
 
-import { ref, computed, reactive, onBeforeMount, onUpdated, defineAsyncComponent } from "vue";
+import { ref, computed, reactive, onBeforeMount, defineProps, onUpdated, defineAsyncComponent,toRefs } from "vue";
 import { useStore } from "vuex";
 const scaleAsyncComponent = defineAsyncComponent(() => import("./ProductScaleComponent.vue"))
-let products = ref([]);
 let productSelected = ref([]);
-let {commit, dispatch, getters} = useStore();
-let page = reactive({
-  offset: 0,
-  limit: 10
-})
-let selectedTouch = ref(0);
-let observer = ref();
+let {commit, dispatch, state} = useStore();
+let selectedTouchTimeout = ref(0);
 let containerArticles = ref(null);
 let lastArticle = ref([]);
 let searchArticle = ref('');
@@ -71,9 +66,14 @@ let showArticleSelected = reactive({
   image: ''
 });
 
+const props = defineProps({
+  products: Array
+})
+
+let {products} = toRefs(props);
 document.addEventListener('touchstart', e=> {
   if (e.target.src) {
-    selectedTouch.value = setInterval(() => {
+    selectedTouchTimeout.value = setTimeout(() => {
       containerArticles.value.classList.add("blur-sm");
       showArticleSelected.image = e.target.src;
       showArticleSelected.name = e.target.alt;
@@ -85,56 +85,43 @@ document.addEventListener('touchstart', e=> {
 document.addEventListener('touchend', e => {
   if (e.target.src) {
     containerArticles.value.classList.remove("blur-sm");
-    clearInterval(selectedTouch.value);
     showArticleSelected.show = false;
-    showArticleSelected.image = e;
-    showArticleSelected.name = e;
+    showArticleSelected.image = "";
+    showArticleSelected.name = "";
+    clearTimeout(selectedTouchTimeout.value)
   }
 })
 
-products = computed(() => getters.gettersArticles);
+const search = () => commit('searchArticle', searchArticle.value);
 
-const search = () => {
-  commit('searchArticle', searchArticle.value);
-}
+const addToCard = (id) => commit('addToCard', id);
 
-const addToCard = (id) => {
-  commit("addToCard", id);
-};
-
-const getArticleDetails = (id) => {
-  dispatch("getArticleSelected", id);
-};
-
-productSelected = computed(() => getters.gettersArticleSelected)
-
-onBeforeMount(() => {
-  dispatch("getArticles");
-});
+const getArticleDetails = (id) => dispatch('getArticleSelected', id);
 
 onUpdated(() => scrollInfinity(dispatch, lastArticle.value));
 
 </script>
 
-<style>
- 
-.nested-enter-active, .nested-leave-active {
-	transition: all 0.5s ease-in-out;
-}
-/* delay leave of parent element */
-.nested-leave-active {
-  transition-delay: 0.25s;
-}
+<style scoped>
+  .loader {
+    border: 2px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 2px solid #ccc;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin .7s linear infinite; /* Safari */
+    animation: spin .7s linear infinite;
+  }
 
-.nested-enter-from,
-.nested-leave-to {
-  transform: translateY(30px);
-  opacity: 0;
-}
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
 
-.nested-enter-from,
-.nested-leave-to {
-  opacity: 0;
-}
-
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 </style>
+

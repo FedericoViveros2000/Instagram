@@ -1,6 +1,7 @@
 <template>
   <div class="w-full my-3">
-    <ul class="flex md:items-center  md:justify-around w-full overflow-auto hide">
+    <loading-categories v-if="categories.length === 0"></loading-categories>
+    <ul class="flex md:items-center  md:justify-around w-full overflow-auto hide" v-else>
         <li class="rounded-lg px-4 py-1 bg-slate-200 mr-3" v-for="{id, name} in categories" :key="id" >
           <p @click="articleSearchCategory(id)" class="w-max font-bold">{{name}}</p>
         </li>       
@@ -10,6 +11,7 @@
 
 <script setup>
 import storiesComponent from "./StoriesComponent.vue"
+import loadingCategories from "./skeletons/LoadingCategories.vue"
 const { 
   VITE_API_CATEGORIES: urlCategories,
 } = import.meta.env;

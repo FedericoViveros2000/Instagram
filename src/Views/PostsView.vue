@@ -7,14 +7,13 @@ import { computed, onBeforeMount, ref } from "vue";
 import { useStore } from "vuex";
 import postsComponent from "../components/posts/PostsComponent.vue"
 let postsArticles = ref([]);
-const {dispatch, getters} = useStore();
+const {state, dispatch} = useStore();
 
-postsArticles = computed(()=> getters.gettersArticles);
+postsArticles = computed(() => state.posts.posts);
 
 onBeforeMount(() => {
-  dispatch("getArticles");
+  dispatch("getPosts");
 })
-
 </script>
 
 <style>

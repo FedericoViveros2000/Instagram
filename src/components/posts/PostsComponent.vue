@@ -11,7 +11,6 @@
       </div>
       <figure class="h-1/2 bg-slate-200" >
         <img :src="images[0]" :alt="title" class="w-full object-cover">
-        <!-- <figcaption>.</figcaption> -->
       </figure>
       <div class="px-3">
         <div class="w-full flex justify-between items-baseline py-3 text-xl">
@@ -47,15 +46,15 @@
   import loadingPosts from "../skeletons/LoadingPosts.vue"
   //import postsScaleComponent from "./PostsScaleComponent.vue"
   const scalePostComponent = defineAsyncComponent(() => import("./PostsScaleComponent.vue"));
-  let {dispatch} = useStore();
+  let {dispatch, state} = useStore();
   let lastArticle = ref([]);
   let props = defineProps({
-    posts: []
+    posts: Array
   })
-  let articleTouch = ref('');
+
   let indexPhoto = ref(0);
   let touchTimeOut = ref(0);
-  const container = ref([]);
+  let container = ref(null);
   let showSelectedPost = reactive({
     show: false,
     name: '',
@@ -78,26 +77,12 @@
 
   document.addEventListener('touchend', (e) => {
     if (e.target.src) {
-      clearTimeout(touchTimeOut.value);
       container.value.classList.remove("blur-sm");
       showSelectedPost.show = false;
+      clearTimeout(touchTimeOut.value);
     }
   })
 
-  // document.addEventListener('touchmove', (e) =>{
-  //   if (e.target.src) {
-  //     if (e.changedTouches[0].screenY < 550) {
-  //       console.log(e.changedTouches[0].screenY);
-  //     }
-  //   }
-  // })
-
   //Llamando a la funcion que nos permite realizar el scroll infinito, cada vez que se carguen mas articulos.
-  onUpdated(() => {
-    scrollInfinity(dispatch, lastArticle.value);
-  })
+  onUpdated(() => scrollInfinity(dispatch, lastArticle.value))
 </script>
-
-<style>
-
-</style>

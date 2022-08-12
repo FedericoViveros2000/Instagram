@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full absolute top-0 z-50 rounded-md">
+  <div class="w-full fixed top-0 z-50 rounded-md">
     <h1 class="text-xl bg-white p-3 font-bold font-ig-font">FakeInstagram</h1>
     <!-- <nav class="w-full py-3 px-4 md:px-0 bg-skyblue">
       <div class="flex items-baseline md:justify-center rounded-md overflow-hidden bg-grey px-5">
@@ -19,7 +19,6 @@
         </div>
       </div>
     </nav> -->
-
     <Transition
       enter-from-class="opacity-0"
       enter-active-class="transition-opacity duration-500 ease" 

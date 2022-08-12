@@ -1,6 +1,5 @@
 <template>
   <div class="w-screen flex overflow-auto pl-3 storie" >
-    <!-- <p>Ver: {{stories}}</p> -->
     <div v-for="{id, category, images} in stories" :key="id" class="mr-3 text-center">
         <figure class="storie-round mb-3" @click="watchStorie(images, category.name)">
             <img :src="category.image" :alt="category.name" class="w-full h-full object-cover rounded-full">
@@ -29,7 +28,7 @@
     import {defineProps, toRefs, ref, reactive, watch} from "vue";
 
     let props = defineProps({
-        stories: []
+        stories: Array
     })
     let storieInterval = ref([]);
     let userSelected = reactive({
