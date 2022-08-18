@@ -1,21 +1,15 @@
 <template>
-  <posts-component :posts="postsArticles"></posts-component>
+   <post-async-component :posts="postsArticles"></post-async-component>
 </template>
 
 <script setup>
-import { computed, onBeforeMount, ref } from "vue";
+import { computed, defineAsyncComponent, onBeforeMount, ref } from "vue";
 import { useStore } from "vuex";
-import postsComponent from "../components/posts/PostsComponent.vue"
+const postAsyncComponent = defineAsyncComponent(()=> import("../components/posts/PostsComponent.vue"))
 let postsArticles = ref([]);
 const {state, dispatch} = useStore();
-
 postsArticles = computed(() => state.posts.posts);
 
-onBeforeMount(() => {
-  dispatch("getPosts");
-})
+onBeforeMount(() => dispatch("getPosts"));
+
 </script>
-
-<style>
-
-</style>

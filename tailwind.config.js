@@ -15,7 +15,8 @@ module.exports = {
     extend: {
     },
     colors: {
-      'skyblue': "#fb5a2a",
+      'skyblue': "#0095f6",
+      'black': "#000",
       'slate-200': "#e2e8f0",
       'slate-400': "#94a3b8",
       'white': "#ffffff",

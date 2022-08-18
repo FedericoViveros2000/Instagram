@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --host",
     "twbuild": "npx tailwindcss -i ./public/css/input.css -o ./public/output.css --watch"
   },
   "dependencies": {

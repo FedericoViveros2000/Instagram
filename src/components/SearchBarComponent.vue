@@ -1,24 +1,10 @@
 <template>
-  <div class="w-full fixed top-0 z-50 rounded-md">
-    <h1 class="text-xl bg-white p-3 font-bold font-ig-font">FakeInstagram</h1>
-    <!-- <nav class="w-full py-3 px-4 md:px-0 bg-skyblue">
-      <div class="flex items-baseline md:justify-center rounded-md overflow-hidden bg-grey px-5">
-        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-        <ul class="md:w-1/2 w-11/12">
-          <input
-            type="search"
-            v-model="articleSearch"
-            placeholder="Buscar producto"
-            class="py-2 px-5 w-full bg-grey outline-none"
-            @input="searchArticle"
-          />
-        </ul>
-        <div class="relative">
-          <i class="fa-solid fa-cart-shopping" @click="show = !show"></i>
-          <span class="absolute -top-1 left-3 bg-skyblue rounded-full text-xs px-1 text-white">{{getters.gettersArticlesCard.length}}</span>
-        </div>
-      </div>
-    </nav> -->
+  <div class="w-full  bg-white fixed top-0 z-20 flex items-baseline justify-between p-3">
+    <h1 class="text-2xl font-semibold font-ig-font">Instagram</h1>
+    <p>
+      <router-link to="/likedPosts"><span class="text-xl mr-3"><i class="fa-regular fa-heart"></i></span></router-link>
+      <span class="text-xl"><i class="fa-brands fa-facebook-messenger"></i></span>
+    </p>
     <Transition
       enter-from-class="opacity-0"
       enter-active-class="transition-opacity duration-500 ease" 
@@ -35,11 +21,5 @@
 <script setup>
 import CartComponent from "./CartComponent.vue"
 import {ref} from "vue";
-import {useStore} from 'vuex';
-let articleSearch = ref('');
-const {  commit, getters } = useStore();
 let show = ref(false);
-const searchArticle = () => {
-  commit("searchArticle", articleSearch.value);
-}
 </script>

@@ -11,7 +11,7 @@ const posts = {
     },
     mutations: {
         setPosts(state, data){
-            state.posts = data;
+            state.posts.push(...data);
             state.loadMoreArticles = false;
         }
     },

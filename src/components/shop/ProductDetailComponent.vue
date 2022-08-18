@@ -1,42 +1,28 @@
 <template>
-  <article class="h-screen w-full bg-white fixed top-0 z-20">
-    <div class="h-full">
-        <figure class="w-full h-3/6 relative">
-            <router-link to="/">
-                <button class="absolute left-3 top-4 text-white text-xl"><i class="fa-solid fa-arrow-left"></i></button>
-            </router-link>
-            <img :src="productData.category.image" :alt="productData.category.name" class="object-cover w-full h-full">
-        </figure>
-        <section class="p-5 h-3/6 flex flex-col justify-around">
-            <p class="font-medium text-2xl my-2">{{productData.title}}</p>
-            <p class="font-medium text-xl my-2">{{productData.description}}</p>
-            <p>Price: {{productData.price}}</p>
-            <button class="btn mt-5" @click="addToCard(productData)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
-        </section>
-    </div>
+  <article class="w-full h-[80vh] bg-white fixed top-0 z-50">
+    <router-link to="/products">
+        <p class="p-4 text-black text-xl"><i class="fa-solid fa-arrow-left"></i> <span class="ml-3 text-lg">{{productData.category?.name}}</span></p>
+    </router-link>
+    <figure class="w-full h-3/6 bg-slate-200 relative">
+        <img :src="productData.category?.image" :alt="productData.category?.name" class="object-cover w-full h-full rounded-lg">
+    </figure>
+    <section class="p-5 h-3/6">
+        <p class="font-medium text-lg my-2">{{productData.title}}</p>
+        <p class="text-lg">$ {{productData.price}}</p>
+        <a :href="productData.category?.image" target="blank"><button class="btn mt-5 bg-skyblue" @click="addToCard(productData)">Ver Sitio Web</button></a>
+    </section>
   </article>
 </template>
 
 <script setup>
     import {defineProps, toRefs} from "vue"
     import { useStore } from "vuex";
-    let {dispatch, commit} = useStore();
-
+    let {commit} = useStore();
     const props = defineProps({
         productData: Object
     })
-
     const { productData } = toRefs(props);
-    
-    const closeArticle = () => {
-        dispatch("getArticleSelected", "");
-    }
-
     const addToCard = (product) => {
         commit("addToCard", product);
     }
 </script>
-
-<style>
-
-</style>

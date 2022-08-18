@@ -4,7 +4,7 @@
         <figure class="storie-round mb-3" @click="watchStorie(images, category.name)">
             <img :src="category.image" :alt="category.name" class="w-full h-full object-cover rounded-full">
         </figure>
-        <p>{{category.name}}</p>
+        <p class="text-sm">{{category.name}}</p>
     </div>
   </div>
   <Transition
@@ -16,7 +16,7 @@
     leave-to-class="scale-0"
   >
     <div class="w-full h-screen fixed z-50 top-0 bg-white" v-if="userSelected.imageStorie.length > 0">
-        <p class="absolute top-5 left-5" @click="userSelected.imageStorie = []">{{userSelected.name}}</p>
+        <p class="absolute top-5 left-5 text-sm" @click="userSelected.imageStorie = []">{{userSelected.name}}</p>
         <figure class="h-full w-full">
             <img :src="userSelected.imageStorie[indexStorie]" :alt="indexStorie" class="w-full h-full object-cover">
         </figure>
@@ -69,8 +69,8 @@
 
 .storie-round{
     padding: 3px;
-    width: 65px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     overflow: hidden;
     border-radius: 50%;
     background-image: linear-gradient(

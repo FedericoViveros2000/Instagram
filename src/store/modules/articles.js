@@ -13,21 +13,13 @@ const articles = {
         loadMoreArticles: false
     },
     getters: {
-        gettersArticles: (state) => {
-            let article = [];
-            state.articlesSearch.length > 0 
-            ? article = state.articlesSearch 
-            : article = state.articles;
-            return article;
-        },
+        gettersArticles: (state) =>  state.articlesSearch.length > 0 ? state.articlesSearch : state.articles,
         gettersArticlesCard: (state) => state.articlesCart,
         gettersArticleSelected: (state) => state.articleSelected
     },
 
     mutations: {
-        addToCard({
-            articlesCart
-        }, article) {
+        addToCard({articlesCart}, article) {
             articlesCart.unshift(article);
         },
 
@@ -37,15 +29,11 @@ const articles = {
         },
 
         searchArticle(state, data) {
-            state.articlesSearch = state.articles.filter(({
-                category
-            }) => category.name.split(" ").join("").toLowerCase().includes(data.split(" ").join("").toLowerCase()))
+            state.articlesSearch = state.articles.filter(({category}) => category.name.split(" ").join("").toLowerCase().includes(data.split(" ").join("").toLowerCase()))
         },
 
         searchArticleCategory(state, idCategory) {
-            state.articlesSearch = state.articles.filter(({
-                category
-            }) => category.id === idCategory)
+            state.articlesSearch = state.articles.filter(({category}) => category.id === idCategory)
         },
 
         setArticleSelected(state, data) {
@@ -59,14 +47,10 @@ const articles = {
     
     actions: {
         //Obteniendo todos los articulos seleccionados, por paginacion
-        async getArticles({
-            commit, state
-        }, endpoint = `${urlProducts}?offset=0&limit=10`) {
+        async getArticles({commit, state}, endpoint = `${urlProducts}?offset=0&limit=10`) {
             try {
                 state.loadMoreArticles = true;
-                let {
-                    data
-                } = await axios.get(endpoint);
+                let { data } = await axios.get(endpoint);
                 commit("setArticles", data);
             } catch (err) {
                 console.warn(err);
@@ -74,17 +58,13 @@ const articles = {
         },
 
         //Obteniendo el unico articulo seleccionado
-        async getArticleSelected({
-            commit
-        }, idArticle) {
+        async getArticleSelected({commit}, idArticle) {
             try {
-                let {
-                    data
-                } = await axios.get(`${urlProducts}/${idArticle}`);
+                let { data } = await axios.get(`${urlProducts}/${idArticle}`);
                 if (data) {
                     commit("setArticleSelected", data);
                 }
-            } catch (context) {
+            } catch (err) {
                 console.warn(err);
             }
         }

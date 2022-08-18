@@ -4,6 +4,18 @@ import articles from "./modules/articles.js"
 
 export default createStore({
   //Modulos de VUEX para el manejo particular del estado en cada seccion.
+  mutations: {
+    likedPost(state, data){
+      let insertData = [];
+      if(localStorage.likedPost !== undefined) {
+        insertData.push(...JSON.parse(localStorage.likedPost), data);
+        localStorage.likedPost = JSON.stringify(insertData);
+      }else{
+        insertData.push(data);
+        localStorage.likedPost = JSON.stringify(insertData)
+      }
+    }
+  },
   modules: {
     posts,
     articles
