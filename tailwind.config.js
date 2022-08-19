@@ -1,7 +1,8 @@
 
 module.exports = {
+  darkMode: 'class',
   content: [
-    "./public/index.html",
+    "./index.html",
     "./src/components/skeletons/*.vue",
     "./src/components/posts/*.vue",
     "./src/components/shop/*.vue",

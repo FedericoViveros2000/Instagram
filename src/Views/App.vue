@@ -9,9 +9,14 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
 import navBarComponent from "../components/NavBarComponent.vue";
 import splashScreen from "../components/skeletons/SplashScreen.vue"
 import searchBarComponent from "../components/SearchBarComponent.vue";
+onMounted(()=> {
+  document.documentElement.classList.add("dark");
+  console.log(document.documentElement.classList);
+})
 </script>
 
 <style scoped>

@@ -5,7 +5,7 @@
         <p class="font-bold text-xl">Tienda</p>
         <div class="w-full mt-2 flex items-center rounded-lg overflow-hidden border border-1 border-slate-400 ">
           <p class="px-3 font-thin"><i class="fa-solid fa-magnifying-glass font-thin"></i></p>
-          <input type="text" class="w-full p-1.5 outline-0" v-model="searchArticle" @input="search" placeholder="Buscar productos">
+          <input type="text" class="w-full dark:bg-black p-1.5 outline-0" v-model="searchArticle" @input="search" placeholder="Buscar productos">
         </div>
         <categories-component class="mt-3"></categories-component>
       </div>
@@ -53,7 +53,7 @@ import CategoriesComponent from "../CategoriesComponent.vue"
 import SpinnerComponent  from "../SpinnerComponent.vue"
 import scrollInfinity from "../../api/infinityScroll.js"
 
-import { ref, reactive, defineProps, onUpdated, defineAsyncComponent,toRefs } from "vue";
+import { ref, reactive, defineProps, onUpdated, defineAsyncComponent, toRefs } from "vue";
 import { useStore } from "vuex";
 const scaleAsyncComponent = defineAsyncComponent(() => import("./ProductScaleComponent.vue"))
 let productSelected = ref([]);
@@ -99,10 +99,7 @@ const search = () => commit('searchArticle', searchArticle.value);
 
 const addToCard = (id) => commit('addToCard', id);
 
-const getArticleDetails = (id) => {
-  console.log(id);
-  dispatch('getArticleSelected', id);
-} 
+const getArticleDetails = (id) => dispatch('getArticleSelected', id);
 
 onUpdated(() => scrollInfinity(dispatch, "getArticles", offset.value++, lastArticle.value));
 

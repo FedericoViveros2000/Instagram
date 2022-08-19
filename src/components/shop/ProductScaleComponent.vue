@@ -1,10 +1,10 @@
 <template>
    <div v-if="articleScale.show" class="w-full h-screen flex items-center fixed top-0 px-5">
       <div class="h-1/2 w-full overflow-hidden rounded-lg">
-        <figure class="h-4/5 bg-white">
+        <figure class="h-4/5 bg-white dark:bg-black">
           <img :src="articleScale.image" :alt="articleScale.name" class="object-cover w-full h-full">
         </figure>
-        <div class="bg-white text-xl flex justify-between py-3 px-5 w-full rounded-b-lg">
+        <div class="bg-white dark:bg-black text-xl flex justify-between py-3 px-5 w-full rounded-b-lg">
           <p><i class="fa-regular fa-paper-plane"></i></p> 
           <p><i class="fa-solid fa-bag-shopping"></i></p> 
           <p><i class="fa-regular fa-heart"></i></p> 

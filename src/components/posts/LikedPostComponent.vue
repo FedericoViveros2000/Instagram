@@ -1,6 +1,6 @@
 <template>
-    <div class="relative top-0 z-20 h-screen bg-white">
-        <p class="w-full bg-white p-4 text-black text-lg"><router-link to="/"><i class="fa-solid fa-arrow-left"></i></router-link> <span class="ml-3">Actividad</span></p>
+    <div class="relative top-0 z-20 h-screen bg-white dark:bg-black">
+        <p class="w-full p-4 text-black dark:text-white text-lg"><router-link to="/"><i class="fa-solid fa-arrow-left"></i></router-link> <span class="ml-3">Actividad</span></p>
         <article class="w-full" v-if="liked.length > 0">
             <ul class="w-full px-3">
                 <li class="my-1 text-lg font-bold">Te gusta</li>

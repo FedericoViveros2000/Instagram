@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full py-3 text-2xl bg-white fixed z-30 bottom-0 flex justify-between px-5">
+  <div class="w-full py-3 text-2xl bg-white dark:bg-black fixed z-30 bottom-0 flex justify-between px-5">
     <router-link to="/">
       <p class="outline-0"><i class="fa-solid fa-house"></i></p>
     </router-link>

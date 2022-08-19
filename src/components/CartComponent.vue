@@ -42,11 +42,9 @@
   let articles = ref([]);
   let total = ref(0);
 
-  articles = computed(()=> getters.gettersArticlesCard);
+  articles = computed(() => getters.gettersArticlesCard);
 
   total = computed(() => articles.value.map(article => article.price).reduce((previousValue, currentValue) => previousValue + currentValue, 0))
-
-  console.log(total.value);
 
   const removeItem = (index) => {
     commit("removeItem", index);

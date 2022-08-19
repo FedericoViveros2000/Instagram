@@ -1,9 +1,9 @@
 <template>
-  <article class="w-full h-[80vh] bg-white fixed top-0 z-50">
+  <article class="w-full h-[80vh] fixed top-0 z-50">
     <router-link to="/products">
-        <p class="p-4 text-black text-xl"><i class="fa-solid fa-arrow-left"></i> <span class="ml-3 text-lg">{{productData.category?.name}}</span></p>
+        <p class="p-4 text-black text-xl dark:text-white dark:bg-black"><i class="fa-solid fa-arrow-left"></i> <span class="ml-3 text-lg">{{productData.category?.name}}</span></p>
     </router-link>
-    <figure class="w-full h-3/6 bg-slate-200 relative">
+    <figure class="w-full h-3/6 bg-slate-200 dark:bg-black relative">
         <img :src="productData.category?.image" :alt="productData.category?.name" class="object-cover w-full h-full rounded-lg">
     </figure>
     <section class="p-5 h-3/6">

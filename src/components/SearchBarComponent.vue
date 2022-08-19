@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full  bg-white fixed top-0 z-20 flex items-baseline justify-between p-3">
+  <div class="w-full  bg-white dark:bg-black fixed top-0 z-20 flex items-baseline justify-between p-3">
     <h1 class="text-2xl font-semibold font-ig-font">Instagram</h1>
     <p>
       <router-link to="/likedPosts"><span class="text-xl mr-3"><i class="fa-regular fa-heart"></i></span></router-link>

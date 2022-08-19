@@ -22,7 +22,7 @@
 
   let popularProducts = ref([]);
 
-  onMounted(async() => {
+  onMounted(async () => {
     let { data }  = await axios.get(`${urlTopProducts}?offset=0&limit=12`);
     popularProducts.value = await data;
   })
