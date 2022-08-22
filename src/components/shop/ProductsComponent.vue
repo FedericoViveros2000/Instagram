@@ -3,9 +3,9 @@
     <section class="w-full pb-10" ref="containerArticles">
       <div class="w-full px-3 my-4">
         <p class="font-bold text-xl">Tienda</p>
-        <div class="w-full mt-2 flex items-center rounded-lg overflow-hidden border border-1 border-slate-400 ">
+        <div class="w-full mt-2 flex items-center rounded-lg overflow-hidden border border-slate-400 dark:border-0 dark:bg-slate-800">
           <p class="px-3 font-thin"><i class="fa-solid fa-magnifying-glass font-thin"></i></p>
-          <input type="text" class="w-full dark:bg-black p-1.5 outline-0" v-model="searchArticle" @input="search" placeholder="Buscar productos">
+          <input type="text" class="w-full  p-1.5 outline-0 dark:bg-slate-800" v-model="searchArticle" @input="search" placeholder="Buscar productos">
         </div>
         <categories-component class="mt-3"></categories-component>
       </div>
@@ -16,10 +16,10 @@
           v-for="({id, category}) in products"
           :key="id"
           @click="getArticleDetails(id)"
-          :ref="(last)=> (lastArticle = last)"
+          :ref="(last) => (lastArticle = last)"
         >
           <router-link :to="`/detail/${id}`">
-            <figure class="h-full bg-slate-200 overflow-hidden relative">
+            <figure class="h-full bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
               <img
                 :src="category.image" 
                 :alt="category.description"
@@ -74,6 +74,7 @@ const props = defineProps({
 })
 
 let {products} = toRefs(props);
+
 document.addEventListener('touchstart', e=> {
   if (e.target.src) {
     selectedTouchTimeout.value = setTimeout(() => {
@@ -94,15 +95,10 @@ document.addEventListener('touchend', e => {
     clearTimeout(selectedTouchTimeout.value)
   }
 })
-
 const search = () => commit('searchArticle', searchArticle.value);
-
 const addToCard = (id) => commit('addToCard', id);
-
 const getArticleDetails = (id) => dispatch('getArticleSelected', id);
-
 onUpdated(() => scrollInfinity(dispatch, "getArticles", offset.value++, lastArticle.value));
-
 </script>
 
 

@@ -3,11 +3,13 @@
     <router-link to="/">
       <p class="outline-0"><i class="fa-solid fa-house"></i></p>
     </router-link>
-    <p><i class="fa-solid fa-magnifying-glass"></i></p>
+    <p>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </p>
     <router-link to="/products">
       <p class="outline-0"><i class="fa-solid fa-bag-shopping"></i></p>
     </router-link>
     <p><i class="fa-brands fa-facebook-messenger"></i></p>
-    <p><i class="fa-regular fa-user"></i></p>
+    <router-link to="/profile"><p class="outline-0"><i class="fa-regular fa-user"></i></p></router-link>
   </div>
 </template>

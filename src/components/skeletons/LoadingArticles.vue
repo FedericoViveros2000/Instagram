@@ -1,6 +1,6 @@
 <template>
   <div class="animate-pulse grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-0.5">
-    <div class="bg-slate-200 shadow-lg h-44" v-for="cant in quantity" :key="cant">
+    <div class="bg-slate-200 dark:bg-slate-800 shadow-lg h-44" v-for="cant in quantity" :key="cant">
     </div>
   </div>
 </template>

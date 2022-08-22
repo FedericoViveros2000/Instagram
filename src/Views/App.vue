@@ -13,21 +13,18 @@ import { onMounted } from "vue";
 import navBarComponent from "../components/NavBarComponent.vue";
 import splashScreen from "../components/skeletons/SplashScreen.vue"
 import searchBarComponent from "../components/SearchBarComponent.vue";
-onMounted(()=> {
-  document.documentElement.classList.add("dark");
-  console.log(document.documentElement.classList);
+onMounted(() => {
+  localStorage.mode === 'true' ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
 })
 </script>
 
 <style scoped>
-
 .scale-slide-enter-active{
   transition: transform .3s linear;
 }
 .scale-slide-leave-active{
   transition: transform .2s linear;
 }
-
 .scale-slide-enter-from,
 .scale-slide-leave-to  {
   transform: translateX(100%);
