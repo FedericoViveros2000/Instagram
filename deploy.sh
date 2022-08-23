@@ -14,9 +14,9 @@ cd dist
 
 git init
 git checkout main
-git add -A
+git add .
 git commit -m 'Deploy'
 
-git push origin main
+git push -f https://github.com/FedericoViveros2000/ecommerce.git main
 
 cd -
