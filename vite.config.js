@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  base: "/ecommerce/",
   plugins: [
     vue(),
     VitePWA({ 
@@ -20,7 +20,7 @@ export default defineConfig({
           {
             "src": "icons/icon_48x48.png",
             "sizes": "48x48",
-            "type": "image/pn g"
+            "type": "image/png"
           },
           {
             "src": "icons/icon_72x72.png",
