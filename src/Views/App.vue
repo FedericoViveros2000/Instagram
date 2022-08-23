@@ -1,5 +1,5 @@
 <template>
-  <Transition
+  <!-- <Transition
     enter-from-class="opacity-0"
     enter-active-class="transition-opacity duration-500 linear"
     enter-to-class="opacity-1"
@@ -7,8 +7,8 @@
     leave-active-class="transition-opacity duration-500 linear"
     leave-to-class="opacity-0"
   >
-    <splash-screen v-if="show"></splash-screen>
-    <div class="w-full" v-else>
+    <splash-screen v-if="show"></splash-screen> -->
+    <div class="w-full">
       <search-bar-component></search-bar-component>  
       <router-view v-slot="{ Component }">
         <Transition name="scale-slide">
@@ -17,7 +17,7 @@
       </router-view>
       <nav-bar-component></nav-bar-component>
     </div>
-  </Transition>
+<!--   </Transition> -->
     <!-- <splash-screen></splash-screen> -->
 </template>
 

@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-
-# abort on errors
 set -e
 
 # build
@@ -13,12 +10,14 @@ cd dist
 # echo 'www.example.com' > CNAME
 
 git init
-git checkout main
-git add .
-git commit -m 'Deploy'
+git checkout -b main
+git add -A
+git commit -m 'deploy'
 
-git push -f https://github.com/FedericoViveros2000/ecommerce.git main
+# if you are deploying to https://<USERNAME>.github.io
+# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
-git push origin main
+# if you are deploying to https://<USERNAME>.github.io/<REPO>
+git push -f https://github.com/FedericoViveros2000/ecommerce.git main:gh-pages
 
 cd -
