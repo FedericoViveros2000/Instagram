@@ -18,7 +18,7 @@
 <script setup>
   import axios from "axios";
   import { ref, onMounted } from "vue";
-  const {VITE_API_PRODUCTS: urlTopProducts} = import.meta.env;
+  const { VITE_API_PRODUCTS: urlTopProducts } = import.meta.env;
 
   let popularProducts = ref([]);
 

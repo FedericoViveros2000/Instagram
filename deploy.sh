@@ -19,4 +19,6 @@ git commit -m 'Deploy'
 
 git push -f https://github.com/FedericoViveros2000/ecommerce.git main
 
+git push origin main
+
 cd -
