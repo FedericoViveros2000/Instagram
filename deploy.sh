@@ -14,10 +14,9 @@ cd dist
 
 git init
 git checkout main
-git add .
+git add -A
 git commit -m 'Deploy'
 
 git push origin main
-
 
 cd -
