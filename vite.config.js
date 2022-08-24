@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/ecommerce/",
+  //base: "/ecommerce/",
   plugins: [
     vue(),
     VitePWA({ 
@@ -14,7 +14,7 @@ export default defineConfig({
         "short_name": "Instagram",
         "start_url": ".",
         "display": "standalone",
-        "background_color": "black",
+        "background_color": "#000",
         "description": "Esta es una copia de instagram realizada con tecnologias web",
         "icons": [
           {

@@ -1,8 +1,7 @@
 import axios from "axios";
 const {
     VITE_API_PRODUCTS: urlProducts
-} =
-import.meta.env;
+} = import.meta.env;
 
 const articles = {
     state: {

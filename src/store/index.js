@@ -3,6 +3,9 @@ import posts from "./modules/posts.js";
 import articles from "./modules/articles.js"
 
 export default createStore({
+  state: {
+    showSendMessage: false
+  },
   //Modulos de VUEX para el manejo particular del estado en cada seccion.
   mutations: {
     likedPost(state, data){
@@ -14,6 +17,10 @@ export default createStore({
         insertData.push(data);
         localStorage.likedPost = JSON.stringify(insertData)
       }
+    },
+    message(state) {
+      state.showSendMessage = !state.showSendMessage;
+      console.log(state.showSendMessage);
     }
   },
   modules: {

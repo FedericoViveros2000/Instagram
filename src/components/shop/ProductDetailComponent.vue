@@ -1,5 +1,5 @@
 <template>
-  <article class="w-full h-[80vh] fixed top-0 z-50">
+  <article class="w-full h-[80vh] fixed top-0 z-30 bg-white">
     <router-link to="/products">
         <p class="p-4 text-black text-xl dark:text-white dark:bg-black"><i class="fa-solid fa-arrow-left"></i> <span class="ml-3 text-lg">{{productData.category?.name}}</span></p>
     </router-link>

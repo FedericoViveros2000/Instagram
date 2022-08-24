@@ -1,13 +1,4 @@
 <template>
-  <!-- <Transition
-    enter-from-class="opacity-0"
-    enter-active-class="transition-opacity duration-500 linear"
-    enter-to-class="opacity-1"
-    leave-from-class="opacity-1"
-    leave-active-class="transition-opacity duration-500 linear"
-    leave-to-class="opacity-0"
-  >
-    <splash-screen v-if="show"></splash-screen> -->
     <div class="w-full">
       <search-bar-component></search-bar-component>  
       <router-view v-slot="{ Component }">
@@ -16,16 +7,27 @@
         </Transition>
       </router-view>
       <nav-bar-component></nav-bar-component>
+      <Transition
+        enter-from-class="translate-y-full"
+        enter-active-class="transition-transform duration-500 linear"
+        enter-to-class="translate-y-0"
+        leave-from-class="translate-y-0"
+        leave-active-class="transition-transform duration-500 linear"
+        leave-to-class="translate-y-full"
+      >
+        <modal-chat class="fixed bottom-0 z-30" v-if="state.showSendMessage"></modal-chat>
+      </Transition>
     </div>
-<!--   </Transition> -->
-    <!-- <splash-screen></splash-screen> -->
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, defineAsyncComponent } from "vue";
+import { useStore } from "vuex";
 import navBarComponent from "../components/NavBarComponent.vue";
 import splashScreen from "../components/skeletons/SplashScreen.vue"
 import searchBarComponent from "../components/SearchBarComponent.vue";
+let {state} = useStore();
+const modalChat = defineAsyncComponent(() => import("../components/chat/ModalChatComponent.vue"))
 let show = ref(true);
 onMounted(() => {
   localStorage.mode === 'true' ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
