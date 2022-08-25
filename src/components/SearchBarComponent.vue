@@ -1,6 +1,9 @@
 <template>
-  <div class="w-full  bg-white dark:bg-black fixed top-0 z-30 flex items-baseline justify-between p-3">
-    <h1 class="text-2xl font-semibold font-ig-font">Instagram</h1>
+  <div class="w-full  bg-white dark:bg-black fixed top-0 z-30 flex items-start justify-between py-3 px-4">
+    <!-- <h1 class="text-2xl font-semibold font-ig-font">Instagram</h1> -->
+    <figure class="h-8 dark:invert">
+      <img src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="" class="w-full h-full">
+    </figure>
     <p>
       <router-link to="/likedPosts"><span class="text-xl mr-3"><i class="fa-regular fa-heart"></i></span></router-link>
       <span class="text-xl"><i class="fa-brands fa-facebook-messenger"></i></span>

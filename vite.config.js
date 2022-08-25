@@ -48,6 +48,6 @@ export default defineConfig({
         enabled: true,
       } 
     },
-    )
+  )
   ]
 })

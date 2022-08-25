@@ -5,7 +5,8 @@ const {
 const posts = {
     state: {
         posts: [],
-        loadMoreArticles: false
+        loadMoreArticles: false,
+        errors: false
     },
     getters: {
     },
@@ -22,6 +23,7 @@ const posts = {
                 let {data} = await axios.get(endpoint);
                 commit("setPosts", data)
             }catch(err){    
+                state.errors = true;
                 console.warn(err);
             }
         }

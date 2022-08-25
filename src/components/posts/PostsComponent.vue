@@ -1,8 +1,8 @@
 <template>
   <loading-posts v-if="!posts"></loading-posts>
-  <div class="absolute top-16 text-center" ref="container" v-else>
+  <div class="absolute top-14 text-center" ref="container" v-else>
     <stories-component :stories="posts"></stories-component>
-      <div class="mt-5" v-for="({id, title, category, description}, index) in posts" :key="id" :ref="(el)=> lastArticle = el">
+    <div class="mt-3" v-for="({id, title, category, description}, index) in posts" :key="id" :ref="(el)=> lastArticle = el">
         <div class="flex items-center mb-3 mx-3">
           <figure class="w-8 h-8 overflow-hidden rounded-full">
             <img :src="category.image" :alt="title" class="object-cover"> 
@@ -18,7 +18,6 @@
         <div class="px-3">
           <div class="w-full flex justify-between items-center py-3 text-xl relative">
               <div class="text-start text-2xl">
-               <!--  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" :style='`fill:${color[index]};transform:;msFilter:;display:inline;`' @click="likedPost(index, {id, title, category, description})"><path d="M12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412l7.332 7.332c.17.299.498.492.875.492a.99.99 0 0 0 .792-.409l7.415-7.415c2.354-2.354 2.354-6.049-.002-8.416a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595zm6.791 1.61c1.563 1.571 1.564 4.025.002 5.588L12 18.586l-6.793-6.793c-1.562-1.563-1.561-4.017-.002-5.584.76-.756 1.754-1.172 2.799-1.172s2.035.416 2.789 1.17l.5.5a.999.999 0 0 0 1.414 0l.5-.5c1.512-1.509 4.074-1.505 5.584-.002z"></path></svg> -->
                 <Transition
                   enter-from-class="scale-0"
                   enter-active-class="transition-transform duration-300 linear"
@@ -38,7 +37,7 @@
           </div>
           <p class="text-justify text-sm"><span class="font-bold">{{category.name}}: </span>{{description}}</p>
         </div>
-      </div>
+    </div>
     <div class="flex items-center justify-center" v-show="state.posts.loadMoreArticles">
       <spinner-component></spinner-component>
     </div>
@@ -56,9 +55,9 @@
   //const scalePostComponent = defineAsyncComponent(() => import("./PostsScaleComponent.vue"));
   let {dispatch, state, commit} = useStore();
   let lastArticle = ref([]);
-  let props = defineProps({
+ /*  let props = defineProps({
     posts: Array
-  })
+  }) */
   let offset = ref(0);
   let indexPhoto = ref(0);
   let touchTimeOut = ref(0);
@@ -68,8 +67,18 @@
     name: '',
     image: ''
   });
+  let posts = reactive([{
+    id: 1,
+    title: "Prueba de mensajes",
+    category: {
+      image: "https://images.unsplash.com/photo-1661431905234-81f04f375dbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1461&q=80",
+      name: "Imagen de Prueba"
+    },
+    description: "Utilizando un post de prueba"
+  }])
+  console.log(posts);
   let showHeart = ref([]);
-  let {posts} = toRefs(props);
+  //let {posts} = toRefs(props);
   let heartLike = ref([]);
   const photoChange = () => indexPhoto.value++;
 

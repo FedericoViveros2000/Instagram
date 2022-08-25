@@ -3,9 +3,9 @@
     <router-link to="/">
       <p class="outline-0"><i class="fa-solid fa-house"></i></p>
     </router-link>
-    <p>
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </p>
+    <router-link to="/users">
+      <p><i class="fa-solid fa-magnifying-glass"></i></p>
+    </router-link>
     <router-link to="/products">
       <p class="outline-0"><i class="fa-solid fa-bag-shopping"></i></p>
     </router-link>

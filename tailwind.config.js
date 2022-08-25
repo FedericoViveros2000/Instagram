@@ -7,7 +7,8 @@ module.exports = {
     "./src/components/chat/*.vue",
     "./src/components/posts/*.vue",
     "./src/components/shop/*.vue",
-    "./src/components/*.vue",
+    "./src/components/search/*.vue",
+    "./src/components/*vue",
     "./src/views/*.vue",
   ],
   theme: {

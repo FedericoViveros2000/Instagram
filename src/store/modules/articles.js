@@ -9,7 +9,8 @@ const articles = {
         articles: [],
         articlesSearch: [],
         articleSelected: [],
-        loadMoreArticles: false
+        loadMoreArticles: false,
+        errors: false
     },
     getters: {
         gettersArticles: (state) =>  state.articlesSearch.length > 0 ? state.articlesSearch : state.articles,
@@ -64,6 +65,7 @@ const articles = {
                     commit("setArticleSelected", data);
                 }
             } catch (err) {
+                state.errors = true;
                 console.warn(err);
             }
         }
