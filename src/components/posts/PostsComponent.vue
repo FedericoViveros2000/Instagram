@@ -76,7 +76,6 @@
     },
     description: "Utilizando un post de prueba"
   }])
-  console.log(posts);
   let showHeart = ref([]);
   //let {posts} = toRefs(props);
   let heartLike = ref([]);
@@ -96,7 +95,6 @@
     heartLike.value[index] ? heartLike.value[index] = false : heartLike.value[index] = true;
     commit("likedPost", data)
   }
-
   const showSend = () => commit("message");
 
   //Llamando a la funcion que nos permite realizar el scroll infinito, cada vez que se carguen mas articulos.

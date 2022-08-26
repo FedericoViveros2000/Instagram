@@ -8,6 +8,7 @@ module.exports = {
     "./src/components/posts/*.vue",
     "./src/components/shop/*.vue",
     "./src/components/search/*.vue",
+    "./src/components/reels/*.vue",
     "./src/components/*vue",
     "./src/views/*.vue",
   ],
