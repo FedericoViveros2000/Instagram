@@ -1,6 +1,6 @@
 <template>
-  <article class="w-full h-[80vh] fixed top-0 z-30 bg-white">
-    <router-link to="/products">
+  <article class="w-full h-[80vh] fixed top-0 z-30 bg-white dark:bg-black">
+    <router-link to="/ecommerce/products">
         <p class="p-4 text-black text-xl dark:text-white dark:bg-black"><i class="fa-solid fa-arrow-left"></i> <span class="ml-3 text-lg">{{productData.category?.name}}</span></p>
     </router-link>
     <figure class="w-full h-3/6 bg-slate-200 dark:bg-black relative">

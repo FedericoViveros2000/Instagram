@@ -1,10 +1,12 @@
 <template>
   <div>
     <section class="w-full pb-10" ref="containerArticles">
-      <div class="w-full px-3 my-4">
+      <div class="w-full px-4 my-4">
         <p class="font-bold text-xl">Tienda</p>
         <div class="w-full mt-2 flex items-center rounded-lg overflow-hidden border border-slate-400 dark:border-0 dark:bg-slate-800">
-          <p class="px-3 font-thin"><i class="fa-solid fa-magnifying-glass font-thin"></i></p>
+          <figure class="px-3">
+            <img src="../assets/icons/magnify.svg" alt="Buscar" class="icons w-6 h-6">
+          </figure>
           <input type="text" class="w-full  p-1.5 outline-0 dark:bg-slate-800" v-model="searchArticle" @input="search" placeholder="Buscar productos">
         </div>
         <categories-component class="mt-3"></categories-component>
@@ -18,7 +20,7 @@
           @click="getArticleDetails(id)"
           :ref="(last) => (lastArticle = last)"
         >
-          <router-link :to="`/detail/${id}`">
+          <router-link :to="`/ecommerce/detail/${id}`">
             <figure class="h-full bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
               <img
                 :src="category.image" 

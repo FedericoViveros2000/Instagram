@@ -7,15 +7,15 @@ import ReelsView from "../Views/ReelsView.vue";
 //import LikedPostsView from "../views/LikedPostsView.vue"
 //import LikedPostComponent from "../components/posts/LikedPostComponent.vue"
 import LikedPost from "../components/posts/LikedPostComponent.vue";
-import DarkMode from "../components/mode/DarkModeComponent.vue"
+import DarkMode from "../components/mode/DarkModeComponent.vue";
 const routes = [
   {path: "/", component: PostsView},
-  {path: "/reels", component: ReelsView},
-  {path: "/products", component:  ProductsView },
-  {path: "/detail/:id", component: ProductsDetailView},
-  {path: "/users", component: SearchUsersView},
-  {path: "/likedPosts", component: LikedPost, meta: {transition: "liked"}},
-  {path: "/profile", component: DarkMode}
+  {path: "/ecommerce/reels", component: ReelsView},
+  {path: "/ecommerce/products", component:  ProductsView },
+  {path: "/ecommerce/detail/:id", component: ProductsDetailView},
+  {path: "/ecommerce/users", component: SearchUsersView},
+  {path: "/ecommerce/likedPosts", component: LikedPost, meta: {transition: "liked"}},
+  {path: "/ecommerce/profile", component: DarkMode}
 ];
 
 const history = createWebHistory();

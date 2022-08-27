@@ -73,7 +73,7 @@
     height: 70px;
     overflow: hidden;
     border-radius: 50%;
-    background-image: linear-gradient(
+    background: linear-gradient(
 		45deg,
 		#ffa95f 5%,
 		#f99c4a 15%,

@@ -9,8 +9,8 @@
           </figure>
           <p class="font-bold ml-4 text-sm">{{category.name}} </p>
         </div>
-        <figure class="h-1/2 relative bg-slate-200 dark:bg-black" @dblclick="likedPostDblClick(index, {id, title, category, description})">
-          <img :src="category.image" :alt="title" class="w-full h-full object-cover">
+        <figure class="min-h-[30vh] relative bg-slate-200 dark:bg-slate-800" @dblclick="likedPostDblClick(index, {id, title, category, description})">
+          <img :src="category.image" :alt="title" class="h-full object-cover">
           <Transition name="bounce">
             <div class="instagram-heart" v-show="showHeart[index]"></div>
           </Transition>
@@ -26,14 +26,20 @@
                   leave-active-class="transition-transform duration-300 linear"
                   leave-to-class="scale-0"
                 >   
-                  <span v-if="!heartLike[index]" class="absolute top-2.5 left-0" @click="likedPost(index, {id, title, category, description})">
-                    <i class="fa-regular fa-heart"></i>
-                  </span>
-                  <span v-else @click="likedPost(index, {id, title, category, description})" class="absolute top-2.5 left-0"><i class="fa-solid fa-heart text-likeColor"></i></span>
+                  <figure v-if="!heartLike[index]" class="absolute top-2.5 left-0" @click="likedPost(index, {id, title, category, description})">
+                    <img src="./assets/heart.svg" class="icon-no-like"/>
+                  </figure>
+                  <figure v-else @click="likedPost(index, {id, title, category, description})" class="absolute top-2.5 left-0">
+                    <img src="./assets/likedPost.svg" alt="" class="icons-post">
+                  </figure>
                 </Transition>
-                <span class="absolute left-10 top-2.5" @click="showSend()"><i class="fa-regular fa-paper-plane"></i></span>
+                <figure class="absolute left-10 top-2.5" @click="showSend()">
+                  <img src="../assets/icons/send.svg" alt="" class="icons">
+                </figure>
               </div>
-              <p><i class="fa-regular fa-bookmark text-2xl"></i></p>
+              <figure>
+                <img src="./assets/bootmark.svg" alt="" class="icons">
+              </figure>
           </div>
           <p class="text-justify text-sm"><span class="font-bold">{{category.name}}: </span>{{description}}</p>
         </div>
@@ -55,9 +61,9 @@
   //const scalePostComponent = defineAsyncComponent(() => import("./PostsScaleComponent.vue"));
   let {dispatch, state, commit} = useStore();
   let lastArticle = ref([]);
- /*  let props = defineProps({
+  let props = defineProps({
     posts: Array
-  }) */
+  })
   let offset = ref(0);
   let indexPhoto = ref(0);
   let touchTimeOut = ref(0);
@@ -67,17 +73,9 @@
     name: '',
     image: ''
   });
-  let posts = reactive([{
-    id: 1,
-    title: "Prueba de mensajes",
-    category: {
-      image: "https://images.unsplash.com/photo-1661431905234-81f04f375dbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1461&q=80",
-      name: "Imagen de Prueba"
-    },
-    description: "Utilizando un post de prueba"
-  }])
+
   let showHeart = ref([]);
-  //let {posts} = toRefs(props);
+  let {posts} = toRefs(props);
   let heartLike = ref([]);
   const photoChange = () => indexPhoto.value++;
 

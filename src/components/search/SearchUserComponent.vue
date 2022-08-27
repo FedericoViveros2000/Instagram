@@ -1,7 +1,11 @@
 <template>
   <div class="w-full h-screen bg-white dark:bg-black absolute z-30 p-5">
     <div class="flex items-center w-full">
-        <router-link to="/"><p class="text-lg"><i class="fa-solid fa-arrow-left"></i></p></router-link>
+        <router-link to="/">
+            <figure>
+                <img src="../assets/icons/btn-back.svg" alt="Boton para volver" class="icons">
+            </figure>
+        </router-link>
         <input type="text" class="w-full py-1.5 px-5 rounded-xl ml-3 bg-slate-200 dark:bg-slate-800 outline-none" placeholder="Buscar" v-model="userSearch">
     </div>
     <div class="my-5 flex justify-between">

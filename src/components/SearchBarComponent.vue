@@ -1,13 +1,16 @@
 <template>
-  <div class="w-full  bg-white dark:bg-black fixed top-0 z-30 flex items-start justify-between py-3 px-4">
-    <!-- <h1 class="text-2xl font-semibold font-ig-font">Instagram</h1> -->
-    <figure class="h-8 dark:invert">
+  <div class="w-full  bg-white dark:bg-black fixed top-0 z-30 flex items-start justify-between py-1 px-4">
+    <figure class="h-8 mt-2 dark:invert">
       <img src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="" class="w-full h-full">
     </figure>
-    <p>
-      <router-link to="/likedPosts"><span class="text-xl mr-3"><i class="fa-regular fa-heart"></i></span></router-link>
-      <span class="text-xl"><i class="fa-brands fa-facebook-messenger"></i></span>
-    </p>
+    <div class="mt-2">
+      <router-link to="/ecommerce/likedPosts">
+        <figure class="inline-block mr-3">
+          <img src="./assets/icons/heart.svg" alt="Icono de Like" class="icons">
+        </figure>
+      </router-link>
+      <figure class="inline-block"><img src="./assets/icons/message.svg" alt="Icono de mensajes" class="icons"/></figure>
+    </div>
     <Transition
       enter-from-class="opacity-0"
       enter-active-class="transition-opacity duration-500 ease" 
