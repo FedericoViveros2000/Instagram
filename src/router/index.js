@@ -9,7 +9,7 @@ import ReelsView from "../Views/ReelsView.vue";
 import LikedPost from "../components/posts/LikedPostComponent.vue";
 import DarkMode from "../components/mode/DarkModeComponent.vue";
 const routes = [
-  {path: "/", component: PostsView},
+  {path: "/ecommerce", component: PostsView},
   {path: "/ecommerce/reels", component: ReelsView},
   {path: "/ecommerce/products", component:  ProductsView },
   {path: "/ecommerce/detail/:id", component: ProductsDetailView},

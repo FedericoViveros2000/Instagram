@@ -1,12 +1,12 @@
 <template>
   <div class="w-full h-screen bg-white dark:bg-black absolute z-30 p-5">
     <div class="flex items-center w-full">
-        <router-link to="/">
+        <router-link to="/ecommerce/">
             <figure>
-                <img src="../assets/icons/btn-back.svg" alt="Boton para volver" class="icons">
+                <img src="../assets/icons/btn-back.svg" alt="Boton para volver" class="icons" loading="lazy">
             </figure>
         </router-link>
-        <input type="text" class="w-full py-1.5 px-5 rounded-xl ml-3 bg-slate-200 dark:bg-slate-800 outline-none" placeholder="Buscar" v-model="userSearch">
+        <input type="text" class="w-full py-1.5 px-5 rounded-xl ml-3 bg-slate-100 dark:bg-slate-800 outline-none" placeholder="Buscar" v-model="userSearch">
     </div>
     <div class="my-5 flex justify-between">
         <p class="font-bold">Recientes</p>
@@ -45,5 +45,4 @@
     }]);
 
     coincident.value = computed(() => users.value.filter(({name}) => name.toLowerCase().split(' ').join('').includes(userSearch.value.toLowerCase().split(' ').join(''))));
-
 </script>

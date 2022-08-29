@@ -4,7 +4,7 @@
         <p class="p-4 text-black text-xl dark:text-white dark:bg-black"><i class="fa-solid fa-arrow-left"></i> <span class="ml-3 text-lg">{{productData.category?.name}}</span></p>
     </router-link>
     <figure class="w-full h-3/6 bg-slate-200 dark:bg-black relative">
-        <img :src="productData.category?.image" :alt="productData.category?.name" class="object-cover w-full h-full rounded-lg">
+        <img :src="productData.category?.image" :alt="productData.category?.name" class="object-cover w-full h-full rounded-lg" loading="lazy">
     </figure>
     <section class="p-5 h-3/6">
         <p class="font-medium text-lg my-2">{{productData.title}}</p>

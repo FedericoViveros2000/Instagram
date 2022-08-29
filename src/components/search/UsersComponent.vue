@@ -3,7 +3,7 @@
     <li class="flex justify-between items-center mb-5" v-for="{id, name, image} in users" :key="id">
         <div class="flex items-center">
             <figure class="w-12 h-12 overflow-hidden rounded-full mr-3">
-                <img :src="image" alt="" class="w-full object-cover">
+                <img :src="image" :alt="name" class="w-full object-cover" loading="lazy">
             </figure>
             <p>{{name}}</p>
         </div>

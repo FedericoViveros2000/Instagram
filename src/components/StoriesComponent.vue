@@ -1,10 +1,17 @@
 <template>
-  <div class="w-screen flex overflow-auto pl-3 storie">
+  <div class="w-screen flex overflow-auto pl-3 storie text-sm">
+    <div class="mr-3 text-center relative">
+        <figure class="mb-3 w-[70px] h-[70px] rounded-full overflow-hidden" @click="getCamera()">
+            <img src="./assets/user.png" alt="Tu historia" loading="lazy" class="w-full h-full object-cover opacity-80 dark:opacity-100 brightness-110">
+        </figure>
+        <span class="absolute bottom-7 right-1 px-1.5 text-white rounded-full bg-skyblue">+</span>
+        <p>Tu historia</p>
+    </div>
     <div v-for="{id, category, images} in stories" :key="id" class="mr-3 text-center">
         <figure class="storie-round mb-3" @click="watchStorie(images, category.name)">
-            <img :src="category.image" :alt="category.name" class="w-full h-full object-cover rounded-full">
+            <img :src="category.image" :alt="category.name" class="w-full h-full object-cover rounded-full" loading="lazy">
         </figure>
-        <p class="text-sm">{{category.name}}</p>
+        <p>{{category.name}}</p>
     </div>
   </div>
   <Transition
@@ -18,7 +25,7 @@
     <div class="w-full h-screen fixed z-50 top-0 bg-white" v-if="userSelected.imageStorie.length > 0">
         <p class="absolute top-5 left-5 text-sm" @click="userSelected.imageStorie = []">{{userSelected.name}}</p>
         <figure class="h-full w-full">
-            <img :src="userSelected.imageStorie[indexStorie]" :alt="indexStorie" class="w-full h-full object-cover">
+            <img :src="userSelected.imageStorie[indexStorie]" :alt="indexStorie" class="w-full h-full object-cover" loading="lazy">
         </figure>
     </div>
   </Transition>
@@ -37,6 +44,23 @@
     })
     let indexStorie = ref(0);
     let { stories } = toRefs(props);
+
+    const getCamera = async () => {
+        if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+            try{
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    audio: true, 
+                    video: true
+                });
+                window.URL.createObjectURL(stream)
+            }catch(err){
+                alert(err);
+            }
+        }else{
+            alert("No es compatible")
+        }
+
+    }
 
     const watchStorie = (image, name) => {
         userSelected.imageStorie = image;
@@ -62,7 +86,6 @@
 </script>
 
 <style>
-
 ::-webkit-scrollbar{
     display: none;
 }

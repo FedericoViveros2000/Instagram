@@ -10,7 +10,7 @@
       >
         <div class="grid grid-rows-1 gap-5 grid-cols-2 my-3 leading-10 bg-white shadow-xl p-2 rounded-md" v-for="({id, title, price, category}, index) in articles" :key="id">
           <figure class="row-span-1 col-span-1 overflow-hidden  rounded-md">
-            <img :src="category.image" class="h-full object-cover" :alt="title">
+            <img :src="category.image" class="h-full object-cover" :alt="title" loading="lazy">
           </figure>
           <div class="col-span-1  row-span-1 text-base leading-10">
             <p class="font-semibold">{{title}}</p>
@@ -29,7 +29,7 @@
 
   <div class="w-full bg-white py-10 text-center rounded-xl shadow-xl" v-else>
     <figure class="w-1/4 mx-auto">
-      <img src="./assets/delivery-box.png" alt="Carrito Vacio" class="w-full object-cover">
+      <img src="./assets/delivery-box.png" alt="Carrito Vacio" class="w-full object-cover" loading="lazy">
     </figure>
     <p class="mt-5">Aun se ha seleccionado ningun producto</p>
   </div>

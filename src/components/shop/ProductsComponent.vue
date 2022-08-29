@@ -3,11 +3,11 @@
     <section class="w-full pb-10" ref="containerArticles">
       <div class="w-full px-4 my-4">
         <p class="font-bold text-xl">Tienda</p>
-        <div class="w-full mt-2 flex items-center rounded-lg overflow-hidden border border-slate-400 dark:border-0 dark:bg-slate-800">
+        <div class="w-full mt-2 flex items-center rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
           <figure class="px-3">
             <img src="../assets/icons/magnify.svg" alt="Buscar" class="icons w-6 h-6">
           </figure>
-          <input type="text" class="w-full  p-1.5 outline-0 dark:bg-slate-800" v-model="searchArticle" @input="search" placeholder="Buscar productos">
+          <input type="text" class="w-full p-1.5 outline-0 bg-slate-100 dark:bg-slate-800" v-model="searchArticle" @input="search" placeholder="Buscar productos">
         </div>
         <categories-component class="mt-3"></categories-component>
       </div>
