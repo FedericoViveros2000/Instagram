@@ -1,6 +1,6 @@
 <template>
   <loading-posts v-if="!posts"></loading-posts>
-  <div class="absolute top-14 text-center" ref="container" v-else>
+  <div class="absolute top-14" ref="container" v-else>
     <stories-component :stories="posts"></stories-component>
     <div class="mt-7 relative" v-for="({id, title, category, description}, index) in posts" :key="id" :ref="(el)=> lastArticle = el">
         <div class="flex items-center mb-3 mx-3">
@@ -19,7 +19,7 @@
             enter-active-class="transition-transform duration-300 linear"
             enter-to-class="translate-y-0"
             leave-from-class="translate-y-0"
-            leave-active-class="transition-transform duration-500 linear"
+            leave-active-class="transition-transform duration-700 linear"
             leave-to-class="translate-y-full"
           >
             <div class="dark:bg-slate-500  bg-white text-start px-3 py-2 absolute w-full bottom-0 flex justify-between items-center" v-if="savePost.showSaved[index]">
@@ -51,7 +51,10 @@
                     <img src="../assets/icons/likedPost.svg" alt="Like icon" class="icons-post">
                   </figure>
                 </Transition>
-                <figure class="absolute left-10 top-2" @click="showSend()">
+                <figure class="absolute left-10 top-2">
+                  <img src="../assets/icons/comments.svg" alt="Comments icon" class="icons">
+                </figure>
+                <figure class="absolute left-20 top-2" @click="showSend()">
                   <img src="../assets/icons/send.svg" alt="Send icon" class="icons mt-0.5 w-6 h-6">
                 </figure>
               </div>
@@ -73,7 +76,9 @@
                 </Transition>
               </div>
           </div>
-          <p class="text-justify text-sm"><span class="font-bold">{{category.name}}: </span>{{description}}</p>
+          <p class="font-bold text-start mt-3">4.716 Me gusta</p>
+          <p class="text-justify text-sm my-2"><span class="font-bold">{{category.name}}: </span>{{description}}</p>
+          <p class="text-slate-400 text-start text-sm">Ver los comentarios</p>
         </div>
     </div>
     <div class="flex items-center justify-center" v-show="state.posts.loadMoreArticles">
@@ -139,7 +144,7 @@
     let saved = setTimeout(() => {
       savePost.showSaved[index] = false;
       clearTimeout(saved);
-    }, 2500)
+    }, 3000)
   }
 
   const likedPost = (index, data) => {

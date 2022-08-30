@@ -709,6 +709,14 @@ html {
   left: 1.25rem;
 }
 
+.left-20 {
+  left: 5rem;
+}
+
+.left-16 {
+  left: 4rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1486,6 +1494,10 @@ html {
 
 .duration-500 {
   transition-duration: 500ms;
+}
+
+.duration-700 {
+  transition-duration: 700ms;
 }
 
 .ease-in {
