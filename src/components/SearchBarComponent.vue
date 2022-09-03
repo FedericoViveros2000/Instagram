@@ -4,7 +4,7 @@
       <img src="../../public/Instagram_name.png" alt="Logo de Instagram" class="w-full h-full dark:brightness-110" loading="lazy">
     </figure>
     <div class="mt-2">
-      <router-link to="/ecommerce/likedPosts">
+      <router-link to="/Instagram/likedPosts">
         <figure class="inline-block mr-3">
           <img src="./assets/icons/heart.svg" alt="Icono de Like" loading="lazy" class="icons">
         </figure>

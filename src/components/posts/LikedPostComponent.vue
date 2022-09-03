@@ -1,7 +1,7 @@
 <template>
     <div class="relative top-0 z-30 h-screen bg-white dark:bg-black">
         <div class="w-full p-4 text-black dark:text-white text-lg flex items-center">
-            <router-link to="/ecommerce/">
+            <router-link to="/Instagram/">
                 <figure>
                     <img src="../assets/icons/btn-back.svg" alt="Volver atras" class="icons" loading="lazy">
                 </figure>

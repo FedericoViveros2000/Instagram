@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) navigator.serviceWorker.register('/ecommerce/dev-sw.js?dev-sw', { scope: '/ecommerce/' })
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/Instagram/dev-sw.js?dev-sw', { scope: '/Instagram/' })

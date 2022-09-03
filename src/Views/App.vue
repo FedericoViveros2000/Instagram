@@ -35,6 +35,7 @@ import navBarComponent from "../components/NavBarComponent.vue";
 import splashScreen from "../components/skeletons/SplashScreen.vue"
 import searchBarComponent from "../components/SearchBarComponent.vue";
 let {state} = useStore();
+
 const route = useRouter();
 let error = ref(false);
 const modalChat = defineAsyncComponent(() => import("../components/chat/ModalChatComponent.vue"))

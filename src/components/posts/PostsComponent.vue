@@ -2,17 +2,19 @@
   <loading-posts v-if="!posts"></loading-posts>
   <div class="absolute top-14" ref="container" v-else>
     <stories-component :stories="posts"></stories-component>
-    <div class="mt-7 relative" v-for="({id, title, category, description}, index) in posts" :key="id" :ref="(el)=> lastArticle = el">
+    <div class="mt-5" v-for="({id, title, images, category, description}, index) in posts" :key="id" :ref="(el)=> lastArticle = el">
         <div class="flex items-center mb-3 mx-3">
           <figure class="w-8 h-8 overflow-hidden rounded-full">
             <img :src="category.image" :alt="title" class="object-cover"> 
           </figure>
           <p class="font-bold ml-4 text-sm">{{category.name}} </p>
         </div>
-        <figure class="min-h-[30vh] relative bg-slate-200 dark:bg-slate-800 overflow-hidden" @dblclick="likedPostDblClick(index, {id, title, category, description})">
-          <img :src="category.image" :alt="title" class="h-full object-cover">
+        <div class="min-h-[30vh] bg-slate-200 relative dark:bg-slate-800" @dblclick="likedPostDblClick(index, {id, title, category, description})">
+          <div class="slider">
+            <img v-for="image in images" :key="image" :src="image" :alt="title">
+          </div>
           <Transition name="bounce">
-            <div class="instagram-heart" v-show="showHeart[index]"></div>
+            <div class="instagram-heart absolute top-0" v-show="showHeart[index]"></div>
           </Transition>
           <Transition                 
             enter-from-class="translate-y-full"
@@ -32,7 +34,7 @@
               <p class="text-skyblue">Guardar en coleccion</p>
             </div>
           </Transition>
-        </figure>
+        </div>
         <div class="px-3">
           <div class="w-full flex justify-between items-center py-2 mt-1 text-xl relative mb-7">
               <div class="text-start text-2xl">
@@ -79,6 +81,7 @@
           <p class="font-bold text-start mt-3">4.716 Me gusta</p>
           <p class="text-justify text-sm my-2"><span class="font-bold">{{category.name}}: </span>{{description}}</p>
           <p class="text-slate-400 text-start text-sm">Ver los comentarios</p>
+          <textarea class="w-full mt-2 h-5 text-sm outline-none dark:bg-black" placeholder="Agregar Comentario..."></textarea>
         </div>
     </div>
     <div class="flex items-center justify-center" v-show="state.posts.loadMoreArticles">
@@ -120,6 +123,7 @@
   })
 
   let {posts} = toRefs(props);
+  console.log(posts.value);
   let heartLike = ref([]);
   const photoChange = () => indexPhoto.value++;
 
@@ -179,6 +183,18 @@
     margin: auto;
     background: url("../assets/heart.png") no-repeat center/contain;
     filter: saturate(1.5);
+  }
+
+  .slider{
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .slider img{
+    width: 100%;
+    object-fit: cover;
+    scroll-snap-align: center;
   }
 
   .bounce-enter-active {

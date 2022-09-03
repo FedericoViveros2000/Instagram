@@ -3,7 +3,7 @@
     <ul class="flex items-center md:justify-around w-full overflow-auto hide pl-5 py-2">
         <li v-for="({id, category, price}) in popularProducts"
             :key="id" class="rounded-xl block text-center mr-5 leading-8 shadow-lg">
-            <router-link :to="`ecommerce/detail/${id}`">
+            <router-link :to="`Instagram/detail/${id}`">
               <figure class="w-40 mb-4">
                 <img :src="category.image" :alt="category.name" class="object-cover rounded-lg" loading="lazy">
               </figure>
