@@ -1,6 +1,6 @@
 
 module.exports = {
-  darkMode: 'class',
+  darkMode: 'media',
   content: [
     "./index.html",
     "./src/components/skeletons/*.vue",

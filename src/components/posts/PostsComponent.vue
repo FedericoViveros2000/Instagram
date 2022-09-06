@@ -11,7 +11,7 @@
         </div>
         <div class="min-h-[30vh] bg-slate-200 relative dark:bg-slate-800" @dblclick="likedPostDblClick(index, {id, title, category, description})">
           <div class="slider">
-            <img v-for="image in images" :key="image" :src="image" :alt="title">
+            <img v-for="image in images" class="h-full" :key="image" :src="image" :alt="title">
           </div>
           <Transition name="bounce">
             <div class="instagram-heart absolute top-0" v-show="showHeart[index]"></div>
@@ -187,12 +187,13 @@
 
   .slider{
     display: flex;
+    height: 40vh;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
   }
 
   .slider img{
-    width: 100%;
+    height: 100%;
     object-fit: cover;
     scroll-snap-align: center;
   }

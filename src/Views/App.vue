@@ -2,9 +2,7 @@
     <div class="w-full" >
       <search-bar-component></search-bar-component>  
       <router-view v-slot="{ Component }">
-        <Transition name="scale-slide">
           <component :is="Component" />
-        </Transition>
       </router-view>
       <nav-bar-component></nav-bar-component>
       <Transition

@@ -7,7 +7,7 @@ import ReelsView from "../Views/ReelsView.vue";
 //import LikedPostsView from "../views/LikedPostsView.vue"
 //import LikedPostComponent from "../components/posts/LikedPostComponent.vue"
 import LikedPost from "../components/posts/LikedPostComponent.vue";
-import DarkMode from "../components/mode/DarkModeComponent.vue";
+//import DarkMode from "../components/mode/DarkModeComponent.vue";
 const routes = [
   {path: "/Instagram", component: PostsView},
   {path: "/Instagram/reels", component: ReelsView},
@@ -15,7 +15,7 @@ const routes = [
   {path: "/Instagram/detail/:id", component: ProductsDetailView},
   {path: "/Instagram/users", component: SearchUsersView},
   {path: "/Instagram/likedPosts", component: LikedPost, meta: {transition: "liked"}},
-  {path: "/Instagram/profile", component: DarkMode}
+  //{path: "/Instagram/profile", component: DarkMode}
 ];
 
 const history = createWebHistory();

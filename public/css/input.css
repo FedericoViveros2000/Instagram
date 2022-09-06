@@ -11,12 +11,12 @@
        @apply w-full bg-skyblue rounded-md py-3 text-white;
     }
     .icons {
-        @apply w-7 h-7 object-cover dark:invert outline-0;
+        @apply w-7 h-7 object-cover dark:invert outline outline-0;
     }
     .icons-post {
-        @apply w-7 h-7 object-cover outline-0;
+        @apply w-7 h-7 object-cover outline outline-0;
     }
     .icon-no-like {
-        @apply w-7 h-7 object-cover outline-0 dark:invert;
+        @apply w-7 h-7 object-cover outline outline-0 dark:invert;
     }
 }

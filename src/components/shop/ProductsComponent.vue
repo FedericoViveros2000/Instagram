@@ -25,7 +25,7 @@
               <img
                 :src="category.image" 
                 :alt="category.description"
-                class="object-cover w-full h-full brightness-75"
+                class="object-cover w-full h-full"
               />
             </figure>
           </router-link>
