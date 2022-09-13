@@ -5,7 +5,9 @@
         <figure class="px-3">
           <img src="../assets/icons/magnify.svg" alt="Buscar" class="icons w-6 h-6">
         </figure>
-        <input type="text" class="w-full p-1.5 outline-0 bg-slate-100 dark:bg-slate-800"  placeholder="Buscar">
+        <router-link to="/Instagram/users">
+          <input type="text" class="w-full p-1.5 outline-0 bg-slate-100 dark:bg-slate-800"  placeholder="Buscar">
+        </router-link>
       </div>
     </div>
     <article class="grid grid-cols-3 grid-rows-5 min-h-screen dark:bg-slate-800 gap-0.5">
@@ -17,16 +19,13 @@
 </template>
 
 <script setup>
-  import {onBeforeMount, onMounted, computed} from "vue";
+  import {onMounted, computed} from "vue";
   import {useStore} from "vuex";
 
   let {state, dispatch} = useStore();
   let photos = computed(() => state.posts.posts)
-  onBeforeMount(() => {
-    dispatch("getPosts");
-  })
   onMounted(() => {
-    console.log(state.posts.posts);
+    dispatch("getPosts");
   })
 </script>
 

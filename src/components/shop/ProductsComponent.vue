@@ -20,7 +20,7 @@
           @click="getArticleDetails(id)"
           :ref="(last) => (lastArticle = last)"
         >
-          <router-link :to="`/ecommerce/detail/${id}`">
+          <router-link :to="`/Instagram/detail/${id}`">
             <figure class="h-full bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
               <img
                 :src="category.image" 

@@ -34,8 +34,7 @@
 <script setup>
     const {
         VITE_API_CONTACTS: contacts
-    } =
-    import.meta.env;
+    } = import.meta.env;
     import axios from "axios";
     import {
         ref,
@@ -44,9 +43,7 @@
     import {
         useStore
     } from "vuex";
-    let {
-        commit
-    } = useStore();
+    let {commit} = useStore();
     let btnSend = ref("Enviar")
     const sendMessage = () => {
         if (btnSend.value === "Enviar") {
@@ -58,10 +55,7 @@
     const closeMessage = () => commit("message");
     onMounted(async () => {
         try {
-            let {
-                data
-            } = await axios.get(contacts);
-            console.log(data);
+            let {data} = await axios.get(contacts);
         } catch (err) {
             console.warn(err);
         }

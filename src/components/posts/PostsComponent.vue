@@ -35,9 +35,9 @@
             </div>
           </Transition>
         </div>
-        <div class="px-3">
-          <div class="w-full flex justify-between items-center py-2 mt-1 text-xl relative mb-7">
-              <div class="text-start text-2xl">
+        <div class="px-3 bg-white dark:bg-black relative z-10">
+          <div class="w-full flex justify-between items-center py-2 mt-1 text-xl relative mb-7 ">
+              <div class="text-start text-2xl ">
                 <Transition
                   enter-from-class="scale-0"
                   enter-active-class="transition-transform duration-300 linear"
@@ -123,7 +123,6 @@
   })
 
   let {posts} = toRefs(props);
-  console.log(posts.value);
   let heartLike = ref([]);
   const photoChange = () => indexPhoto.value++;
 
