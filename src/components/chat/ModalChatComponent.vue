@@ -6,25 +6,25 @@
                 placeholder="Escribe un Mensaje..."></textarea>
             <div class="flex overflow-hidden rounded-lg items-center bg-slate-100 dark:bg-slate-600">
                 <span class="px-2.5 text-slate-400"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" class="w-full p-1.5 outline-0 bg-slate-100 dark:bg-slate-600" placeholder="Buscar">
+                <input type="text" v-model="userSearch" class="w-full p-1.5 outline-0 bg-slate-100 dark:bg-slate-600" placeholder="Buscar">
                 <span class="px-2.5 text-slate-400"><i class="fa-solid fa-user-plus"></i></span>
             </div>
         </div>
         <div class="w-full relative top-32">
             <ul class="w-full">
-                <li class="w-full flex items-center justify-between mt-4">
+                <li class="w-full flex items-center justify-between mt-5" v-for="({id, name, avatar}, index) in users" :key="id" >
                     <div class="w-1/2 flex items-center">
                         <figure class="w-10 h-10 mr-3">
-                            <img src="../assets/love.png" alt="No existen favoritos"
-                                class="w-full object-cover rounded-full" loading="lazy">
+                            <img :src="avatar" alt="No existen favoritos"
+                                class="w-full h-full object-cover rounded-full" loading="lazy">
                         </figure>
                         <div>
-                            <p class="font-semibold">Ricardo Llanos</p>
-                            <span>Ricardo Roque</span>
+                            <p class="font-semibold">{{name}}</p>
+                            <span>{{name}} </span>
                         </div>
                     </div>
-                    <button :class="btnSend === 'Enviar' ? 'text-white py-1 px-7 rounded-lg font-bold bg-skyblue outline-0' : 'border-solid border-2 py-1 px-7 rounded-xl border-slate-400 font-bold outline-0'"
-                        @click="sendMessage()">{{btnSend}}</button>
+                    <button v-if="!btnSend[index]" @click="sendMessage(index)" class="'text-white py-1 px-7 rounded-lg font-bold bg-skyblue outline-0'">Enviar</button>
+                    <button v-else class="border-solid border-2 py-1 px-7 rounded-xl border-slate-400 font-bold outline-0">{{messageSend[index]}}</button>
                 </li>
             </ul>
         </div>
@@ -38,24 +38,36 @@
     import axios from "axios";
     import {
         ref,
-        onMounted
+        onMounted,
+        computed
     } from "vue";
     import {
         useStore
     } from "vuex";
-    let {commit} = useStore();
-    let btnSend = ref("Enviar")
-    const sendMessage = () => {
-        if (btnSend.value === "Enviar") {
-            btnSend.value = "Anular"
-        } else {
-            btnSend.value = "Enviar"
-        }
+    let messageSend = ref([]);
+    let usersContacts = ref([]);
+    let userSearch = ref("");
+    let { commit } = useStore();
+    let btnSend = ref([]);
+    const sendMessage = (index) => {
+        btnSend.value[index] = true;
+        messageSend.value[index] = "Anular";
+        setTimeout(() => {
+            messageSend.value[index] = "Enviado";
+        }, 2000);
+        setTimeout(() => {
+            btnSend.value[index] = false;
+        }, 4000);
     }
+
+    let users = computed(() => usersContacts.value.filter(({name}) => name.toLowerCase().split('').join('').includes(userSearch.value.toLowerCase().split('').join(''))));
+
     const closeMessage = () => commit("message");
+    
     onMounted(async () => {
         try {
             let {data} = await axios.get(contacts);
+            usersContacts.value = await data;
         } catch (err) {
             console.warn(err);
         }
