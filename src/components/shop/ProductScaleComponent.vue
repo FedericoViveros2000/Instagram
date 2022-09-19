@@ -4,7 +4,7 @@
         <figure class="h-4/5 bg-white dark:bg-black">
           <img :src="articleScale.image" :alt="articleScale.name" class="object-cover w-full h-full" loading="lazy">
         </figure>
-        <div class="bg-white dark:bg-black text-xl flex justify-between py-3 px-5 w-full items-center rounded-b-lg">
+        <div class="bg-white dark:bg-black text-xl flex justify-between py-2 px-5 w-full items-center rounded-b-lg">
           <figure>
             <img src="../assets/icons/send.svg" alt="Enviar" class="icons w-6 h-6">
           </figure>
