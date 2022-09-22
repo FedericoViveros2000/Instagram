@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import posts from "./modules/posts.js";
 import articles from "./modules/articles.js"
+import postsDiscover from "./modules/users.js";
 
 export default createStore({
   state: {
@@ -25,6 +26,7 @@ export default createStore({
   },
   modules: {
     posts,
-    articles
+    articles,
+    postsDiscover
   }
 });

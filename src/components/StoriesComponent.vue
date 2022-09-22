@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen flex overflow-auto pl-3 storie text-sm">
+  <div class="w-screen flex overflow-auto pl-3 storie text-xs">
     <div class="mr-3 text-center relative">
         <figure class="mb-3 w-[70px] h-[70px] rounded-full overflow-hidden" @click="getCamera()">
             <img src="./assets/user.png" alt="Tu historia" loading="lazy" class="w-full h-full object-cover opacity-80 dark:opacity-100 brightness-110">
@@ -11,7 +11,7 @@
         <figure class="storie-round mb-3" @click="watchStorie(images, category.name)">
             <img :src="category.image" :alt="category.name" class="w-full h-full object-cover rounded-full" loading="lazy">
         </figure>
-        <p>{{category.name}}</p>
+        <p class="truncate max-w-[70px]">{{category.name}}</p>
     </div>
   </div>
   <Transition
@@ -23,7 +23,7 @@
     leave-to-class="scale-0"
   >
     <div class="w-full h-screen fixed z-50 top-0 bg-white" v-if="userSelected.imageStorie.length > 0">
-        <p class="absolute top-5 left-5 text-sm" @click="userSelected.imageStorie = []">{{userSelected.name}}</p>
+        <p class="absolute top-5 left-5 text-xs" @click="userSelected.imageStorie = []">{{userSelected.name}}</p>
         <figure class="h-full w-full">
             <img :src="userSelected.imageStorie[indexStorie]" :alt="indexStorie" class="w-full h-full object-cover" loading="lazy">
         </figure>

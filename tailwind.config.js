@@ -32,7 +32,8 @@ module.exports = {
       'slate-800': "#262626",
       'slate-700': "#334155",
       'slate-600': "#363636",
-      'slate-900': "#0f172a"
+      'slate-900': "#0f172a",
+      'slate-cant': "#4e4d4d"
     },
   },
   plugins: [],

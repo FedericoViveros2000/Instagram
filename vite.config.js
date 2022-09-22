@@ -5,13 +5,18 @@ import { VitePWA } from 'vite-plugin-pwa';
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "/Instagram/",
+/*   server: {
+    proxy: {
+
+    }
+  }, */
   plugins: [
     vue(),
     VitePWA({ 
       injectRegister: 'script',
       registrerType: 'autoUpdate',
       manifest: {
-        "name": "Instagram",
+        "name": "Instagram",  
         "short_name": "Instagram",
         "start_url": ".",
         "display": "standalone",

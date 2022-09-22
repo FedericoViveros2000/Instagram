@@ -7,11 +7,12 @@
           <figure class="w-8 h-8 overflow-hidden rounded-full">
             <img :src="category.image" :alt="title" class="object-cover"> 
           </figure>
-          <p class="font-bold ml-4 text-sm">{{category.name}} </p>
+          <p class="font-bold ml-4 text-xs">{{category.name}} </p>
         </div>
         <div class="min-h-[30vh] bg-slate-200 relative dark:bg-slate-800" @dblclick="likedPostDblClick(index, {id, title, category, description})">
+          <p class="absolute top-3 right-3 bg-slate-cant py-1 px-3 text-xs rounded-2xl" v-show="images.length > 1">1/{{images.length}}</p>
           <div class="slider">
-            <img v-for="image in images" class="h-full" :key="image" :src="image" :alt="title">
+            <img v-for="image in images" class="h-full object-cover" :key="image" :src="image" :alt="title">
           </div>
           <Transition name="bounce">
             <div class="instagram-heart absolute top-0" v-show="showHeart[index]"></div>
@@ -27,7 +28,7 @@
             <div class="dark:bg-slate-500  bg-white text-start px-3 py-2 absolute w-full bottom-0 flex justify-between items-center" v-if="savePost.showSaved[index]">
                 <div>
                   <figure class="inline-block mr-3">
-                    <img :src="category.image" alt="" class="w-7 h-7 object-cover">
+                    <img :src="category.image" :alt="description" class="w-7 h-7 object-cover">
                   </figure>
                   <p class="inline-block absolute top-3 dark:text-white">{{savePost.showSavedMessage}}</p> 
                 </div>
@@ -36,7 +37,7 @@
           </Transition>
         </div>
         <div class="px-3 bg-white dark:bg-black relative z-10">
-          <div class="w-full flex justify-between items-center py-2 mt-1 text-xl relative mb-7 ">
+          <div class="w-full flex justify-between items-center py-2 mt-1 text-sm relative mb-7">
               <div class="text-start text-2xl ">
                 <Transition
                   enter-from-class="scale-0"
@@ -47,7 +48,7 @@
                   leave-to-class="scale-0"
                 >   
                   <figure v-if="!heartLike[index]" class="absolute top-2 left-0" @click="likedPost(index, {id, title, category, description})">
-                    <img src="../assets/icons/heart.svg" class="icon-no-like"/>
+                    <img src="../assets/icons/heart.svg" alt="Like Icon" class="icon-no-like"/>
                   </figure>
                   <figure v-else @click="likedPost(index, {id, title, category, description})" class="absolute top-2 left-0">
                     <img src="../assets/icons/likedPost.svg" alt="Like icon" class="icons-post">
@@ -79,9 +80,9 @@
               </div>
           </div>
           <p class="font-bold text-start mt-3">4.716 Me gusta</p>
-          <p class="text-justify text-sm my-2"><span class="font-bold">{{category.name}}: </span>{{description}}</p>
-          <p class="text-slate-400 text-start text-sm">Ver los comentarios</p>
-          <textarea class="w-full mt-2 h-5 text-sm outline-none dark:bg-black" placeholder="Agregar Comentario..."></textarea>
+          <p class="text-justify text-xs my-2"><span class="font-bold">{{category.name}}: </span>{{description}}</p>
+          <p class="text-slate-400 text-start text-xs">Ver los comentarios</p>
+          <textarea class="w-full mt-2 h-5 text-xs outline-none dark:bg-black" placeholder="Agregar Comentario..."></textarea>
         </div>
     </div>
     <div class="flex items-center justify-center" v-show="state.posts.loadMoreArticles">
@@ -92,7 +93,7 @@
 
 <script setup>
   import {useStore} from "vuex";
-  import {defineProps, toRefs, ref, onUpdated, reactive, onMounted} from "vue";
+  import {defineProps, toRefs, ref, onUpdated, reactive} from "vue";
   import scrollInfinity from "../../api/infinityScroll.js"
   import storiesComponent from "../StoriesComponent.vue"
   import loadingPosts from "../skeletons/LoadingPosts.vue"
@@ -159,15 +160,6 @@
   //Llamando a la funcion que nos permite realizar el scroll infinito, cada vez que se carguen mas articulos.
   onUpdated(() => scrollInfinity(dispatch, "getPosts", offset.value++, lastArticle.value));
 
-  onMounted(() => {
-    // color.value[0] = "white";
-    /* 
-      TODO Ver la parte para ir obteniendo los articulos a los que se le dio like
-    */
-    /* let ver = posts.value.filter(({id}) => {
-      JSON.parse(localStorage.likedPost) === id
-    }); */
-  })
 </script>
 
 <style scoped>

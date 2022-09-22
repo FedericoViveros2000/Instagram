@@ -1,12 +1,15 @@
 <template>
-  <ul class="w-full h-full mb-36 overflow-auto">
+  <ul class="w-full h-full mb-36 overflow-auto text-sm">
     <div class="w-full" v-if="users.length > 0">
         <li class="flex justify-between items-center mb-5" v-for="({id, name, avatar}, index) in users" :key="id">
             <div class="flex items-center">
-                <figure class="w-12 h-12 overflow-hidden rounded-full mr-3">
-                    <img :src="avatar" :alt="name" class="w-full object-cover" loading="lazy">
+                <figure class="overflow-hidden rounded-full mr-3">
+                    <img :src="avatar" :alt="name" class="w-14 h-14 object-cover" loading="lazy">
                 </figure>
-                <p>{{name}}</p>
+                <div>
+                    <p>{{name}}</p>
+                    <p class="text-sm text-slate-100 font-bold">{{name}}</p>
+                </div>
             </div>
             <span class="text-slate-200"><i class="fa-solid fa-xmark" @click="removeUser(index)"></i></span>
         </li>
@@ -18,10 +21,14 @@
 </template>
 
 <script setup>
-    import {ref, toRefs, defineProps, computed} from "vue";
+    import {toRefs, defineProps} from "vue";
     let props = defineProps({
         users: []
     })
+    document.addEventListener("error", e => {
+        console.log(e.target);
+        e.target.src = "../assets/delivery-box.png";
+    });
     let {users} = toRefs(props);
     const removeUser = (idUser) => users.value.splice(idUser, 1);
 </script>

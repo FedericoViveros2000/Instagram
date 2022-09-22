@@ -11,8 +11,8 @@
       </div>
     </div>
     <article class="grid grid-cols-3 grid-rows-5 min-h-screen  gap-0.5" :class="photoScale.show ? 'blur-sm' : 'blur-0'">
-      <figure v-for="{id, category, images} in photos" :key="id" :class="Math.floor(Math.random() * 10) / 2 === 0 ? 'w-full row-span-1 relative bg-slate-100 dark:bg-slate-800' : 'w-full row-span-2 relative dark:bg-slate-800 bg-slate-100'">
-        <img src="../assets/icons/moreImages.svg" class="absolute icons top-2 right-2" v-if="images.length > 1">
+      <figure v-for="{id, category, images} in photos" :key="id" :class="Math.floor(Math.random() * 10) / 2 === 0 ? 'w-full row-span-1 relative bg-slate-100 dark:bg-slate-800' : 'w-full row-span-2 relative dark:bg-slate-800 bg-slate-100'" :ref="((el) => lastArticle = el)">
+        <img src="../assets/multiple-file.png" class="absolute icons w-6 h-6 top-2 right-2" v-if="images.length > 1">
         <img :src="category.image" :alt="category.name" class="h-full object-cover">
       </figure>
     </article>
@@ -26,12 +26,18 @@
     >
       <post-discover-scale-async :discover="photoScale" v-if="photoScale.show"></post-discover-scale-async>
     </Transition>
+    <div class="w-full flex justify-center items-center mt-5 mb-7">
+      <spinner-component></spinner-component>
+    </div>
   </section>
 </template>
 
 <script setup>
-  import {onMounted, computed, reactive, ref, defineAsyncComponent} from "vue";
+  import {onMounted, computed, reactive, ref, defineAsyncComponent, onUpdated} from "vue";
+  const {VITE_API_PRODUCTS: urlProducts} = import.meta.env;
+  import SpinnerComponent from "../SpinnerComponent.vue"
   import {useStore} from "vuex";
+  import scrollInfinity from "../../api/infinityScroll.js"
   const postDiscoverScaleAsync = defineAsyncComponent(() => import('./PostsDiscoverScaleComponent.vue'))
   let {state, dispatch} = useStore();
 
@@ -40,13 +46,12 @@
     image: "",
     show: false
   })
-
+  let offset = ref(0);
+  let limit = ref(12);
+  let lastArticle = ref([]);
   let selectedTouchTimeout = ref(0);
 
-  let photos = computed(() => state.posts.posts);
-  onMounted(() => {
-    dispatch("getPosts");
-  })
+  let photos = computed(() => state.postsDiscover.postsDiscover);
 
   document.addEventListener('touchstart', (e) => {
     photoScale.image = e.target.src;
@@ -61,6 +66,14 @@
     clearTimeout(selectedTouchTimeout.value)
     photoScale.image = "";
     photoScale.name = "";
+  })
+
+  onMounted(() => {
+    dispatch("getPostsDiscover", `${urlProducts}?offset=${offset.value}&limit=${limit.value}`)
+  })
+
+  onUpdated(() => {
+    scrollInfinity(dispatch, "getPostsDiscover", offset.value++, lastArticle.value, limit.value+=limit.value)
   })
 
 </script>

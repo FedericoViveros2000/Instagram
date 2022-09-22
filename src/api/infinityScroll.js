@@ -12,12 +12,11 @@ const scrollInfinity = (dispatch, dispatchName, offset = offsetRecieved, lastArt
     entries.forEach(entry => {
       let { isIntersecting } = entry;
       if (isIntersecting) {
-        let urlProductsPaginated = `${urlProducts}?offset=${offset}&limit=${limit}`  
+        let urlProductsPaginated = `${urlProducts}?offset=${offset}&limit=${limit}`
         dispatch(dispatchName, urlProductsPaginated);
       }
     });
   }
-  
   //Creando el observador para el scroll infinito
   let observer = new IntersectionObserver(callbackEntry, options);
   observer.observe(lastArticle);

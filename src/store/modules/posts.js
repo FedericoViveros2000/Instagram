@@ -17,7 +17,7 @@ const posts = {
         }
     },
     actions: {
-        async getPosts({state, commit}, endpoint = `${urlProducts}?offset=0&limit=30`) {
+        async getPosts({state, commit}, endpoint = `${urlProducts}?offset=0&limit=20`) {
             try{
                 state.loadMoreArticles = true;
                 let {data} = await axios.get(endpoint);
