@@ -13,9 +13,9 @@
             <img src="../assets/icons/shop.svg" alt="Agregar al carrito" class="icons">
           </figure>
          <!--  <p><i class="fa-solid fa-bag-shopping"></i></p> --> 
-         <figure>
-          <img src="../assets/icons/heart.svg" alt="Like" class="icons">
-         </figure>
+          <figure>
+            <img src="../assets/icons/heart.svg" alt="Like" class="icons">
+          </figure>
           <!-- <p><i class="fa-regular fa-heart"></i></p>  --> 
           <figure>
             <img src="../assets/icons/bootmark.svg" alt="Saved" class="icons">

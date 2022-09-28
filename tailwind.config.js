@@ -19,6 +19,7 @@ module.exports = {
     extend: {
     },
     colors: {
+      'chat-skyblue': "#405DE6",
       'skyblue': "#0095f6",
       'black': "#000",
       'likeColor': "#ff3040",

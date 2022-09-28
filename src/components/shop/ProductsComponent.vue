@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <section class="w-full pb-10" ref="containerArticles">
       <div class="w-full px-4 my-4">
         <p class="font-bold text-xl">Tienda</p>
@@ -19,7 +19,7 @@
           :key="id"
           @click="getArticleDetails(id)"
           :ref="(last) => (lastArticle = last)"
-        >
+        > 
           <router-link :to="`/Instagram/detail/${id}`">
             <figure class="h-full bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
               <img

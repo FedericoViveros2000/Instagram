@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-screen media absolute z-30 dark:bg-black bg-white  overflow-y-auto">
-        <section class="fixed z-40 w-full flex justify-between  px-5 py-3">
+        <section class="absolute z-40 w-full flex justify-between  px-5 py-3">
             <h2 class="text-xl font-bold">Reels</h2>
             <figure>
                 <img src="../assets/icons/bx-camera.svg" alt="Camara" class="icons">
@@ -26,7 +26,7 @@
                         <figure class="mr-3">
                             <img src="../assets/pulse.png" alt="Audio icon" class="icons">
                         </figure>
-                        <figcaption class="text-white">sergiomoreno chad  • Audio original</figcaption>
+                        <figcaption class="text-white">sergiomoreno chad • Audio original</figcaption>
                     </div>
                 </div>
                 <div class="flex flex-col items-center">
