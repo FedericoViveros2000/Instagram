@@ -143,7 +143,7 @@
       savePost.bootMark[index] = true;
       savePost.showSavedMessage = "Guardado"
     }else{
-      savePost.bootMark[index] = false
+      savePost.bootMark[index] = false;
     }
     let saved = setTimeout(() => {
       savePost.showSaved[index] = false;
