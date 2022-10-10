@@ -5,12 +5,10 @@ import ProductsDetailView from "../views/ProductsDetailView.vue"
 import SearchUsersView from "../views/SearchUsersView.vue";
 import DiscoverView from "../views/DiscoverView.vue";
 import ReelsView from "../views/ReelsView.vue";
-//import LikedPostsView from "../views/LikedPostsView.vue"
-//import LikedPostComponent from "../components/posts/LikedPostComponent.vue"
 import LikedPost from "../components/posts/LikedPostComponent.vue";
 import ChatView from "../Views/ChatView.vue";
+import ChatContactsView from "../Views/ChatContactsView.vue"
 
-//import DarkMode from "../components/mode/DarkModeComponent.vue";
 const routes = [
   {path: "/Instagram", component: PostsView},
   {path: "/Instagram/reels", component: ReelsView},
@@ -19,7 +17,8 @@ const routes = [
   {path: "/Instagram/users", component: SearchUsersView},
   {path: "/Instagram/discover", component: DiscoverView},
   {path: "/Instagram/likedPosts", component: LikedPost, meta: {transition: "liked"}},
-  {path: "/Instagram/chatView", component: ChatView}
+  {path: "/Instagram/chatView", component: ChatView},
+  {path: "/Instagram/chatContactsView", component: ChatContactsView}
   //{path: "/Instagram/profile", component: DarkMode}
 ];
 

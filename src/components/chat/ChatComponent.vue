@@ -2,7 +2,7 @@
   <div class="w-full h-screen relative px-3 z-40 dark:bg-black">
     <nav class="flex items-center fixed top-0 w-full dark:bg-black py-1">
       <figure>
-        <router-link to="/Instagram">
+        <router-link to="/Instagram/chatContactsView">
           <img src="../assets/icons/btn-back.svg" alt="" class="icons">
         </router-link>
       </figure>
@@ -33,7 +33,6 @@
         <p class="dark:bg-chat-skyblue w-max break-words self-end max-w-[80%] px-3 py-2 rounded-2xl mt-3" v-else>{{message.message}}</p>
       </div>
     </section>
-    <!-- <div class="h-[90%]"></div> -->
     <div class="w-full pb-1 dark:bg-black fixed bottom-0 right-0 px-3">
       <slot name="chatInput"/>
     </div>

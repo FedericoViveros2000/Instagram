@@ -10,7 +10,7 @@
           </router-link>  
         </figure>
       <figure class="inline-block">
-        <router-link to="/Instagram/chatView">
+        <router-link to="/Instagram/chatContactsView">
           <img src="./assets/icons/message.svg" alt="Icono de mensajes" class="icons" loading="lazy"/>
         </router-link>
       </figure>

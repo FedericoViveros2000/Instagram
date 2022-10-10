@@ -6,7 +6,7 @@
                 placeholder="Escribe un Mensaje..."></textarea>
             <div class="flex overflow-hidden rounded-lg items-center bg-slate-100 dark:bg-slate-600">
                 <span class="px-2.5 text-slate-400"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" v-model="userSearch" class="w-full px-1.5 py-2 outline-0 bg-slate-100 dark:bg-slate-600" placeholder="Buscar">
+                <input type="text" v-model="userSearch" class="inputSearch" placeholder="Buscar">
                 <span class="px-2.5 text-slate-400"><i class="fa-solid fa-user-plus"></i></span>
             </div>
         </div>

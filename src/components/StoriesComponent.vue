@@ -1,11 +1,14 @@
 <template>
   <div class="w-screen flex overflow-auto pl-3 storie text-xs">
     <div class="mr-3 text-center relative">
-        <figure class="mb-3 w-[70px] h-[70px] rounded-full overflow-hidden" @click="getCamera()">
-            <img src="./assets/user.png" alt="Tu historia" loading="lazy" class="w-full h-full object-cover opacity-80 dark:opacity-100 brightness-110">
-        </figure>
-        <span class="absolute bottom-7 right-1 px-1.5 text-white rounded-full bg-skyblue">+</span>
-        <p>Tu historia</p>
+        <input type="file" capture="user" class="hidden" id="story">
+        <label for="story">
+            <figure class="mb-3 w-[70px] h-[70px] rounded-full overflow-hidden">
+                <img src="./assets/user.png" alt="Tu historia" loading="lazy" class="w-full h-full object-cover opacity-80 dark:opacity-100 brightness-110">
+            </figure>
+            <span class="absolute bottom-7 right-1 px-1.5 text-white rounded-full bg-skyblue">+</span>
+            <p>Tu historia</p>
+        </label>
     </div>
     <div v-for="{id, category, images} in stories" :key="id" class="mr-3 text-center">
         <figure class="storie-round mb-3" @click="watchStorie(images, category.name)">
@@ -44,23 +47,6 @@
     })
     let indexStorie = ref(0);
     let { stories } = toRefs(props);
-
-    const getCamera = async () => {
-        if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
-            try{
-                const stream = await navigator.mediaDevices.getUserMedia({
-                    audio: true, 
-                    video: true
-                });
-                window.URL.createObjectURL(stream)
-            }catch(err){
-                alert(err);
-            }
-        }else{
-            alert("No es compatible")
-        }
-
-    }
 
     const watchStorie = (image, name) => {
         userSelected.imageStorie = image;

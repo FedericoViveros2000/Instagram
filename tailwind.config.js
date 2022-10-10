@@ -10,6 +10,7 @@ module.exports = {
     "./src/components/search/*.vue",
     "./src/components/reels/*.vue",
     "./src/components/*vue",
+    "./src/components/chat/contacts/*.vue",
     "./src/views/*.vue",
   ],
   theme: {
