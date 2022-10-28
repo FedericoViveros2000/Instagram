@@ -8,6 +8,7 @@ import ReelsView from "../views/ReelsView.vue";
 import LikedPost from "../components/posts/LikedPostComponent.vue";
 import ChatView from "../Views/ChatView.vue";
 import ChatContactsView from "../Views/ChatContactsView.vue"
+import ProfileView from "../Views/ProfileView.vue"
 
 const routes = [
   {path: "/Instagram", component: PostsView},
@@ -18,7 +19,8 @@ const routes = [
   {path: "/Instagram/discover", component: DiscoverView},
   {path: "/Instagram/likedPosts", component: LikedPost, meta: {transition: "liked"}},
   {path: "/Instagram/chatView", component: ChatView},
-  {path: "/Instagram/chatContactsView", component: ChatContactsView}
+  {path: "/Instagram/chatContactsView", component: ChatContactsView},
+  {path: "/Instagram/profile", component: ProfileView}
   //{path: "/Instagram/profile", component: DarkMode}
 ];
 

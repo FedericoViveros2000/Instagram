@@ -7,14 +7,14 @@
                 <img src="./assets/user.png" alt="Tu historia" loading="lazy" class="w-full h-full object-cover opacity-80 dark:opacity-100 brightness-110">
             </figure>
             <span class="absolute bottom-7 right-1 px-1.5 text-white rounded-full bg-skyblue">+</span>
-            <p>Tu historia</p>
+            <p class="text-sm">Tu historia</p>
         </label>
     </div>
     <div v-for="{id, category, images} in stories" :key="id" class="mr-3 text-center">
         <figure class="storie-round mb-3" @click="watchStorie(images, category.name)">
             <img :src="category.image" :alt="category.name" class="w-full h-full object-cover rounded-full" loading="lazy">
         </figure>
-        <p class="truncate max-w-[70px]">{{category.name}}</p>
+        <p class="truncate max-w-[70px] text-sm">{{category.name}}</p>
     </div>
   </div>
   <Transition
@@ -25,11 +25,22 @@
     leave-active-class="transition-transform duration-300 linear"
     leave-to-class="scale-0"
   >
-    <div class="w-full h-screen fixed z-50 top-0 bg-white" v-if="userSelected.imageStorie.length > 0">
-        <p class="absolute top-5 left-5 text-xs" @click="userSelected.imageStorie = []">{{userSelected.name}}</p>
-        <figure class="h-full w-full">
-            <img :src="userSelected.imageStorie[indexStorie]" :alt="indexStorie" class="w-full h-full object-cover" loading="lazy">
-        </figure>
+    <div class="w-full h-screen fixed z-50 top-0 bg-white dark:bg-black" v-if="userSelected.imageStorie.length > 0">
+        <p class="absolute top-5 left-5 text-sm" @click="userSelected.imageStorie = []">{{userSelected.name}}</p>
+        <div class="w-full h-[92%]">
+            <figure class="h-full w-full">
+                <img :src="userSelected.imageStorie[indexStorie]" :alt="indexStorie" class="h-full object-cover" loading="lazy">
+            </figure>
+            <div class="w-full px-3 mt-3.5 flex items-center">
+                <input type="text" class="w-full outline-0 py-2 dark:bg-black border-[1px] border-white rounded-full text-base px-4 text-black" placeholder="Enviar mensaje">
+                <figure>
+                    <img src="./assets/icons/heart.svg" alt="Me gusta" class="icons w-8 h-8 mx-3">
+                </figure>
+                <figure>
+                    <img src="./assets/icons/send.svg" alt="Enviar" class="icons w-6 h-6 mx-3">
+                </figure>
+            </div>
+        </div>
     </div>
   </Transition>
 </template>
@@ -51,11 +62,11 @@
     const watchStorie = (image, name) => {
         userSelected.imageStorie = image;
         userSelected.name = name;             
-        storieInterval.value = setInterval(() => {
+        /* storieInterval.value = setInterval(() => {
             if (userSelected.imageStorie.length - 1 >= indexStorie.value) {
                 indexStorie.value++;
             }
-        }, 3000);     
+        }, 3000);     */ 
     }
 
     watch(indexStorie, (indexNew, indexOld) => {
@@ -68,7 +79,6 @@
             }, 3000);
         }
     })
-
 </script>
 
 <style>

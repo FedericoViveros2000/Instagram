@@ -7,10 +7,10 @@
           <figure class="w-8 h-8 overflow-hidden rounded-full">
             <img :src="category.image" :alt="title" class="object-cover"> 
           </figure>
-          <p class="font-bold ml-4 text-xs">{{category.name}} </p>
+          <p class="font-bold ml-4 text-base">{{category.name}} </p>
         </div>
         <div class="min-h-[30vh] bg-slate-200 relative dark:bg-slate-800" @dblclick="likedPostDblClick(index, {id, title, category, description})">
-          <p class="absolute top-3 right-3 bg-slate-cant py-1 px-3 text-xs rounded-2xl" v-show="images.length > 1">1/{{images.length}}</p>
+          <p class="absolute top-3 right-3 bg-slate-cant py-1.5 px-3 text-xs rounded-2xl" v-show="images.length > 1">1/{{images.length}}</p>
           <div class="slider">
             <img v-for="image in images" class="h-full object-cover" :key="image" :src="image" :alt="title">
           </div>
@@ -57,7 +57,7 @@
                 <figure class="absolute left-10 top-2">
                   <img src="../assets/icons/comments.svg" alt="Comments icon" class="icons">
                 </figure>
-                <figure class="absolute left-20 top-2" @click="showSend()">
+                <figure class="absolute left-20 top-2" @click="showSend(posts[index])">
                   <img src="../assets/icons/send.svg" alt="Send icon" class="icons mt-0.5 w-6 h-6">
                 </figure>
               </div>
@@ -80,7 +80,7 @@
               </div>
           </div>
           <p class="font-bold text-start mt-3">4.716 Me gusta</p>
-          <p class="text-justify text-xs my-2"><span class="font-bold">{{category.name}}: </span>{{description}}</p>
+          <p class="text-justify text-sm my-2"><span class="font-bold">{{category.name}}: </span>{{description}}</p>
           <p class="text-slate-400 text-start text-xs">Ver los comentarios</p>
           <textarea class="w-full mt-2 h-5 text-xs outline-none dark:bg-black" placeholder="Agregar Comentario..."></textarea>
         </div>
@@ -98,8 +98,6 @@
   import storiesComponent from "../StoriesComponent.vue"
   import loadingPosts from "../skeletons/LoadingPosts.vue"
   import SpinnerComponent from "../SpinnerComponent.vue"
-  //import postsScaleComponent from "./PostsScaleComponent.vue"
-  //const scalePostComponent = defineAsyncComponent(() => import("./PostsScaleComponent.vue"));
   let {dispatch, state, commit} = useStore();
   let lastArticle = ref([]);
   let props = defineProps({
@@ -133,7 +131,7 @@
     let clear = setTimeout(() => {
       showHeart.value[index] = false;
       clearTimeout(clear);
-    }, 500)
+    }, 500);
     commit("likedPost", data);
   }
 
@@ -155,8 +153,10 @@
     heartLike.value[index] ? heartLike.value[index] = false : heartLike.value[index] = true;
     commit("likedPost", data)
   }
-  const showSend = () => commit("message");
-
+  const showSend = (post) => {
+    commit("showSendMessage", post)
+  };
+  
   //Llamando a la funcion que nos permite realizar el scroll infinito, cada vez que se carguen mas articulos.
   onUpdated(() => scrollInfinity(dispatch, "getPosts", offset.value++, lastArticle.value));
 

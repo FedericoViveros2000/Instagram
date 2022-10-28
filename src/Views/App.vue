@@ -13,7 +13,7 @@
         leave-active-class="transition-transform duration-300 linear"
         leave-to-class="translate-y-full"
       >
-        <modal-chat class="fixed bottom-0 z-30" v-if="state.showSendMessage"></modal-chat>
+        <modal-chat class="fixed bottom-0 z-30" v-if="state.sendMessage.show"></modal-chat>
       </Transition>
     </div>
    <!--  <div class="w-full h-screen dark:text-white flex items-center flex-col justify-center text-center  text-base px-5">
@@ -32,6 +32,7 @@ import { useStore } from "vuex";
 import navBarComponent from "../components/NavBarComponent.vue";
 import splashScreen from "../components/skeletons/SplashScreen.vue"
 import searchBarComponent from "../components/SearchBarComponent.vue";
+//import {io} from "socket.io-client"
 let {state} = useStore();
 
 const route = useRouter();
@@ -40,6 +41,7 @@ const modalChat = defineAsyncComponent(() => import("../components/chat/ModalCha
 error.value = computed(() => state.posts.errors);
 let show = ref(true);
 onMounted(() => {
+  //let socket = io("http://localhost:3001/")
   localStorage.mode === 'true' ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
   setTimeout(()=> {
     show.value = false;

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <title>SIFEN</title>
+    <link rel='stylesheet' href='styles.css'/>
+</head>
+<body>
+<header class='container__header'  style='padding-bottom:30px;'>
+    <div class='{cabeceraEstilos}'>
+        <figure>
+            <img src='{logoEmpresa}' class='{logoEstilos}' />
+        </figure>
+        <div class='{cabeceraTexto}'>
+            <p style='font-weight: bold; font-style: italic; font-size: 18px;'>KuDe de { data.GetElementsByTagName("dDesTiDE").Item(0).InnerText }</p>
+            <p class='line'></p>
+            <p style='font-style: italic; font-size: 16px;'>{actividadEconomica}</p>
+        </div>
+    </div>
+   <table class='container__header--items' style='position: relative; top: -10px; font-size: 16px; border: 2px solid {color};'>
+        <tr>
+            <td colspan='2' style='padding-top: 5px; font-weight:bold;'>LA PLATA S.R.L.</td>
+            <td colspan='2' style='padding-top: 5px;'>RUC: 80009568-5</td>
+        </tr>
+        <tr>
+            <td colspan='2' style='padding-top: 5px;'>{direccion}</td>
+            <td colspan='2' style='padding-top: 5px;'>Timbrado N°: { data.GetElementsByTagName("dNumTim").Item(0).InnerText }</td>
+        </tr>
+        <tr>
+            <td colspan='2' style='padding-top: 5px;'>Ciudad: Asuncion(Distrito)</td>
+            <td colspan='2' style='padding-top: 5px;'>Fecha de inicio de Vigencia: { Convert.ToDateTime(data.GetElementsByTagName("dFeIniT").Item(0).InnerText).ToString("d") }</td>
+        </tr>
+        <tr>
+            <td colspan='2' style='padding-top: 5px;'>Teléfono: {telefono}</td>
+            <td colspan='2' style='padding-top: 5px;'></td>
+        </tr>
+        <tr>
+            <td colspan='2' style='padding-top: 5px;'>{urlWeb}</td>
+            <td colspan='2' style='padding-top: 5px; font-weight: bold; text-transform: uppercase;'>{ data.GetElementsByTagName("dDesTiDE").Item(0).InnerText }</td>
+        </tr>
+        <tr>
+            <td colspan='2' style='padding-top: 5px;'>Actividad económica: {actividadEconomica}</td>
+            <td colspan='2' style='padding-top: 5px;'>{ nroFactura }</td>
+        </tr>
+      </table>
+      <table class='container__recep' style='border: 2px solid {color};'>
+                <tr>
+                   <td colspan='2'>Fecha y hora de emisión: { Convert.ToDateTime(data.GetElementsByTagName("dFeEmiDE").Item(0).InnerText).ToString("g") }</td>
+                   <td colspan='2'>RUC/Documento de Identidad N°: { doc }</td>
+                </tr>
+                <tr>
+                   <td colspan='2' style='padding-top: 5px;'>Moneda: { data.GetElementsByTagName("cMoneOpe").Item(0).InnerText }</td>
+                   <td colspan='2' style='padding-top: 5px;'>Nombre o Razón Social: { data.GetElementsByTagName("dNomRec").Item(0).InnerText }</td>
+                 </tr>
+                 <tr>
+                    <td colspan='2' style='padding-top: 5px;'>Documento asociado CDC o preimpreso: { data.GetElementsByTagName("dCdCDERef").Item(0).InnerText }</td>
+                    <td colspan='2'></td>
+                </tr>
+                <tr>
+                    <td colspan='2' style='padding-top: 5px;'>Tipo de documento asociado: { data.GetElementsByTagName("dDesTipDocAso").Item(0).InnerText }</td>
+                    <td colspan='2' style='padding-top: 5px;'>Motivo de la Emisión: { data.GetElementsByTagName("dDesMotEmi").Item(0).InnerText }</td>
+                </tr>
+            </table>
+            <table class='container__items' style='font-size: 14px; border: 2px solid {color};'>
+                <tr>
+                  <th style='width: 10%; border-right:1px solid {color}; padding: 5px;'>Cod</th>
+                  <th style='width: 10%; border-right:1px solid {color}; padding: 5px;'>Cant</th>
+                  <th style='width: 35%; border-right:1px solid {color}; padding: 5px;'>Descripción</th>
+                  <th style='width: 13%; border-right:1px solid {color}; padding: 5px;'>Precio Unitario</th>
+                  <th style='width: 10%; border-right:1px solid {color}; padding: 5px;'>Descuento</th>
+                  <th style='width: 22%; padding: 5px;'>
+                      <table>
+                        <tr style='text-align: center;' rowspan='1'>Valor de Venta</tr>
+                        <tr style='text-align: center;'>
+                            <th style='width:33.3333%; padding: 5px 0px'>Exentas</th>
+                            <th style='width:33.3333%; padding: 5px 0px'>5%</th>
+                            <th style='width:33.3333%; padding: 5px 0px'>10%</th>
+                        </tr>
+                      </table>
+                  </th>
+               </tr>
+           </table>
+  </header>
+</body>
+</html>

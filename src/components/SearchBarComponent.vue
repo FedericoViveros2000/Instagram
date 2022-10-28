@@ -4,11 +4,11 @@
       <img src="../../public/Instagram_name.png" alt="Logo de Instagram" class="w-full h-full dark:brightness-110" loading="lazy">
     </figure>
     <div class="mt-2">
-        <figure class="inline-block mr-3">
-          <router-link to="/Instagram/likedPosts">
-            <img src="./assets/icons/heart.svg" alt="Icono de Like" loading="lazy" class="icons">
-          </router-link>  
-        </figure>
+      <figure class="inline-block mr-3">
+        <router-link to="/Instagram/likedPosts">
+          <img src="./assets/icons/heart.svg" alt="Icono de Like" loading="lazy" class="icons">
+        </router-link>  
+      </figure>
       <figure class="inline-block">
         <router-link to="/Instagram/chatContactsView">
           <img src="./assets/icons/message.svg" alt="Icono de mensajes" class="icons" loading="lazy"/>

@@ -14,8 +14,8 @@
     <router-link to="/Instagram/products">
       <img src="./assets/icons/shop.svg" alt="Productos" class="icons">
     </router-link>
-    <router-link to="/Instagram/">
-      <img src="./assets/icons/users.svg" alt="Perfil" class="icons">
+    <router-link to="/Instagram/Profile">
+      <img src="./assets/user.png" class="w-8 h-8 object-cover outline-0 ring-0 rounded-full" alt="Perfil">
     </router-link> 
   </div>
 </template>

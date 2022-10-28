@@ -28,7 +28,7 @@
         <p>Mensajes</p>
         <p class="text-skyblue">Solicitudes</p>
     </div>
-    <section class="h-auto">
+    <section class="h-auto dark:bg-black">
         <router-link to="/Instagram/chatView">
             <div class="flex items-center justify-between mb-5" v-for="{name} in users" :key="name">
                 <div class="flex">

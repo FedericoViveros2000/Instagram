@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rDE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xsi:schemaLocation="http://ekuatia.set.gov.py/sifen/xsd siRecepDE_v150.xsd"
+    xmlns="http://ekuatia.set.gov.py/sifen/xsd">
+    <dVerFor>150</dVerFor>
+    <DE Id="04800095685001001000001522022101510059211446">
+        <dDVId>6</dDVId>
+        <dFecFirma>2022-10-15T11:11:42</dFecFirma>
+        <dSisFact>1</dSisFact>
+        <gOpeDE>
+            <iTipEmi>1</iTipEmi>
+            <dDesTipEmi>Normal</dDesTipEmi>
+            <dCodSeg>005921144</dCodSeg>
+        </gOpeDE>
+        <gTimb>
+            <iTiDE>4</iTiDE>
+            <dDesTiDE>Autofactura electrónica</dDesTiDE>
+            <dNumTim>12558935</dNumTim>
+            <dEst>001</dEst>
+            <dPunExp>001</dPunExp>
+            <dNumDoc>0000015</dNumDoc>
+            <dSerieNum>AA</dSerieNum>
+            <dFeIniT>2021-08-25</dFeIniT>
+        </gTimb>
+        <gDatGralOpe>
+            <dFeEmiDE>2022-10-15T11:03:12</dFeEmiDE>
+            <gOpeCom>
+                <iTipTra>1</iTipTra>
+                <dDesTipTra>Venta de mercadería</dDesTipTra>
+                <iTImp>1</iTImp>
+                <dDesTImp>IVA</dDesTImp>
+                <cMoneOpe>PYG</cMoneOpe>
+                <dDesMoneOpe>Guarani</dDesMoneOpe>
+            </gOpeCom>
+            <gEmis>
+                <dRucEm>80009568</dRucEm>
+                <dDVEmi>5</dDVEmi>
+                <iTipCont>2</iTipCont>
+                <dNomEmi>DE generado en ambiente de prueba - sin valor comercial ni fiscal</dNomEmi>
+                <dDirEmi>Rio de La Plata</dDirEmi>
+                <dNumCas>145</dNumCas>
+                <cDepEmi>1</cDepEmi>
+                <dDesDepEmi>CAPITAL</dDesDepEmi>
+                <cCiuEmi>1</cCiuEmi>
+                <dDesCiuEmi>ASUNCION (DISTRITO)</dDesCiuEmi>
+                <dTelEmi>0216886600</dTelEmi>
+                <dEmailE>administracion@laplata.com.py</dEmailE>
+                <gActEco>
+                    <cActEco>64913</cActEco>
+                    <dDesActEco>Actividad de los prestamistas</dDesActEco>
+                </gActEco>
+            </gEmis>
+            <gDatRec>
+                <iNatRec>1</iNatRec>
+                <iTiOpe>2</iTiOpe>
+                <cPaisRec>PRY</cPaisRec>
+                <dDesPaisRe>Paraguay</dDesPaisRe>
+                <iTiContRec>2</iTiContRec>
+                <dRucRec>80009568</dRucRec>
+                <dDVRec>5</dDVRec>
+                <dNomRec>La Plata SRL</dNomRec>
+            </gDatRec>
+        </gDatGralOpe>
+        <gDtipDE>
+            <gCamAE>
+                <iNatVen>1</iNatVen>
+                <dDesNatVen>No contribuyente</dDesNatVen>
+                <iTipIDVen>1</iTipIDVen>
+                <dDTipIDVen>Cédula paraguaya</dDTipIDVen>
+                <dNumIDVen>6068467</dNumIDVen>
+                <dNomVen>Jose Viveros</dNomVen>
+                <dDirVen>Calle Principal Nro: 12345</dDirVen>
+                <dNumCasVen>12345</dNumCasVen>
+                <cDepVen>1</cDepVen>
+                <dDesDepVen>CAPITAL</dDesDepVen>
+                <cCiuVen>1</cCiuVen>
+                <dDesCiuVen>ASUNCION (DISTRITO)</dDesCiuVen>
+                <dDirProv>Rio de La Plata</dDirProv>
+                <cDepProv>1</cDepProv>
+                <dDesDepProv>CAPITAL</dDesDepProv>
+                <cCiuProv>1</cCiuProv>
+                <dDesCiuProv>ASUNCION (DISTRITO)</dDesCiuProv>
+            </gCamAE>
+            <gCamCond>
+                <iCondOpe>1</iCondOpe>
+                <dDCondOpe>Contado</dDCondOpe>
+                <gPaConEIni>
+                    <iTiPago>1</iTiPago>
+                    <dDesTiPag>Efectivo</dDesTiPag>
+                    <dMonTiPag>100000</dMonTiPag>
+                    <cMoneTiPag>PYG</cMoneTiPag>
+                    <dDMoneTiPag>Guarani</dDMoneTiPag>
+                </gPaConEIni>
+            </gCamCond>
+            <gCamItem>
+                <dCodInt>217700</dCodInt>
+                <dDesProSer>Notebook; Marca Hp; Modelo Modelo; Nro Serie 198465 , Usado En Buen Estado; Procesador : I5;
+                    Memoria Ram : 16 Gb; Disco</dDesProSer>
+                <cUniMed>77</cUniMed>
+                <dDesUniMed>UNI</dDesUniMed>
+                <dCantProSer>1</dCantProSer>
+                <gValorItem>
+                    <dPUniProSer>100000</dPUniProSer>
+                    <dTotBruOpeItem>100000</dTotBruOpeItem>
+                    <gValorRestaItem>
+                        <dDescItem>0</dDescItem>
+                        <dPorcDesIt>0</dPorcDesIt>
+                        <dDescGloItem>0</dDescGloItem>
+                        <dAntPreUniIt>0</dAntPreUniIt>
+                        <dAntGloPreUniIt>0</dAntGloPreUniIt>
+                        <dTotOpeItem>100000</dTotOpeItem>
+                    </gValorRestaItem>
+                </gValorItem>
+            </gCamItem>
+        </gDtipDE>
+        <gTotSub>
+            <dTotOpe>100000</dTotOpe>
+            <dTotDesc>0</dTotDesc>
+            <dTotDescGlotem>0</dTotDescGlotem>
+            <dTotAntItem>0</dTotAntItem>
+            <dTotAnt>0</dTotAnt>
+            <dPorcDescTotal>0</dPorcDescTotal>
+            <dDescTotal>0</dDescTotal>
+            <dAnticipo>0</dAnticipo>
+            <dRedon>0</dRedon>
+            <dTotGralOpe>100000</dTotGralOpe>
+            <dTotIVA>0</dTotIVA>
+        </gTotSub>
+        <gCamDEAsoc>
+            <iTipDocAso>3</iTipDocAso>
+            <dDesTipDocAso>Constancia Electrónica</dDesTipDocAso>
+            <iTipCons>1</iTipCons>
+            <dDesTipCons>Constancia de no ser contribuyente</dDesTipCons>
+        </gCamDEAsoc>
+    </DE>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+            <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+            <Reference URI="#04800095685001001000001522022101510059211446">
+                <Transforms>
+                    <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                    <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+                </Transforms>
+                <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+                <DigestValue>gOMPgJx00MOFD5+EyT6/KhL5GgeMTwObwbGGjQlbdKA=</DigestValue>
+            </Reference>
+        </SignedInfo>
+        <SignatureValue>
+            klgrO3+5YRJsSK6k59q7JByzi2r4M7rGeMpEwQ09VHnusM1vOZwyelxkZ1N0zLfoSZrce8Mtsv8TDZVc9vb8DwUuCrEDc+hGC7z/YbvAfIr0o1bz1o1IWPKfz6p59rFSSCQjZwS2M7b/EA6gDAlfTw10bLVXHNk0LCV/vk/ZGKZ2J/vITGuKF+H6TW4T91f50xmkmBOJhcIkf6S4RCfemQOs2r9nb9ycefij47Fm1y2TwC81poZQIUluTdPzT5Kq4dQ2BW9164J6C8TCXBfoDp5zmoTnW1TDOs20APhzB1+UXI74n6lGQbp0sWuIqeOBHPg3bn0LdN1YXOWQyZn2MQ==
+        </SignatureValue>
+        <KeyInfo>
+            <X509Data>
+                <X509Certificate>
+                    MIIIrjCCBpagAwIBAgIIBST4GIiKyRcwDQYJKoZIhvcNAQELBQAwWzEXMBUGA1UEBRMOUlVDIDgwMDUwMTcyLTExGjAYBgNVBAMTEUNBLURPQ1VNRU5UQSBTLkEuMRcwFQYDVQQKEw5ET0NVTUVOVEEgUy5BLjELMAkGA1UEBhMCUFkwHhcNMjExMTAxMTcyMDM0WhcNMjIxMTAxMTczMDM0WjCBszELMAkGA1UEBhMCUFkxGjAYBgNVBAQMEUFMVkFSRU5HQSBTQUxJTkFTMRIwEAYDVQQFEwlDSTM5OTk3MzExGjAYBgNVBCoMEUNIUklTVElBTiBBTlRPTklPMRcwFQYDVQQKDA5QRVJTT05BIEZJU0lDQTERMA8GA1UECwwIRklSTUEgRjExLDAqBgNVBAMMI0NIUklTVElBTiBBTlRPTklPIEFMVkFSRU5HQSBTQUxJTkFTMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmrcT/IOT5V1sXe4kE7NqIXID9YmATiT5qqF9msdVGq/k5NW2ngvuRHBJb7Fsd0K6WD3Z+FNzVUn9Mi1So8cr4lePaUJxwQHfF4XJzhznNhq1ljJh/mEi7p0A1j60DxqtJzUYLymwAFys/JfKrtCWaWBGOc8Ir40mc3PhB2Y1bdVl35ljlUi/OkfJAcRyiNfEN2ruLIZZtIMNPJsU1PmSURWTVxmrUINF3VgMShpPYOx8RV/id19bTrwuteUHtHHO5gjOx7DLJ0kuoblQbWYRsBWV4yh2ZPM3GegkAwNyD7+NykP3Zczsu3CK+n7ZFLehPsmD8Pl23J0Zs3GKf5yYwwIDAQABo4IEGzCCBBcwDAYDVR0TAQH/BAIwADAOBgNVHQ8BAf8EBAMCBeAwKgYDVR0lAQH/BCAwHgYIKwYBBQUHAwEGCCsGAQUFBwMCBggrBgEFBQcDBDAdBgNVHQ4EFgQUyUGq8VNRGHSDbBsQ1sH0dN0rP18wgZYGCCsGAQUFBwEBBIGJMIGGMDkGCCsGAQUFBzABhi1odHRwOi8vd3d3LmRvY3VtZW50YS5jb20ucHkvZmlybWFkaWdpdGFsL29zY3AwSQYIKwYBBQUHMAKGPWh0dHBzOi8vd3d3LmRvY3VtZW50YS5jb20ucHkvZmlybWFkaWdpdGFsL2Rlc2Nhcmdhcy9jYWRvYy5jcnQwHwYDVR0jBBgwFoAUQCasJlxij8b1AlTkjcEaJtbupbIwTwYDVR0fBEgwRjBEoEKgQIY+aHR0cHM6Ly93d3cuZG9jdW1lbnRhLmNvbS5weS9maXJtYWRpZ2l0YWwvZGVzY2FyZ2FzL2NybGRvYy5jcmwwgb8GA1UdEQSBtzCBtIEiY2hyaXN0aWFuLmFsdmFyZW5nYUBsYXBsYXRhLmNvbS5weaSBjTCBijE2MDQGA1UECgwtTEEgUExBVEEgU09DSUVEQUQgREUgUkVTUE9OU0FCSUxJREFEIExJTUlUQURBMSIwIAYDVQQMDBlERVNBUlJPTExBRE9SIElORk9STUFUSUNPMRQwEgYDVQQLDAtJTkZPUk1BVElDQTEWMBQGA1UEBRMNUlVDODAwMDk1NjgtNTCCAd0GA1UdIASCAdQwggHQMIIBzAYOKwYBBAGC+TsBAQEFAQEwggG4MD8GCCsGAQUFBwIBFjNodHRwczovL3d3dy5kb2N1bWVudGEuY29tLnB5L2Zpcm1hZGlnaXRhbC9kZXNjYXJnYXMwgcAGCCsGAQUFBwICMIGzGoGwRXN0ZSBlcyB1biBjZXJ0aWZpY2FkbyBkZSBwZXJzb25hIGbtc2ljYSBjdXlhIGNsYXZlIHByaXZhZGEgZXN04SBjb250ZW5pZGEgZW4gdW4gbfNkdWxvIGRlIHNvZnR3YXJlIHNlZ3VybyBjdXlhIGZpbmFsaWRhZCBlcyBhdXRlbnRpY2FyIGEgc3UgdGl0dWxhciBvIGdlbmVyYXIgZmlybWFzIGRpZ2l0YWxlcy4wgbEGCCsGAQUFBwICMIGkGoGhVGhpcyBpcyBhbiBlbmQgdXNlciBjZXJ0aWZpY2F0ZSB3aG9zZSBwcml2YXRlIGtleSBpcyBlbWJlZGRlZCB3aXRoaW4gYSBzZWN1cmUgc29mdHdhcmUgbW9kdWxlIHRoYXQgYWltcyB0byBhdXRoZW50aWNhdGUgaXRzIG93bmVyIG9yIGdlbmVyYXRlIGRpZ2l0YWwgc2lnbmF0dXJlcy4wDQYJKoZIhvcNAQELBQADggIBAPVEPGklWOjBa8ouZieL6B2PJWdPI6DOhRfufcPrxPm4T9FWArsy8SZQVTOt6CN4EKrjY/UjleHTC/5LfCqtX9P0jtpTS6ipGBM6wDNjSCbubQ+717bAHmvlqV5OHBX5B50Hmnz+RErqFTOV+yADGNUVjiXdGSml8/SWKgZTW48uVDTRcurNA1z/entSHs/eSxRk9Xbw1YBwsyXlcvKlS4JPT7eZ3wqOsBDvjx7L7k3qxloPdpyIuMc5O5n9rd6VsvHKDeXgLUI4iNfEIF54fsQ2wodFuFSM8Kd2flwg4towSz2Q4rIMLBPbaZbNadTLhLcYqnBUkWHVCapIj1cbPPdj9BCyLKCk9h7Pz55YszKD/zd0D9Z8fXgc2fpkc7OGYmfW5J31zk9h5ErtvG3MnilrEIAPqfYZ/oKSJ5gkXxe2lpAqOcGaEiHpx55byRN789LPxVQjJEZiZKiss4o3BUgs3zNN9RB3F1p7rT8TAPR9Cadeqq9e4vRstaMNlu/g2uqQLxSZyJiX+T0cyLfPUCOoC83rvbxuKiyKNZH4+iRfzSKJxsd4H7jzTDVksQ0xgxGn3kK1hCsjAptq2hC1nLsfyNgwoSnKhx3iJlhdwo4y4xDW1tor6P3ZTie8nXLewBUEvAQaKu0XNmxAUL0Oowebr1aLYOdBZcIWtu2GwEpJ
+                </X509Certificate>
+            </X509Data>
+        </KeyInfo>
+    </Signature>
+    <gCamFuFD>
+        <dCarQR>
+            https://ekuatia.set.gov.py/consultas-test/qr?nVersion=150&amp;Id=04800095685001001000001522022101510059211446&amp;dFeEmiDE=323032322d31302d31355431313a30333a3132&amp;dRucRec=80009568&amp;dTotGralOpe=100000&amp;dTotIVA=0&amp;cItems=1&amp;DigestValue=674f4d50674a7830304d4f4644352b457954362f4b684c354767654d54774f62776247476a516c62644b413d&amp;IdCSC=0002&amp;cHashQR=2c234a90aef8d55a52c2653966b1c44181d290b2f1d9eb656957f1501b56231c
+        </dCarQR>
+    </gCamFuFD>
+</rDE>
