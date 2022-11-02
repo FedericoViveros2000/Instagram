@@ -53,15 +53,11 @@
 </template>
 
 <script setup>
-    import {defineProps, onMounted, toRefs} from "vue";
+    import {defineProps, toRefs} from "vue";
     let props = defineProps({
         users: []
     });
 
     let {users} = toRefs(props);
-
-    onMounted(() => {
-        console.log(users);
-    })
 </script>
 

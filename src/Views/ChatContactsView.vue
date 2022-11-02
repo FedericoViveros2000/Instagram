@@ -13,7 +13,7 @@
     } = import.meta.env;
     import axios from "axios"
     let contact = ref([]);
-    onMounted(async ()=> {
+    onMounted(async () => {
         let {data} = await axios.get(urlContacts);
         contact.value = data;
     })
