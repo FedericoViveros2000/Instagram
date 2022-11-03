@@ -9,7 +9,7 @@ const users = {
     },
     mutations: {
         setPostsDiscover(state, payload) {
-            state.postsDiscover = payload;
+            state.postsDiscover.push(...payload);
         }
     },
     actions: {

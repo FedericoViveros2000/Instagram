@@ -2,6 +2,7 @@ const {VITE_API_PRODUCTS: urlProducts} = import.meta.env;
 let offsetRecieved = 1;
 const scrollInfinity = (dispatch, dispatchName, offset = offsetRecieved, lastArticle,  limit = 10) => {
   //Opciones para la API Intersection Observer
+
   let options = {
     root: null,
     rootMargin: '0px',
@@ -12,6 +13,8 @@ const scrollInfinity = (dispatch, dispatchName, offset = offsetRecieved, lastArt
     entries.forEach(entry => {
       let { isIntersecting } = entry;
       if (isIntersecting) {
+        // console.log(offset);
+        // console.log(limit);
         let urlProductsPaginated = `${urlProducts}?offset=${offset}&limit=${limit}`
         dispatch(dispatchName, urlProductsPaginated);
       }

@@ -22,42 +22,45 @@
         <figure>
             <img src="../../assets/icons/magnify.svg" alt="Icono de lupa" class="icons w-6 h-6">
         </figure>
-        <input type="text" class="inputSearch px-3" placeholder="Buscar">
+        <input type="text" v-model="contacts" class="inputSearch px-3" placeholder="Buscar">
     </div>
     <div class="flex items-center my-3 justify-between py-3">
         <p>Mensajes</p>
         <p class="text-skyblue">Solicitudes</p>
     </div>
     <section class="h-auto dark:bg-black">
-        <router-link to="/Instagram/chatView">
-            <div class="flex items-center justify-between mb-5" v-for="{name} in users" :key="name">
-                <div class="flex">
-                    <figure class="mr-5">
-                        <img src="https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg" alt="Imagen de usuario" class="w-12 h-12 rounded-full object-cover">
-                    </figure>
-                    <div>
-                        <p>{{name}}</p>
-                        <p>{{name}} reaccionó a tu mensaje</p>
+            <div class="flex items-center justify-between mb-5" v-for="{name} in coincident" :key="name">
+                <router-link to="/Instagram/chatView">
+                    <div class="flex">
+                        <figure class="mr-5">
+                            <img src="https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg" alt="Imagen de usuario" class="w-12 h-12 rounded-full object-cover">
+                        </figure>
+                        <div>
+                            <p>{{name}}</p>
+                            <p>{{name}} reaccionó a tu mensaje</p>
+                        </div>
                     </div>
-                </div>
+                </router-link>
                 <figure>
-                    <input type="file" id="camera" capture="user" class="relative right-0 hidden">
-                    <label for="camera">
+                    <label>
+                        <input type="file" capture="user" class="relative right-0 hidden">
                         <img src="../../assets/icons/bxs-camera.svg" alt="Icono de camara" class="w-7 h-7 object-cover">
                     </label>
                 </figure>
             </div>
-        </router-link>
     </section>
   </div>
 </template>
 
 <script setup>
-    import {defineProps, toRefs} from "vue";
+    import {defineProps, toRefs, ref, computed} from "vue";
     let props = defineProps({
         users: []
     });
-
+    let contacts = ref("");
+    let coincident = ref([]);
     let {users} = toRefs(props);
+
+    coincident.value = computed(() => users.value.filter(({name}) => name.toLowerCase().split('').join('').includes(contacts.value.toLowerCase().split('').join(''))))
 </script>
 

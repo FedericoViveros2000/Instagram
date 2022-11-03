@@ -25,10 +25,13 @@
     let props = defineProps({
         users: []
     })
+    
     document.addEventListener("error", e => {
-        console.log(e.target);
         e.target.src = "../assets/delivery-box.png";
     });
+
     let {users} = toRefs(props);
-    const removeUser = (idUser) => users.value.splice(idUser, 1);
+    
+    const removeUser = (indexUser) => users.value.splice(indexUser, 1);
+ 
 </script>

@@ -10,9 +10,12 @@
             <figure class="mr-3">
               <img src="../components/assets/icons/bx-microphone.svg" alt="Microphone icon" class="w-14">
             </figure>
-            <figure class="mr-3">
-              <img src="../components/assets/icons/bx-image.svg" alt="Image Icon" class="w-14">
-            </figure>
+            <label>
+            <input type="file" class="hidden">
+              <figure class="mr-3">
+                <img src="../components/assets/icons/bx-image.svg" alt="Image Icon" class="w-16">
+              </figure>
+            </label>
             <figure>
               <img src="../components/assets/icons/bx-sticker.svg" alt="Sticker Icon" class="w-14">
             </figure>

@@ -25,7 +25,7 @@
     let coincident = ref([]);
     let users = ref([]);
 
-    coincident.value = computed(() => users.value.filter(({name}) => name.toLowerCase().split(' ').join('').includes(userSearch.value.toLowerCase().split(' ').join(''))))
+    coincident = computed(() => users.value.filter(({name}) => name.toLowerCase().split(' ').join('').includes(userSearch.value.toLowerCase().split(' ').join(''))))
 
     onMounted(async () => {
         try {

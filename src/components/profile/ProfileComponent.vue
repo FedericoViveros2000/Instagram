@@ -48,10 +48,15 @@
     <p class="font-semibold mt-5">Historias destacadas</p>
     <p class="mt-1">Guarda tus historias favoritas en el perfil</p>
     <ul class="flex max-w-screen overflow-x-auto mt-3">
-        <li class="bg-black border-2 border-white p-5 rounded-full mr-3">
-            <img src="../assets/icons/bx-plus.svg" alt="" class="icons">
+        <label for="destacados">
+            <input type="file" capture="user" class="hidden" id="destacados">
+            <li class="bg-black border-2 flex items-center justify-center border-white w-[70px] h-[70px] rounded-full mr-3">
+                <img src="../assets/icons/bx-plus.svg" alt="" class="icons">
+            </li>
+        </label>
+        <li class="storie-round p-1 w-[70px] h-[70px] overflow-hidden mr-3">
+            <img src="https://tailwindcss.com/_next/static/media/sarah-dayan.a620c98f.jpg" alt="" class="w-full h-full object-cover rounded-full">
         </li>
-        <li class="bg-slate-600 w-[70px] h-[70px] rounded-full mr-3"></li>
     </ul>
   </div>
 </template>
@@ -71,7 +76,6 @@
         try {
             let {data} = await axios.get(urlContacts);
             users.value = await data;
-            console.log(users.value);
         } catch (error) {
             console.log(`ERROR ${error}`);
         }
