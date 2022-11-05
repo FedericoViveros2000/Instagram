@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-    import {toRefs, defineProps} from "vue";
+    import {toRefs, defineProps, onMounted} from "vue";
     let props = defineProps({
         users: []
     })
@@ -31,7 +31,7 @@
     });
 
     let {users} = toRefs(props);
-    
-    const removeUser = (indexUser) => users.value.splice(indexUser, 1);
  
+    const removeUser = (indexUser) => users.value.splice(indexUser, 1);
+
 </script>

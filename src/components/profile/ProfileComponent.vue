@@ -70,8 +70,7 @@
         VITE_API_CONTACTS: urlContacts
     } = import.meta.env;
 
-    let users = ref([]);
-
+    let users = ref([]);    
     onMounted(async () => {
         try {
             let {data} = await axios.get(urlContacts);

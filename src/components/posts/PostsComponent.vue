@@ -2,7 +2,7 @@
   <loading-posts v-if="!posts"></loading-posts>
   <div class="absolute top-14" ref="container" v-else>
     <stories-component :stories="posts"></stories-component>
-    <div class="mt-5" v-for="({id, title, images, category, description}, index) in posts" :key="id" :ref="(el)=> lastArticle = el">
+    <div class="mt-5" v-for="({id, title, images, category, description}, index) in posts" :key="id" :ref="(el)=> lastArticle[index] = el">
         <div class="flex items-center mb-3 mx-3">
           <figure class="w-8 h-8 overflow-hidden rounded-full">
             <img :src="category.image" :alt="title" class="object-cover"> 
@@ -10,9 +10,9 @@
           <p class="font-bold ml-4 text-base">{{category.name}} </p>
         </div>
         <div class="min-h-[30vh] bg-slate-200 relative dark:bg-slate-800" @dblclick="likedPostDblClick(index, {id, title, category, description})">
-          <p class="absolute top-3 right-3 bg-slate-cant py-1.5 px-3 text-xs rounded-2xl" v-show="images.length > 1">1/{{images.length}}</p>
+          <p class="absolute top-3 right-3 bg-slate-cant py-1.5 px-3 text-xs rounded-2xl" v-show="images.length > 1">{{imageShow}}/{{images.length}}</p>
           <div class="slider">
-            <img v-for="image in images" class="h-full object-cover" :key="image" :src="image" :alt="title">
+            <img v-for="(image, index) in images" class="h-full object-cover" :key="image" :src="image" :alt="index" :ref="(el) => lastPhoto.push(el)">
           </div>
           <Transition name="bounce">
             <div class="instagram-heart absolute top-0" v-show="showHeart[index]"></div>
@@ -94,7 +94,7 @@
 <script setup>
   import {useStore} from "vuex";
   import {defineProps, toRefs, ref, onUpdated, reactive} from "vue";
-  import scrollInfinity from "../../api/infinityScroll.js"
+  import scrollInfinity/* , {postsIsIntersected} */ from "../../api/infinityScroll.js"
   import storiesComponent from "../StoriesComponent.vue"
   import loadingPosts from "../skeletons/LoadingPosts.vue"
   import SpinnerComponent from "../SpinnerComponent.vue"
@@ -112,7 +112,7 @@
     name: '',
     image: ''
   });
-
+  let lastPhoto = ref([]);
   let showHeart = ref([]);
   let savePost = reactive({
     post: [],
@@ -120,6 +120,7 @@
     showSavedMessage: "",
     bootMark: []
   })
+  let imageShow = ref(1);
 
   let {posts} = toRefs(props);
   let heartLike = ref([]);
@@ -156,9 +157,35 @@
   const showSend = (post) => {
     commit("showSendMessage", post)
   };
-  
+
   //Llamando a la funcion que nos permite realizar el scroll infinito, cada vez que se carguen mas articulos.
-  onUpdated(() => scrollInfinity(dispatch, "getPosts", offset.value++, lastArticle.value));
+  onUpdated(() => {
+    //scrollInfinity(dispatch, "getPosts", offset.value++, lastArticle.value)
+    //postsIsIntersected(lastPhoto.value);
+    const postsIsIntersected = (parentElement) => {
+      let options = {
+        root: null,
+        rootMargin: '100px',
+        threshold: 1.0
+      }
+
+      let callback = (entries, observer) => {
+        entries.forEach((entry) => {
+         if (entry.isIntersecting) {
+          imageShow.value = entry.target.alt;
+         }
+        })
+      }
+      
+      const observer = new IntersectionObserver(callback, options);
+
+      //observer.observe(parentElement);
+      parentElement.forEach(image => {
+        observer.observe(image)
+      })
+    }
+    postsIsIntersected(lastPhoto.value)
+  });
 
 </script>
 

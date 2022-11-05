@@ -1032,8 +1032,8 @@ html {
   max-height: 70%;
 }
 
-.max-h-64 {
-  max-height: 16rem;
+.max-h-72 {
+  max-height: 18rem;
 }
 
 .max-h-\[92vh\] {
@@ -1493,6 +1493,14 @@ html {
 
 .pb-1 {
   padding-bottom: 0.25rem;
+}
+
+.pt-1 {
+  padding-top: 0.25rem;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
 }
 
 .pb-5 {
