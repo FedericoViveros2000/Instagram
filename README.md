@@ -120,3 +120,6 @@ Esta aplicación actualmente se encuentra en desarrollo, por lo cual puede prese
 
 * Gmail: josevivers2000@gmail.com
 
+
+
+

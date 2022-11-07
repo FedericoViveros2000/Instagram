@@ -1,4 +1,5 @@
 <template>
+<div class="w-full">
   <div class="w-full py-3 text-2xl bg-white dark:bg-black fixed z-30 bottom-0 right-0 flex justify-between items-center px-5">
     <router-link to="/Instagram/">
       <figure>
@@ -18,6 +19,12 @@
       <img src="./assets/user.png" class="w-8 h-8 object-cover outline-0 ring-0 rounded-full" alt="Perfil">
     </router-link> 
   </div>
+  <div class="w-full bg-slate-800 rounded-lg py-5 px-5 fixed bottom-0 z-50" v-if="showInstall">
+    <p class="text-center">¿Desea instalar la aplicación?</p>
+    <p class="w-full bg-skyblue text-white text-center rounded-md py-1.5 my-5 cursor-pointer" @click="installPWA">Instalar</p>
+    <p class="w-full text-white text-center rounded-md py-1 cursor-pointer" @click="showInstall = false">Cancelar</p>
+  </div>
+</div>
 </template>
 
 <script setup>
@@ -36,7 +43,6 @@
       e.preventDefault();
       userInstall.value = e;
       showInstall.value = true;
-      console.log(showInstall.value);
     })
   })
 </script>

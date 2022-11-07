@@ -1,7 +1,7 @@
 <template>
   <div class="h-full pb-20 dark:bg-black w-full absolute top-0 z-30 px-4 overflow-y-auto">
     <nav class="flex items-center justify-between py-3">
-        <h3 class="text-lg">josfe2</h3>
+        <h3 class="text-lg">jose</h3>
         <div class="flex">
             <figure class="border-2  border-white rounded-lg mx-3">
                 <img src="../assets/icons/bx-plus.svg" alt="" class="icons w-6 h-6">
@@ -32,7 +32,7 @@
             </section>
         </div>
         <div class="mt-3 leading-6 text-sm">
-            <p>JosFe</p>
+            <p>Jose</p>
             <p>Seccion de perfil en desarrollo</p>
         </div>
         <div class="mt-3 flex">
