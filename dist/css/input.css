@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap');
+
+@layer base{
+    html {
+        font-family: 'Roboto', sans-serif;
+    }
+    .btn {
+       @apply w-full bg-skyblue rounded-md py-3 text-white;
+    }
+    .icons {
+        @apply w-7 h-7 object-cover dark:invert outline outline-0;
+    }
+    .icons-post {
+        @apply w-7 h-7 object-cover outline outline-0;
+    }
+    .icon-no-like {
+        @apply w-7 h-7 object-cover outline outline-0 dark:invert;
+    }
+    .inputSearch {
+        @apply w-full px-1.5 py-2 outline-0 bg-slate-100 dark:bg-slate-600;
+    }
+}

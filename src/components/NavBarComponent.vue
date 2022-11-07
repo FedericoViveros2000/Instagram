@@ -19,3 +19,24 @@
     </router-link> 
   </div>
 </template>
+
+<script setup>
+  import {onBeforeMount, ref} from "vue";
+  let showInstall = ref(false);
+  let userInstall = ref("");
+  const installPWA = async () => {
+    userInstall.value.prompt();
+    let accept = await userInstall.value.userChoice;
+    if (accept.outcome === 'accepted') {
+      console.log('User install the app');
+    }
+  }
+  onBeforeMount(() => {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      userInstall.value = e;
+      showInstall.value = true;
+      console.log(showInstall.value);
+    })
+  })
+</script>
