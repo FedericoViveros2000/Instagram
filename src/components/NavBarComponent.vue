@@ -21,8 +21,8 @@
   </div>
   <div class="w-full bg-slate-800 rounded-lg py-5 px-5 fixed bottom-0 z-50" v-if="showInstall">
     <p class="text-center">¿Desea instalar la aplicación?</p>
-    <p class="w-full bg-skyblue text-white text-center rounded-md py-1.5 my-5" @click="installPWA">Instalar</p>
-    <p class="w-full text-white text-center rounded-md py-1">Cancelar</p>
+    <p class="w-full bg-skyblue text-white text-center rounded-md py-1.5 my-5 cursor-pointer" @click="installPWA">Instalar</p>
+    <p class="w-full text-white text-center rounded-md py-1 cursor-pointer" @click="showInstall = false">Cancelar</p>
   </div>
 </div>
 </template>
@@ -43,7 +43,6 @@
       e.preventDefault();
       userInstall.value = e;
       showInstall.value = true;
-      console.log(showInstall.value);
     })
   })
 </script>
