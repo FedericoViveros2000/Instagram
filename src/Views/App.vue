@@ -41,7 +41,6 @@ const modalChat = defineAsyncComponent(() => import("../components/chat/ModalCha
 error.value = computed(() => state.posts.errors);
 let show = ref(true);
 onMounted(() => {
-  //let socket = io("http://localhost:3001/")
   localStorage.mode === 'true' ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
   setTimeout(()=> {
     show.value = false;
