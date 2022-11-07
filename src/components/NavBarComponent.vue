@@ -28,18 +28,18 @@
 </template>
 
 <script setup>
-  import {onMounted, ref} from "vue";
+  import {onBeforeMount, ref} from "vue";
   let showInstall = ref(false);
   let userInstall = ref("");
   const installPWA = async () => {
-    userInstall.prompt();
+    userInstall.value.prompt();
     let accept = await userInstall.value.userChoice;
     if (accept.outcome === 'accepted') {
-      
+      console.log('User install the app');
     }
   }
-  onMounted(() => {
-    window.addEventListener('beforeinstallprompt', e => {
+  onBeforeMount(() => {
+    window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       userInstall.value = e;
       showInstall.value = true;

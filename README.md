@@ -109,7 +109,7 @@ Vite js| Entorno de desarrollo utilizado para crear y modificar la aplicación, 
 
 ## Observación: 
 ```
-Esta aplicación actualmente se encuentra en desarrollo, por lo cual puede presentar errores y  modificaciones.
+Esta aplicación actualmente se encuentra en desarrollo, por lo cual puede presentar errores y modificaciones.
 ```
 
 ## Autor
