@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/FedericoViveros2000/Instagram" target="_blank">
-        <img src="Instagram_screen.png" width="180"/>
+        <img src="instagram_screen.png" width="180"/>
     </a>
 </p>
 
@@ -8,35 +8,35 @@
 
 Este es un clon de Instagram desarrollado con tecnologías web como lo son HTML, CSS, Javascript (utilizando el framework progresivo Vue js).
 
-<div style="width: 100%; display:flex; flex-wrap: wrap; justify-content: space-between;">
+<div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between;">
     <a href="https://federicoviveros2000.github.io/Instagram/" target="_blank">
-        <figure style="width: 300px;">
-            <img src="Instagram_preview.png"  style="width: 100%; object-fit:cover; border-radius: 5px;"/>
+        <figure>
+            <img src="Instagram_preview.png"  style="object-fit:cover; border-radius: 5px;" width="300"/>
         </figure>
     </a>
     <a href="https://federicoviveros2000.github.io/Instagram/discover" target="_blank">
-        <figure style="width: 300px;">
-            <img src="Instagram_discover.png"  style="width: 100%; object-fit:cover; border-radius: 5px;"/>
+        <figure>
+            <img src="Instagram_discover.png"  style="object-fit:cover; border-radius: 5px;"  width="300"/>
         </figure>
     </a>
     <a href="https://federicoviveros2000.github.io/Instagram/users" target="_blank">
-        <figure style="width: 300px;">
-            <img src="Instagram_users.png"  style="width: 100%; object-fit:cover; border-radius: 5px;"/>
+        <figure>
+            <img src="Instagram_users.png"  style="object-fit:cover; margin: 0px 10px; border-radius: 5px;" width="300"/>
         </figure>
     </a>
     <a href="https://federicoviveros2000.github.io/Instagram/reels" target="_blank">
-        <figure style="width: 300px;">
-            <img src="Instagram_chat.png"  style="width: 100%; object-fit:cover; border-radius: 5px;"/>
+        <figure>
+            <img src="Instagram_chat.png"  style="object-fit:cover; border-radius: 5px;" width="300"/>
         </figure>
     </a>
     <a href="https://federicoviveros2000.github.io/Instagram/" target="_blank">
-        <figure style="width: 300px;">
-            <img src="Instagram_shop.png"  style="width: 100%; object-fit:cover; border-radius: 5px;"/>
+        <figure>
+            <img src="Instagram_shop.png"  style="object-fit:cover;  margin: 0px 10px; border-radius: 5px;" width="300"/>
         </figure>
     </a>
     <a href="https://federicoviveros2000.github.io/Instagram/Profile" target="_blank">
-        <figure style="width: 300px;">
-            <img src="Instagram_profile.png"  style="width: 100%; object-fit:cover; border-radius: 5px;"/>
+        <figure>
+            <img src="Instagram_profile.png"  style="object-fit:cover; border-radius: 5px;" width="300"/>
         </figure>
     </a>
 </div>
@@ -44,7 +44,7 @@ Este es un clon de Instagram desarrollado con tecnologías web como lo son HTML,
 ## Caracteristicas
 * Incorpora el sistema de navegación mediante *Infinity Scroll*, el cual nos permite optimizar la carga de los Posts y recursos de la aplicación.
 
-* Incorpora [*lazy loading*](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading) para la carga diferida de imagenes, el cual provee una mayor sensación de velocidad y fluidez al usuario.
+* Incorpora ![*lazy loading*](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading) para la carga diferida de imagenes, el cual provee una mayor sensación de velocidad y fluidez al usuario.
 
 * Para el proceso de carga de los posts, utiliza el sistema de *spinners* mediante el cual da un mayor sensación de control al usuario respecto al estado en el cual se encuentra la aplicación.
 
@@ -52,7 +52,7 @@ Este es un clon de Instagram desarrollado con tecnologías web como lo son HTML,
 
 * Incorpora la característica nativa de adaptar el tema o modo de la aplicación (modo oscuro o claro) de acuerdo a la configuración del sistema.
 
-* Posee la capacidad de poder instalarse en el dispositivo como una [*Aplicación web progresiva (PWA)*](https://web.dev/what-are-pwas/).
+* Posee la capacidad de poder instalarse en el dispositivo como una ![*Aplicación web progresiva (PWA)*](https://web.dev/what-are-pwas/).
 
 ## API REST utilizada.
 
@@ -65,7 +65,7 @@ Este es un clon de Instagram desarrollado con tecnologías web como lo son HTML,
     </figure>
 </a>
 
-La API REST utilizada para esta ocasión fue la de [Fake Store API](https://fakeapi.platzi.com/). Con los siguientes endpoints:
+La API REST utilizada para esta ocasión fue la de ![Fake Store API](https://fakeapi.platzi.com/). Con los siguientes endpoints:
 
 
 * Para obtener las categorias de los productos de la tienda:
@@ -110,11 +110,12 @@ Vite js| Entorno de desarrollo utilizado para crear y modificar la aplicación, 
 ## Observación: 
 ```
 Esta aplicación actualmente se encuentra en desarrollo, por lo cual puede presentar errores y modificaciones.
+Solo se encuentra disponible para dispositivos móviles.
 ```
 
 ## Autor
 
-* José Viveros [github/José](https://github.com/FedericoViveros2000).
+* José Viveros ![github/José](https://github.com/FedericoViveros2000).
 
 ## Contacto
 
