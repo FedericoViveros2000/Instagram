@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full absolute top-0 z-30 bg-black">
     <section class="w-full pb-10" ref="containerArticles">
       <div class="w-full px-4 my-4">
         <p class="font-bold text-xl">Tienda</p>

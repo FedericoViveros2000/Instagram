@@ -3,7 +3,12 @@
     <figure class="h-8 mt-2 dark:invert">
       <img src="../../public/Instagram_name.png" alt="Logo de Instagram" class="w-full h-full dark:brightness-110" loading="lazy">
     </figure>
-    <div class="mt-2">
+    <div class="mt-2 flex items-center">
+      <figure class="inline-block mr-3 border-2 border-white rounded-lg">
+        <router-link to="/Instagram/likedPosts">
+          <img src="./assets/icons/bx-plus.svg" alt="Icono de Like" loading="lazy" class="icons w-5 h-5">
+        </router-link>  
+      </figure>
       <figure class="inline-block mr-3">
         <router-link to="/Instagram/likedPosts">
           <img src="./assets/icons/heart.svg" alt="Icono de Like" loading="lazy" class="icons">
@@ -13,6 +18,7 @@
         <router-link to="/Instagram/chatContactsView">
           <img src="./assets/icons/message.svg" alt="Icono de mensajes" class="icons" loading="lazy"/>
         </router-link>
+        <span class="absolute text-xs font-medium bg-likeColor py-0.5 px-1.5 rounded-full top-1.5 right-1">1</span>
       </figure>
     </div>
     <Transition

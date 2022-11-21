@@ -19,11 +19,20 @@
       <img src="./assets/user.png" class="w-8 h-8 object-cover outline-0 ring-0 rounded-full" alt="Perfil">
     </router-link> 
   </div>
-  <div class="w-full bg-slate-800 rounded-lg py-5 px-5 fixed bottom-0 z-50" v-if="showInstall">
-    <p class="text-center">¿Desea instalar la aplicación?</p>
-    <p class="w-full bg-skyblue text-white text-center rounded-md py-1.5 my-5 cursor-pointer" @click="installPWA">Instalar</p>
-    <p class="w-full text-white text-center rounded-md py-1 cursor-pointer" @click="showInstall = false">Cancelar</p>
-  </div>
+   <Transition
+      enter-from-class="translate-y-full"
+      enter-active-class="transition-transform duration-500 linear"
+      enter-to-class="translate-y-0"
+      leave-from-class="translate-y-0"
+      leave-active-class="transition-transform duration-500 linear"
+      leave-to-class="translate-y-full"
+    >
+      <div class="w-full bg-slate-800 rounded-lg py-5 px-5 fixed bottom-0 z-50" v-if="showInstall">
+        <p class="text-center">¿Desea instalar la aplicación?</p>
+        <p class="w-full bg-skyblue text-white text-center rounded-md py-1.5 my-5 cursor-pointer" @click="installPWA">Instalar</p>
+        <p class="w-full text-white text-center rounded-md py-1 cursor-pointer" @click="showInstall = false">Cancelar</p>
+      </div>
+   </Transition>
 </div>
 </template>
 
@@ -42,6 +51,8 @@
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       userInstall.value = e;
+      console.log("aplicacion no instalada");
+      console.log(showInstall.value);
       showInstall.value = true;
     })
   })

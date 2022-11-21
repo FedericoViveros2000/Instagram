@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mt-14">
+  <div class="w-full">
     <!-- <categories-component></categories-component> -->
     <product-async-component :products="products"></product-async-component>
   </div>

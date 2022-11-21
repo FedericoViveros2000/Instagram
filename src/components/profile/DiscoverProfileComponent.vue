@@ -4,8 +4,8 @@
       <p class="text-right w-full text-base" @click="deleteUser(index)">
         <i class="fa-solid fa-xmark"></i>
       </p>
-      <figure class="w-[150px]">
-        <img :src="avatar" :alt="name" class="w-24 h-24 object-cover rounded-full mx-auto">
+      <figure class="w-[150px] ">
+        <img :src="avatar" :alt="name" class="w-24 h-24 object-cover rounded-full bg-slate-600 mx-auto">
       </figure>
       <p class="text-center capitalize mt-1">{{name}}</p>
       <p class="text-center font-thin"><span class="capitalize">{{name}}</span> personas lo siguen</p>

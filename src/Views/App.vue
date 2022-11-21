@@ -32,15 +32,37 @@ import { useStore } from "vuex";
 import navBarComponent from "../components/NavBarComponent.vue";
 import splashScreen from "../components/skeletons/SplashScreen.vue"
 import searchBarComponent from "../components/SearchBarComponent.vue";
+//import supabase from "../helpers/supabase";
+
 //import {io} from "socket.io-client"
 let {state} = useStore();
 
 const route = useRouter();
-let error = ref(false);
-const modalChat = defineAsyncComponent(() => import("../components/chat/ModalChatComponent.vue"))
-error.value = computed(() => state.posts.errors);
 let show = ref(true);
+let error = ref(false);
+const modalChat = defineAsyncComponent(() => import("../components/chat/ModalChatComponent.vue"));
+
+error.value = computed(() => state.posts.errors);
+
+/* const handleLogin = async () => {
+  try {
+    const { error } = await supabase.auth.signInWithOtp({
+      email: 'josevivers2000@gmail.com'
+    })
+
+    if (error) throw error;
+
+    alert('Check your email for the login link! ');
+
+  } catch (err) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+  }
+} */
+
 onMounted(() => {
+  //handleLogin();
   localStorage.mode === 'true' ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
   setTimeout(()=> {
     show.value = false;

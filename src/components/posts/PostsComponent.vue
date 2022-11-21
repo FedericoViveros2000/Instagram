@@ -2,7 +2,7 @@
   <loading-posts v-if="!posts"></loading-posts>
   <div class="absolute top-14" ref="container" v-else>
     <stories-component :stories="posts"></stories-component>
-    <div class="mt-5" v-for="({id, title, images, category, description}, index) in posts" :key="id" :ref="(el)=> lastArticle[index] = el">
+    <div class="mt-5" v-for="({id, title, images, category, description}, index) in posts" :key="id" :ref="(el) => lastArticle[index] = el">
         <div class="flex items-center mb-3 mx-3">
           <figure class="w-8 h-8 overflow-hidden rounded-full">
             <img :src="category.image" :alt="title" class="object-cover"> 
@@ -10,9 +10,10 @@
           <p class="font-bold ml-4 text-base">{{category.name}} </p>
         </div>
         <div class="min-h-[30vh] bg-slate-200 relative dark:bg-slate-800" @dblclick="likedPostDblClick(index, {id, title, category, description})">
-          <p class="absolute top-3 right-3 bg-slate-cant py-1.5 px-3 text-xs rounded-2xl" v-show="images.length > 1">{{imageShow}}/{{images.length}}</p>
+          <p class="absolute top-3 right-3 bg-slate-cant py-1.5 px-3 text-xs rounded-2xl" v-show="images.length > 1">{{imageShow >= 1 ? imageShow : imageShow = 1}}/{{images.length}}</p>
           <div class="slider">
-            <img v-for="(image, index) in images" class="h-full object-cover" :key="image" :src="image" :alt="index" :ref="(el) => lastPhoto.push(el)">
+          <!--   :ref="(el) => lastPhoto.push(el)" -->
+            <img v-for="(image, index) in images" class="h-full object-cover" :key="image" :src="image" :alt="index">
           </div>
           <Transition name="bounce">
             <div class="instagram-heart absolute top-0" v-show="showHeart[index]"></div>
@@ -25,7 +26,7 @@
             leave-active-class="transition-transform duration-700 linear"
             leave-to-class="translate-y-full"
           >
-            <div class="dark:bg-slate-500  bg-white text-start px-3 py-2 absolute w-full bottom-0 flex justify-between items-center" v-if="savePost.showSaved[index]">
+            <div class="dark:bg-slate-500 bg-white text-start px-3 py-2 absolute w-full bottom-0 flex justify-between items-center" v-if="savePost.showSaved[index]">
                 <div>
                   <figure class="inline-block mr-3">
                     <img :src="category.image" :alt="description" class="w-7 h-7 object-cover">
@@ -79,6 +80,10 @@
                 </Transition>
               </div>
           </div>
+          <!-- <post-options-component
+            
+          >
+          </post-options-component> -->
           <p class="font-bold text-start mt-3">4.716 Me gusta</p>
           <p class="text-justify text-sm my-2"><span class="font-bold">{{category.name}}: </span>{{description}}</p>
           <p class="text-slate-400 text-start text-xs">Ver los comentarios</p>
@@ -94,7 +99,8 @@
 <script setup>
   import {useStore} from "vuex";
   import {defineProps, toRefs, ref, onUpdated, reactive} from "vue";
-  import scrollInfinity/* , {postsIsIntersected} */ from "../../api/infinityScroll.js"
+  import PostOptionsComponent from "./PostsOptionsComponent.vue";
+  import scrollInfinity/*,{postsIsIntersected}*/ from "../../api/infinityScroll.js"
   import storiesComponent from "../StoriesComponent.vue"
   import loadingPosts from "../skeletons/LoadingPosts.vue"
   import SpinnerComponent from "../SpinnerComponent.vue"
@@ -126,6 +132,12 @@
   let heartLike = ref([]);
   const photoChange = () => indexPhoto.value++;
 
+  const likedPost = (index, data) => {
+    console.log(data);
+    heartLike.value[index] ? heartLike.value[index] = false : heartLike.value[index] = true;
+    commit("likedPost", data)
+  }
+
   const likedPostDblClick = (index, data) => {
     showHeart.value[index] = true;
     heartLike.value[index] ? heartLike.value[index] = false : heartLike.value[index] = true;
@@ -150,19 +162,13 @@
     }, 3000)
   }
 
-  const likedPost = (index, data) => {
-    heartLike.value[index] ? heartLike.value[index] = false : heartLike.value[index] = true;
-    commit("likedPost", data)
-  }
-  const showSend = (post) => {
-    commit("showSendMessage", post)
-  };
+
+  const showSend = (post) => commit("showSendMessage", post);
 
   //Llamando a la funcion que nos permite realizar el scroll infinito, cada vez que se carguen mas articulos.
   onUpdated(() => {
-    //scrollInfinity(dispatch, "getPosts", offset.value++, lastArticle.value)
-    //postsIsIntersected(lastPhoto.value);
     const postsIsIntersected = (parentElement) => {
+      console.log(parentElement);
       let options = {
         root: null,
         rootMargin: '100px',
@@ -176,21 +182,21 @@
          }
         })
       }
-      
       const observer = new IntersectionObserver(callback, options);
 
       //observer.observe(parentElement);
       parentElement.forEach(image => {
         observer.observe(image)
       })
+
     }
-    postsIsIntersected(lastPhoto.value)
+    //postsIsIntersected(lastPhoto.value)
   });
 
 </script>
 
 <style scoped>
-  .instagram-heart{
+  .instagram-heart {
     width: 80px;
     height: 80px;
     position: absolute;
@@ -203,7 +209,7 @@
     filter: saturate(1.5);
   }
 
-  .slider{
+  .slider {
     display: flex;
     height: 40vh;
     overflow-x: auto;

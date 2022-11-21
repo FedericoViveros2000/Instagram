@@ -7,8 +7,10 @@ import DiscoverView from "../views/DiscoverView.vue";
 import ReelsView from "../views/ReelsView.vue";
 import LikedPost from "../components/posts/LikedPostComponent.vue";
 import ChatView from "../Views/ChatView.vue";
+/* import ModalChatComponent from "../components/chat/ModalChatComponent.vue" */
 import ChatContactsView from "../Views/ChatContactsView.vue"
 import ProfileView from "../Views/ProfileView.vue"
+import PostsSendComponent from "../components/posts/PostsSendComponent.vue"
 
 const routes = [
   {path: "/Instagram", component: PostsView},
@@ -18,10 +20,12 @@ const routes = [
   {path: "/Instagram/users", component: SearchUsersView},
   {path: "/Instagram/discover", component: DiscoverView},
   {path: "/Instagram/likedPosts", component: LikedPost, meta: {transition: "liked"}},
+ /*  {path: "/Instagram/modalSendMessage", component: ModalChatComponent}, */
   {path: "/Instagram/chatView", component: ChatView},
   {path: "/Instagram/chatContactsView", component: ChatContactsView},
+  {path: "/Instagram/postSend/:id", component: PostsSendComponent},
+ /*  {path: "/Instagram/profile/:id", component: ProfileView}, */
   {path: "/Instagram/profile", component: ProfileView}
-  //{path: "/Instagram/profile", component: DarkMode}
 ];
 
 const history = createWebHistory();
