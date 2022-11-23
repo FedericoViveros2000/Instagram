@@ -14,7 +14,7 @@ const scrollInfinity = (dispatch, dispatchName, offset = offsetRecieved, lastArt
   //Callback mediante el cual vamos cargando mas productos o articulos de acuerdo al scroll.
   let callbackEntry = (entries, observer) => {
     entries.forEach(entry => {
-      let { isIntersecting } = entry;
+      let { isIntersecting } = entry;``
       if (isIntersecting) {
         let urlProductsPaginated = `${urlProducts}?offset=${offset}&limit=${limit}`
         dispatch(dispatchName, urlProductsPaginated);

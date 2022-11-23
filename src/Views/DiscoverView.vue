@@ -1,7 +1,8 @@
 <template>
   <posts-discover-component
     :photos="photos"
-  ></posts-discover-component>
+  >
+  </posts-discover-component>
 </template>
 
 <script setup>

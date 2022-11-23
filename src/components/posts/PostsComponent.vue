@@ -1,7 +1,7 @@
 <template>
   <loading-posts v-if="!posts"></loading-posts>
-  <div class="absolute top-14" ref="container" v-else>
-    <stories-component :stories="posts"></stories-component>
+  <div  ref="container" v-else>
+   <!--  <stories-component :stories="posts"></stories-component> -->
     <div class="mt-5" v-for="({id, title, images, category, description}, index) in posts" :key="id" :ref="(el) => lastArticle[index] = el">
         <div class="flex items-center mb-3 mx-3">
           <figure class="w-8 h-8 overflow-hidden rounded-full">
@@ -13,7 +13,7 @@
           <p class="absolute top-3 right-3 bg-slate-cant py-1.5 px-3 text-xs rounded-2xl" v-show="images.length > 1">{{imageShow >= 1 ? imageShow : imageShow = 1}}/{{images.length}}</p>
           <div class="slider">
           <!--   :ref="(el) => lastPhoto.push(el)" -->
-            <img v-for="(image, index) in images" class="h-full object-cover" :key="image" :src="image" :alt="index">
+          <img v-for="(image, index) in images" class="h-full object-cover" :key="image" :src="image" :alt="index">
           </div>
           <Transition name="bounce">
             <div class="instagram-heart absolute top-0" v-show="showHeart[index]"></div>
@@ -39,7 +39,7 @@
         </div>
         <div class="px-3 bg-white dark:bg-black relative z-10">
           <div class="w-full flex justify-between items-center py-2 mt-1 text-sm relative mb-7">
-              <div class="text-start text-2xl ">
+              <div class="text-start text-2xl">
                 <Transition
                   enter-from-class="scale-0"
                   enter-active-class="transition-transform duration-300 linear"
@@ -167,8 +167,7 @@
 
   //Llamando a la funcion que nos permite realizar el scroll infinito, cada vez que se carguen mas articulos.
   onUpdated(() => {
-    const postsIsIntersected = (parentElement) => {
-      console.log(parentElement);
+    /* const postsIsIntersected = (parentElement) => {
       let options = {
         root: null,
         rootMargin: '100px',
@@ -189,8 +188,8 @@
         observer.observe(image)
       })
 
-    }
-    //postsIsIntersected(lastPhoto.value)
+    } */
+    scrollInfinity(dispatch, "getPosts", offset.value, lastArticle.value.at(-1))
   });
 
 </script>

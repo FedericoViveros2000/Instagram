@@ -38,8 +38,8 @@
               <div class="rounded-2xl" :class="message.iam ? 'dark:bg-slate-800 self-start' : 'dark:bg-chat-skyblue self-end'">
                 <p class="py-3 px-4 font-semibold">{{message.post.category.name}}</p>
                 <router-link :to='`/Instagram/postSend/${message.post.id}`'>
-                  <figure class="min-h-[200px] dark:bg-slate-600">
-                    <img :src="message.post.category.image" :alt="message.post.category.name" class="w-full object-cover">
+                  <figure class="min-h-[150px] h-full dark:bg-slate-600">
+                    <img :src="message.post.category.image" :alt="message.post.category.name" class="h-full object-cover">
                   </figure>
                 </router-link>
                 <p class="py-2 px-4"><span class="font-semibold">{{message.post.category.name}}: </span>{{message.post.title}}</p>

@@ -6,14 +6,16 @@
           <img src="../assets/icons/magnify.svg" alt="Buscar" class="icons w-6 h-6">
         </figure>
         <router-link to="/Instagram/users">
-          <input type="text" class="w-full p-1.5 outline-0 bg-slate-100 dark:bg-slate-800"  placeholder="Buscar">
+          <input type="text" class="w-full p-1.5 outline-0 bg-slate-100 dark:bg-slate-800" placeholder="Buscar">
         </router-link>
       </div>
     </div>
-    <article class="grid grid-cols-3 grid-rows-5 min-h-screen  gap-0.5" :class="photoScale.show ? 'blur-sm' : 'blur-0'">
-      <figure v-for="{id, category, images} in photos" :key="id" :ref="(el) => lastArticle = el" :class="Math.floor(Math.random() * 10) / 2 === 0 ? 'w-full row-span-1 relative bg-slate-100 dark:bg-slate-800' : 'w-full row-span-2 relative dark:bg-slate-800 bg-slate-100'" >
-        <img src="../assets/multiple-file.png" class="absolute icons w-6 h-6 top-2 right-2" v-if="images.length > 1">
-        <img :src="category.image" :alt="category.name" class="h-full object-cover">
+    <article class="grid grid-cols-3 grid-rows-5 min-h-screen gap-0.5" :class="photoScale.show ? 'blur-sm' : 'blur-0'">
+      <figure v-for="{id, category, images} in photos" :key="id" :ref="(el) => lastArticle = el" :class="Math.floor(Math.random() * 10) / 2 === 0 ? 'w-full row-span-1 relative bg-slate-100 dark:bg-slate-800' : 'w-full row-span-2 relative dark:bg-slate-800 bg-slate-100'">
+        <router-link :to="`/Instagram/postMore/${id}`">
+          <img src="../assets/multiple-file.png" class="absolute icons w-6 h-6 top-2 right-2" v-if="images.length > 1">
+          <img :src="category.image" :alt="category.name" class="h-full object-cover">
+        </router-link>
       </figure>
     </article>
     <Transition
@@ -24,7 +26,11 @@
       leave-active-class="transition-transform duration-300 linear"
       leave-to-class="scale-0"
     >
-      <post-discover-scale-async :discover="photoScale" v-if="photoScale.show"></post-discover-scale-async>
+      <post-discover-scale-async 
+        :discover="photoScale" 
+        v-if="photoScale.show"
+      >
+      </post-discover-scale-async>
     </Transition>
     <div class="w-full flex justify-center items-center mt-5 mb-7">
       <spinner-component></spinner-component>

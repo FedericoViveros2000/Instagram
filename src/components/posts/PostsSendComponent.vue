@@ -2,10 +2,8 @@
   <article class="bg-black w-full h-screen relative top-0 z-30">
     <nav class="p-3">
       <div class="flex h-8">
-        <figure class="mr-3">
-          <router-link to="/Instagram/chatView">
+        <figure class="mr-3" @click="route.go(-1)">
             <img src="../assets/icons/btn-back.svg" alt="Back Icon" class="icons">
-          </router-link>
         </figure>
         <figure>
           <img src="../../../public/Instagram_name.png" alt="Icono de Instagram" class="w-full h-full dark:brightness-110 dark:invert object-cover">
@@ -67,9 +65,10 @@
     VITE_API_PRODUCTS: urlPost
   } = import.meta.env;
   import axios from "axios";
-  import {useRoute} from "vue-router";
+  import {useRoute, useRouter} from "vue-router";
   import PostsOptionsComponent from "./PostsOptionsComponent.vue";
   let {params} = useRoute();
+  const route = useRouter();
   let post = ref([]);
   let heartLike = ref(false);
 
@@ -85,7 +84,6 @@
     try {
       let {data} = await axios.get(`${urlPost}/${params.id}`);
       post.value = await data;
-      console.log(post.value.category.image);
     } catch (err) {
       console.log(err);
     }

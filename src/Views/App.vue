@@ -32,7 +32,7 @@ import { useStore } from "vuex";
 import navBarComponent from "../components/NavBarComponent.vue";
 import splashScreen from "../components/skeletons/SplashScreen.vue"
 import searchBarComponent from "../components/SearchBarComponent.vue";
-//import supabase from "../helpers/supabase";
+import supabase from "../helpers/supabase";
 
 //import {io} from "socket.io-client"
 let {state} = useStore();
@@ -59,8 +59,8 @@ error.value = computed(() => state.posts.errors);
         alert(error.message)
       }
   }
-} */
-
+}
+ */
 onMounted(() => {
   //handleLogin();
   localStorage.mode === 'true' ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");

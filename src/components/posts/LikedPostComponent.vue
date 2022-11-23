@@ -17,7 +17,9 @@
                             <img :src="category.image" :alt="category.name" class="w-full h-full object-cover" loading="lazy">
                         </figure>
                     </div>
-                    <p>{{title}}</p>
+                    <router-link :to="`/Instagram/postSend/${id}`">
+                        <p>{{title}}</p>
+                    </router-link>
                 </li>
             </ul>
         </article>
