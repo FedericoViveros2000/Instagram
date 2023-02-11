@@ -1,7 +1,7 @@
 <template>
     <div class="w-full flex justify-between items-center py-2 mt-1 text-sm relative mb-7">
         <div class="text-start text-2xl ">
-            <Transition enter-from-class="scale-0" enter-active-class="transition-transform duration-300 linear"
+            <Transition enter-from-class="scale-0"                  enter-active-class="transition-transform duration-300 linear"
                 enter-to-class="scale-100" leave-from-class="scale-100"
                 leave-active-class="transition-transform duration-300 linear" leave-to-class="scale-0">
                 <figure v-if="!heartLike[index]" class="absolute top-2 left-0"

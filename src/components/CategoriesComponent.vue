@@ -17,7 +17,7 @@ const {
 } = import.meta.env;
 import { onBeforeMount, ref } from "vue";
 import {useStore} from 'vuex';
-import axios from "axios"
+import axios from "axios";
 let categories = ref([]);
 
 const {commit} = useStore();
@@ -26,14 +26,16 @@ const articleSearchCategory = (idCategory) => {
   commit("searchArticleCategory", idCategory);
 }
 
-onBeforeMount(async () => {
+const getData = async () => {
   try {
     let { data } = await axios.get(urlCategories);
     categories.value = await data;
   } catch (err) {
     console.log(err);
   }
-})
+}
+
+onBeforeMount(() => getData());
 </script>
 
 <style scoped>

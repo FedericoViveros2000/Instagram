@@ -4,7 +4,8 @@
          :stories="postsArticles"
       >
       </storie-async-component>
-      <post-async-component :posts="postsArticles"
+      <post-async-component 
+         :posts="postsArticles"
       ></post-async-component>
    </div>
 </template>

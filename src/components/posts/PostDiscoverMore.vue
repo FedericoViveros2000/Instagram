@@ -10,7 +10,7 @@
         <p class="text-lg font-bold">Explorar</p>
       </div>
     </nav>
-    <section class="max-h-[100vh] overflow-y-auto w-full snap-y  snap-mandatory text-sm" >
+    <section class="max-h-[100vh] overflow-y-auto w-full snap-y snap-mandatory text-sm">
       <article class="h-[80vh] mb-2 snap-start" v-for="({category, id, title}) in posts" :key="id" :ref="(el) => lastArticle = el">
         <div class="flex justify-between items-center px-4">
           <picture class="flex items-center">
@@ -62,7 +62,7 @@
   let limit = ref(10);
 
   const getMore = async () => {
-    try{
+    try {
       let {data} = await axios.get(`${urlPaginated}?offset=${offset.value++}&limit=${limit.value}`);
       posts.value.push(...data);
     }catch(err){

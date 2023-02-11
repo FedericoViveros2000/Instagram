@@ -13,7 +13,7 @@
           <p class="absolute top-3 right-3 bg-slate-cant py-1.5 px-3 text-xs rounded-2xl" v-show="images.length > 1">{{imageShow >= 1 ? imageShow : imageShow = 1}}/{{images.length}}</p>
           <div class="slider">
           <!--   :ref="(el) => lastPhoto.push(el)" -->
-          <img v-for="(image, index) in images" class="h-full object-cover" :key="image" :src="image" :alt="index">
+            <img v-for="(image, index) in images" class="h-full object-cover" :key="image" :src="image" :alt="index">
           </div>
           <Transition name="bounce">
             <div class="instagram-heart absolute top-0" v-show="showHeart[index]"></div>
@@ -81,7 +81,6 @@
               </div>
           </div>
           <!-- <post-options-component
-            
           >
           </post-options-component> -->
           <p class="font-bold text-start mt-3">4.716 Me gusta</p>
@@ -99,9 +98,10 @@
 <script setup>
   import {useStore} from "vuex";
   import {defineProps, toRefs, ref, onUpdated, reactive} from "vue";
+  import {insert} from "../../helpers/index"
   import PostOptionsComponent from "./PostsOptionsComponent.vue";
-  import scrollInfinity/*,{postsIsIntersected}*/ from "../../api/infinityScroll.js"
-  import storiesComponent from "../StoriesComponent.vue"
+  import scrollInfinity /*,{postsIsIntersected}*/ from "../../api/infinityScroll.js"
+  import storiesComponent from "../StoriesComponent.vue" 
   import loadingPosts from "../skeletons/LoadingPosts.vue"
   import SpinnerComponent from "../SpinnerComponent.vue"
   let {dispatch, state, commit} = useStore();
@@ -133,26 +133,26 @@
   const photoChange = () => indexPhoto.value++;
 
   const likedPost = (index, data) => {
-    console.log(data);
+    let {category, description, title} = data;
     heartLike.value[index] ? heartLike.value[index] = false : heartLike.value[index] = true;
-    commit("likedPost", data)
+    insert("likedpost", {category, description, title});
+    //commit("likedPost", [data])
   }
 
   const likedPostDblClick = (index, data) => {
     showHeart.value[index] = true;
-    heartLike.value[index] ? heartLike.value[index] = false : heartLike.value[index] = true;
+    likedPost(index, data);
     let clear = setTimeout(() => {
       showHeart.value[index] = false;
       clearTimeout(clear);
     }, 500);
-    commit("likedPost", data);
   }
 
   const savedPost = (index) => {
     if (!savePost.bootMark[index]) {
       savePost.showSaved[index] = true;
       savePost.bootMark[index] = true;
-      savePost.showSavedMessage = "Guardado"
+      savePost.showSavedMessage = "Guardado";
     }else{
       savePost.bootMark[index] = false;
     }
@@ -161,7 +161,6 @@
       clearTimeout(saved);
     }, 3000)
   }
-
 
   const showSend = (post) => commit("showSendMessage", post);
 

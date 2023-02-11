@@ -9,7 +9,6 @@
         </div>
         <spinner-component class="m-auto" v-else></spinner-component>
     </section>
-
 </template>
 
 <script setup>

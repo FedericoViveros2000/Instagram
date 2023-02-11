@@ -28,7 +28,8 @@
 
 <script setup>
   import chatComponent from "../components/chat/ChatComponent.vue"
-  import {ref, reactive} from "vue";
+  import { io } from "socket.io-client";
+  import {ref, reactive, onMounted} from "vue";
   import {useStore} from "vuex";
   let messageText = ref(""); 
   let {commit} = useStore();
@@ -38,6 +39,8 @@
     name: 'Jose'
   })
 
+  const socket = io("http://localhost:3001/");
+
   const send = () => {   
     messages = {
       iam: false,
@@ -45,11 +48,16 @@
       name: "Jose",
       post: {}
     }
-
+  /* 
+    console.log(socket);
+    console.log(messages); */
     commit('sendMessage', messages)
-
+    socket.emit('newMessage', messages);
     messages = {};
-    messageText.value = '';
-
+    console.log(socket); 
   }
+
+  onMounted(() => {
+    socket.on('new-message')
+  })
 </script>

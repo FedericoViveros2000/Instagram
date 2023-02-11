@@ -13,9 +13,13 @@ import ProfileView from "../Views/ProfileView.vue"
 import PostsSendComponent from "../components/posts/PostsSendComponent.vue";
 import PostsComponent from "../components/posts/PostsComponent.vue";
 import PostsDiscoverView from "../Views/PostsDiscoverView.vue"
+import LoginView from "../Views/LoginView.vue";
 
 const routes = [
-  {path: "/Instagram", component: PostsView},
+  //{path: "/Instagram", component: PostsView},
+  //{path: "/Instagram/login", component: LoginView},
+  {path: "/Instagram", component: LoginView},
+  {path: "/Instagram/posts", component: PostsView},
   {path: "/Instagram/reels", component: ReelsView},
   {path: "/Instagram/products", component:  ProductsView },
   {path: "/Instagram/detail/:id", component: ProductsDetailView},

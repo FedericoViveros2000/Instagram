@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import posts from "./modules/posts.js";
 import articles from "./modules/articles.js"
 import postsDiscover from "./modules/users.js";
+import { getAllData } from "../helpers/index.js";
 
 export default createStore({
   state: {
@@ -22,23 +23,18 @@ export default createStore({
         name: "Jose",
         post: {}
       }
-    ]
+      ],
+      likedPost: []
   },
   getters: {
     getMessageState: (state) => state.messageState
   },
   //Modulos de VUEX para el manejo particular del estado en cada seccion.
   mutations: {
-    likedPost(state, data){
-      let insertData = [];
-      if(localStorage.likedPost !== undefined) {
-        insertData.push(...JSON.parse(localStorage.likedPost), data);
-        localStorage.likedPost = JSON.stringify(insertData);
-      }else{
-        insertData.push(data);
-        localStorage.likedPost = JSON.stringify(insertData)
-      }
+    likedPost(state, data) {
+      state.likedPost.unshift(...data);
     },
+
     message(state) {
       state.sendMessage.show = false;
       state.messageState.push({
@@ -48,17 +44,27 @@ export default createStore({
       });
     },
 
-    showSendMessage(state, post){
+    showSendMessage(state, post) {
       state.sendMessage.show = true;
       state.sendMessage.post = post;
     },
 
     sendMessage(state, newMessage) {
-      console.log(newMessage);
       state.messageState.push(newMessage);
-      console.log(state.messageState);
     }
   },
+
+  actions: {
+    async getAllLiked ({state, commit}) {
+     /*  try { */
+        let data = await getAllData("likedpost");
+        commit("likedPost", data)
+      /* } catch (err) {
+        console.log(err);
+      } */
+    }
+  },
+
   modules: {
     posts,
     articles,

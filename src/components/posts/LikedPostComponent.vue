@@ -31,7 +31,18 @@
 </template>
 
 <script setup>
-    import {ref} from "vue";
-    let liked = ref([]);
-    localStorage.likedPost !== undefined ? liked.value = JSON.parse(localStorage.likedPost) : liked.value = [];
+    import {computed, onMounted} from "vue";
+    import {getUserData} from "../../helpers/index.js"
+    import { useStore } from "vuex";
+    import supabase from "../../helpers/supabase.js";
+    const {state, dispatch} = useStore();
+    let liked = computed(() => state.likedPost);
+    onMounted(() => {
+        dispatch("getAllLiked")
+        //getUserData()
+
+        supabase.auth.onAuthStateChange((event, session) => {
+            console.log(event, session);
+        })
+    })
 </script>
